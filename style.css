@@ -83,6 +83,7 @@ main {
 .intro p {
     font-size: 1.1rem;
     color: #555;
+    margin-top: 1rem;
 }
 
 /* Summaries Section */
