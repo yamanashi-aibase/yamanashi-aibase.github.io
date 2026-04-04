@@ -1,241 +1,621 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI BASE - 2026年4月まとめ</title>
-  <link rel="stylesheet" href="../style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI BASE - 2026年4月まとめ</title>
+    <link rel="stylesheet" href="../style.css" />
+    <style>
+      .entry-date {
+        display: block;
+        font-size: 0.78rem;
+        color: #999;
+        margin-bottom: 0.3rem;
+        font-variant-numeric: tabular-nums;
+      }
+      .entry-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-top: 0.5rem;
+      }
+      .tag {
+        display: inline-block;
+        padding: 0.15rem 0.55rem;
+        border-radius: 999px;
+        font-size: 0.72rem;
+        font-weight: 600;
+        background-color: #fde8ed;
+        color: #c0504d;
+        white-space: nowrap;
+      }
+      #tag-filter {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 1.2rem 0 2rem;
+      }
+      .filter-btn {
+        padding: 0.3rem 0.8rem;
+        border-radius: 999px;
+        border: 1.5px solid #ddd;
+        background: #fff;
+        color: #555;
+        font-size: 0.8rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition:
+          background 0.15s,
+          color 0.15s,
+          border-color 0.15s;
+      }
+      .filter-btn:hover {
+        border-color: #e85876;
+        color: #e85876;
+      }
+      .filter-btn.active {
+        background: #e85876;
+        border-color: #e85876;
+        color: #fff;
+      }
+      li.hidden {
+        display: none;
+      }
+      .contributor.hidden {
+        display: none;
+      }
+      .category.hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
     <header>
-        <div class="logo-container">
-            <img src="../img/yamanashi-aibase.png" alt="AI BASE Logo" class="logo">
-        </div>
-        <h1>AI BASE</h1>
-        <p class="tagline"><a href="../index.html">← Back to Home</a></p>
+      <div class="logo-container">
+        <img
+          src="../img/yamanashi-aibase.png"
+          alt="AI BASE Logo"
+          class="logo"
+        />
+      </div>
+      <h1>AI BASE</h1>
+      <p class="tagline"><a href="../index.html">← Back to Home</a></p>
     </header>
 
-  <main>
-    <article class="summary">
-      <h1>2026年4月まとめ - #朝活_202604</h1>
+    <main>
+      <article class="summary">
+        <h1>2026年4月まとめ - #朝活_202604</h1>
 
-     <section class="category">
-     <h2>1. OpenAI／ChatGPT関連</h2>
+        <div id="tag-filter"></div>
 
-    <div class="contributor">
-    <h3>投稿者：halo</h3>
-    <ul>
-      <li><strong>ClaudeのサブスクがOpenClawなど外部ツール利用を対象外にするという告知</strong><br>
-        <a href="https://x.com/bcherny/status/2040206440556826908?s=20" target="_blank">https://x.com/bcherny/status/2040206440556826908?s=20</a></li>
-      <li><strong>Claudeの失敗や“desperate”ベクトルに関するAnthropicのX投稿を紹介している</strong><br>
-        <a href="https://x.com/AnthropicAI/status/2039749648626196658?s=20" target="_blank">https://x.com/AnthropicAI/status/2039749648626196658?s=20</a></li>
-      <li><strong>OpenAIのChatGPT料金見直しと使い放題プラン廃止の可能性に関するニュース</strong><br>
-        <a href="https://www.businessinsider.jp/article/2603-openai-may-drop-unlimited-chatgpt-plans-exec-says/" target="_blank">https://www.businessinsider.jp/article/2603-openai-may-drop-unlimited-chatgpt-plans-exec-says/</a></li>
-    </ul>
-    </div>
+        <section class="category">
+          <h2>1. OpenAI／ChatGPT関連</h2>
 
-    <div class="contributor">
-    <h3>投稿者：りゅう</h3>
-    <ul>
-      <li><strong>Gemma 4の新しいオープンモデルとエージェント向け機能の紹介</strong><br>
-        <a href="https://x.com/i/status/2039735446628925907" target="_blank">https://x.com/i/status/2039735446628925907</a></li>
-      <li><strong>Claude Code の /btw 機能についての短い紹介投稿</strong><br>
-        <a href="https://x.com/i/status/2031544002517033338" target="_blank">https://x.com/i/status/2031544002517033338</a></li>
-      <li><strong>GPT-5.4の新機能として、AIが自分でPCを操作する「computer-use」を紹介する投稿</strong><br>
-        <a href="https://x.com/i/status/2029644095787065497" target="_blank">https://x.com/i/status/2029644095787065497</a></li>
-      <li><strong>Voiceモードの言語認識設定についての説明</strong><br>
-        <a href="https://x.com/i/status/2028667342381896188" target="_blank">https://x.com/i/status/2028667342381896188</a></li>
-    </ul>
-    </div>
+          <div class="contributor">
+            <h3>投稿者：halo</h3>
+            <ul>
+              <li>
+                <span class="entry-date">2026/04/04</span>
+                <strong>ClaudeのサブスクがOpenClawなど外部ツール利用を対象外にするという告知</strong><br />
+                <a href="https://x.com/bcherny/status/2040206440556826908?s=20" target="_blank">https://x.com/bcherny/status/2040206440556826908?s=20</a>
+                <div class="entry-tags">
+                  <span class="tag">#規約</span>
+                  <span class="tag">#Anthropic</span>
+                </div>
+              </li>
+              <li>
+                <span class="entry-date">2026/04/03</span>
+                <strong>Claudeの失敗や"desperate"ベクトルに関するAnthropicのX投稿を紹介している</strong><br />
+                <a href="https://x.com/AnthropicAI/status/2039749648626196658?s=20" target="_blank">https://x.com/AnthropicAI/status/2039749648626196658?s=20</a>
+                <div class="entry-tags">
+                  <span class="tag">#Anthropic</span>
+                  <span class="tag">#Claude</span>
+                </div>
+              </li>
+              <li>
+                <span class="entry-date">2026/03/18</span>
+                <strong>OpenAIのChatGPT料金見直しと使い放題プラン廃止の可能性に関するニュース</strong><br />
+                <a href="https://www.businessinsider.jp/article/2603-openai-may-drop-unlimited-chatgpt-plans-exec-says/" target="_blank">https://www.businessinsider.jp/article/2603-openai-may-drop-unlimited-chatgpt-plans-exec-says/</a>
+                <div class="entry-tags">
+                  <span class="tag">#OpenAI</span>
+                  <span class="tag">#規約</span>
+                </div>
+              </li>
+            </ul>
+          </div>
 
-    <div class="contributor">
-    <h3>投稿者：t2hnd</h3>
-    <ul>
-      <li><strong>OpenAIの動画生成アプリ「Sora」終了に関するニュース</strong><br>
-        <a href="https://japan.cnet.com/article/35245437/" target="_blank">https://japan.cnet.com/article/35245437/</a></li>
-    </ul>
-    </div>
+          <div class="contributor">
+            <h3>投稿者：りゅう</h3>
+            <ul>
+              <li>
+                <span class="entry-date">2026/04/03</span>
+                <strong>Gemma 4の新しいオープンモデルとエージェント向け機能の紹介</strong><br />
+                <a href="https://x.com/i/status/2039735446628925907" target="_blank">https://x.com/i/status/2039735446628925907</a>
+                <div class="entry-tags">
+                  <span class="tag">#モデル</span>
+                  <span class="tag">#Gemma</span>
+                </div>
+              </li>
+              <li>
+                <span class="entry-date">2026/03/11</span>
+                <strong>Claude Code の /btw 機能についての短い紹介投稿</strong><br />
+                <a href="https://x.com/i/status/2031544002517033338" target="_blank">https://x.com/i/status/2031544002517033338</a>
+                <div class="entry-tags">
+                  <span class="tag">#ClaudeCode</span>
+                </div>
+              </li>
+              <li>
+                <span class="entry-date">2026/03/06</span>
+                <strong>GPT-5.4の新機能として、AIが自分でPCを操作する「computer-use」を紹介する投稿</strong><br />
+                <a href="https://x.com/i/status/2029644095787065497" target="_blank">https://x.com/i/status/2029644095787065497</a>
+                <div class="entry-tags">
+                  <span class="tag">#モデル</span>
+                  <span class="tag">#OpenAI</span>
+                </div>
+              </li>
+              <li>
+                <span class="entry-date">2026/03/03</span>
+                <strong>Voiceモードの言語認識設定についての説明</strong><br />
+                <a href="https://x.com/i/status/2028667342381896188" target="_blank">https://x.com/i/status/2028667342381896188</a>
+                <div class="entry-tags">
+                  <span class="tag">#OpenAI</span>
+                  <span class="tag">#Tips</span>
+                </div>
+              </li>
+            </ul>
+          </div>
 
-    <div class="contributor">
-    <h3>投稿者：oto175</h3>
-    <ul>
-      <li><strong>OpenAIがPE投資会社と企業向けAI導入拡大を狙う合弁設立を協議している記事</strong><br>
-        <a href="https://www.sbbit.jp/article/cont1/182672" target="_blank">https://www.sbbit.jp/article/cont1/182672</a></li>
-    </ul>
-    </div>
-    </section>
+          <div class="contributor">
+            <h3>投稿者：t2hnd</h3>
+            <ul>
+              <li>
+                <span class="entry-date">2026/03/25</span>
+                <strong>OpenAIの動画生成アプリ「Sora」終了に関するニュース</strong><br />
+                <a href="https://japan.cnet.com/article/35245437/" target="_blank">https://japan.cnet.com/article/35245437/</a>
+                <div class="entry-tags">
+                  <span class="tag">#OpenAI</span>
+                  <span class="tag">#産業</span>
+                </div>
+              </li>
+            </ul>
+          </div>
 
-     <section class="category">
-     <h2>2. ツール・ライブラリ</h2>
+          <div class="contributor">
+            <h3>投稿者：oto175</h3>
+            <ul>
+              <li>
+                <span class="entry-date">2026/03/17</span>
+                <strong>OpenAIがPE投資会社と企業向けAI導入拡大を狙う合弁設立を協議している記事</strong><br />
+                <a href="https://www.sbbit.jp/article/cont1/182672" target="_blank">https://www.sbbit.jp/article/cont1/182672</a>
+                <div class="entry-tags">
+                  <span class="tag">#OpenAI</span>
+                  <span class="tag">#産業</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
 
-    <div class="contributor">
-    <h3>投稿者：halo</h3>
-    <ul>
-      <li><strong>Android端末でllama.cppを使いGemma4をローカル実行する方法と実演</strong><br>
-        <a href="https://x.com/hellohazime/status/2039949391696703784?s=20" target="_blank">https://x.com/hellohazime/status/2039949391696703784?s=20</a></li>
-    </ul>
-    </div>
-    </section>
+        <section class="category">
+          <h2>2. ツール・ライブラリ</h2>
 
-     <section class="category">
-     <h2>3. リポジトリ・サンプルコード</h2>
+          <div class="contributor">
+            <h3>投稿者：halo</h3>
+            <ul>
+              <li>
+                <span class="entry-date">2026/04/03</span>
+                <strong>Android端末でllama.cppを使いGemma4をローカル実行する方法と実演</strong><br />
+                <a href="https://x.com/hellohazime/status/2039949391696703784?s=20" target="_blank">https://x.com/hellohazime/status/2039949391696703784?s=20</a>
+                <div class="entry-tags">
+                  <span class="tag">#ツール</span>
+                  <span class="tag">#Gemma</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
 
-    <div class="contributor">
-    <h3>投稿者：halo</h3>
-    <ul>
-      <li><strong>OpenClawベースのオープンソースAIアシスタント「Atomic Bot」のGitHubリポジトリ紹介</strong><br>
-        <a href="https://github.com/AtomicBot-ai" target="_blank">https://github.com/AtomicBot-ai</a></li>
-    </ul>
-    </div>
-    </section>
+        <section class="category">
+          <h2>3. リポジトリ・サンプルコード</h2>
 
-     <section class="category">
-     <h2>4. AIエージェント／自動化</h2>
+          <div class="contributor">
+            <h3>投稿者：halo</h3>
+            <ul>
+              <li>
+                <span class="entry-date">2026/04/04</span>
+                <strong>OpenClawベースのオープンソースAIアシスタント「Atomic Bot」のGitHubリポジトリ紹介</strong><br />
+                <a href="https://github.com/AtomicBot-ai" target="_blank">https://github.com/AtomicBot-ai</a>
+                <div class="entry-tags">
+                  <span class="tag">#リポジトリ</span>
+                  <span class="tag">#エージェント</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
 
-    <div class="contributor">
-    <h3>投稿者：りゅう</h3>
-    <ul>
-      <li><strong>ManusがLINEコネクタで自分専用のAI秘書をLINE上に実装できる内容</strong><br>
-        <a href="https://x.com/kawai_design/status/2040006318107549787?s=20" target="_blank">https://x.com/kawai_design/status/2040006318107549787?s=20</a></li>
-      <li><strong>OpenClawのショーケースで、実際に動作するAIアシスタント事例を紹介しているページ</strong><br>
-        <a href="https://openclaw.ai/showcase" target="_blank">https://openclaw.ai/showcase</a></li>
-    </ul>
-    </div>
+        <section class="category">
+          <h2>4. AIエージェント／自動化</h2>
 
-    <div class="contributor">
-    <h3>投稿者：t2hnd</h3>
-    <ul>
-      <li><strong>Claude CodeをTelegramやDiscordから操作できるMCP連携機能の紹介</strong><br>
-        <a href="https://x.com/trq212/status/2034761016320696565?s=46&t=-F5NCiEF_QyvElLxy904Hw" target="_blank">https://x.com/trq212/status/2034761016320696565?s=46&t=-F5NCiEF_QyvElLxy904Hw</a></li>
-      <li><strong>NVIDIAがAIエージェント基盤OpenClaw向けのセキュリティ機能「NemoClaw」を発表した話題</strong><br>
-        <a href="https://pc.watch.impress.co.jp/docs/news/2094003.html" target="_blank">https://pc.watch.impress.co.jp/docs/news/2094003.html</a></li>
-    </ul>
-    </div>
-    </section>
+          <div class="contributor">
+            <h3>投稿者：りゅう</h3>
+            <ul>
+              <li>
+                <span class="entry-date">2026/04/03</span>
+                <strong>ManusがLINEコネクタで自分専用のAI秘書をLINE上に実装できる内容</strong><br />
+                <a href="https://x.com/kawai_design/status/2040006318107549787?s=20" target="_blank">https://x.com/kawai_design/status/2040006318107549787?s=20</a>
+                <div class="entry-tags">
+                  <span class="tag">#エージェント</span>
+                  <span class="tag">#ツール</span>
+                </div>
+              </li>
+              <li>
+                <span class="entry-date">2026/03/13</span>
+                <strong>OpenClawのショーケースで、実際に動作するAIアシスタント事例を紹介しているページ</strong><br />
+                <a href="https://openclaw.ai/showcase" target="_blank">https://openclaw.ai/showcase</a>
+                <div class="entry-tags">
+                  <span class="tag">#エージェント</span>
+                </div>
+              </li>
+            </ul>
+          </div>
 
-     <section class="category">
-     <h2>5. AI技術記事・解説</h2>
+          <div class="contributor">
+            <h3>投稿者：t2hnd</h3>
+            <ul>
+              <li>
+                <span class="entry-date">2026/03/20</span>
+                <strong>Claude CodeをTelegramやDiscordから操作できるMCP連携機能の紹介</strong><br />
+                <a href="https://x.com/trq212/status/2034761016320696565?s=46&t=-F5NCiEF_QyvElLxy904Hw" target="_blank">https://x.com/trq212/status/2034761016320696565?s=46&t=-F5NCiEF_QyvElLxy904Hw</a>
+                <div class="entry-tags">
+                  <span class="tag">#ClaudeCode</span>
+                  <span class="tag">#MCP</span>
+                </div>
+              </li>
+              <li>
+                <span class="entry-date">2026/03/17</span>
+                <strong>NVIDIAがAIエージェント基盤OpenClaw向けのセキュリティ機能「NemoClaw」を発表した話題</strong><br />
+                <a href="https://pc.watch.impress.co.jp/docs/news/2094003.html" target="_blank">https://pc.watch.impress.co.jp/docs/news/2094003.html</a>
+                <div class="entry-tags">
+                  <span class="tag">#エージェント</span>
+                  <span class="tag">#セキュリティ</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
 
-    <div class="contributor">
-    <h3>投稿者：りゅう</h3>
-    <ul>
-      <li><strong>Gemma 4とOpenClawの活用可能性を解説する技術記事</strong><br>
-        <a href="https://x.com/ichiaimarketer/status/2039766264474915090?s=20" target="_blank">https://x.com/ichiaimarketer/status/2039766264474915090?s=20</a></li>
-      <li><strong>Claude CodeとBrowser Use CLI 2.0による高度なブラウザ操作の速報</strong><br>
-        <a href="https://x.com/i/status/2035238250806485168" target="_blank">https://x.com/i/status/2035238250806485168</a></li>
-      <li><strong>Google Pomelliの無料プロモキット作成ツール展開を紹介する速報投稿</strong><br>
-        <a href="https://x.com/i/status/2031577612817162444" target="_blank">https://x.com/i/status/2031577612817162444</a></li>
-      <li><strong>広告運用の無駄を減らすための解説記事</strong><br>
-        <a href="https://gigazine.net/news/20260301-claude-ads/" target="_blank">https://gigazine.net/news/20260301-claude-ads/</a></li>
-    </ul>
-    </div>
+        <section class="category">
+          <h2>5. AI技術記事・解説</h2>
 
-    <div class="contributor">
-    <h3>投稿者：halo</h3>
-    <ul>
-      <li><strong>axiosに対するサプライチェーン攻撃の注意喚起と状況解説</strong><br>
-        <a href="https://x.com/feross/status/2038807290422370479" target="_blank">https://x.com/feross/status/2038807290422370479</a></li>
-      <li><strong>各種パッケージマネージャの依存関係クールダウン対応を比較した技術記事</strong><br>
-        <a href="https://nesbitt.io/2026/03/04/package-managers-need-to-cool-down.html" target="_blank">https://nesbitt.io/2026/03/04/package-managers-need-to-cool-down.html</a></li>
-      <li><strong>ソウルの実世界を基盤にした都市規模のWorld ModelとRAG的な先読みで動画破綻を抑える研究紹介</strong><br>
-        <a href="https://seoul-world-model.github.io/" target="_blank">https://seoul-world-model.github.io/</a></li>
-      <li><strong>ニューラルネットワークを視覚的・対話的に解説する学習記事</strong><br>
-        <a href="https://mlu-explain.github.io/neural-networks/" target="_blank">https://mlu-explain.github.io/neural-networks/</a></li>
-    </ul>
-    </div>
+          <div class="contributor">
+            <h3>投稿者：りゅう</h3>
+            <ul>
+              <li>
+                <span class="entry-date">2026/04/03</span>
+                <strong>Gemma 4とOpenClawの活用可能性を解説する技術記事</strong><br />
+                <a href="https://x.com/ichiaimarketer/status/2039766264474915090?s=20" target="_blank">https://x.com/ichiaimarketer/status/2039766264474915090?s=20</a>
+                <div class="entry-tags">
+                  <span class="tag">#解説</span>
+                  <span class="tag">#Gemma</span>
+                </div>
+              </li>
+              <li>
+                <span class="entry-date">2026/03/21</span>
+                <strong>Claude CodeとBrowser Use CLI 2.0による高度なブラウザ操作の速報</strong><br />
+                <a href="https://x.com/i/status/2035238250806485168" target="_blank">https://x.com/i/status/2035238250806485168</a>
+                <div class="entry-tags">
+                  <span class="tag">#ClaudeCode</span>
+                  <span class="tag">#解説</span>
+                </div>
+              </li>
+              <li>
+                <span class="entry-date">2026/03/11</span>
+                <strong>Google Pomelliの無料プロモキット作成ツール展開を紹介する速報投稿</strong><br />
+                <a href="https://x.com/i/status/2031577612817162444" target="_blank">https://x.com/i/status/2031577612817162444</a>
+                <div class="entry-tags">
+                  <span class="tag">#ツール</span>
+                  <span class="tag">#Google</span>
+                </div>
+              </li>
+              <li>
+                <span class="entry-date">2026/03/04</span>
+                <strong>広告運用の無駄を減らすための解説記事</strong><br />
+                <a href="https://gigazine.net/news/20260301-claude-ads/" target="_blank">https://gigazine.net/news/20260301-claude-ads/</a>
+                <div class="entry-tags">
+                  <span class="tag">#解説</span>
+                </div>
+              </li>
+            </ul>
+          </div>
 
-    <div class="contributor">
-    <h3>投稿者：oto175</h3>
-    <ul>
-      <li><strong>RakutenAI 3.0の炎上を題材に、国産LLM開発とLoRA微調整の実態を解説する技術記事</strong><br>
-        <a href="https://zenn.dev/nitic_students/articles/e2e331dea0c616?redirected=1" target="_blank">https://zenn.dev/nitic_students/articles/e2e331dea0c616?redirected=1</a></li>
-      <li><strong>Niantic SpatialとポケモンGOの位置情報データを活用したAIの可能性を解説する記事</strong><br>
-        <a href="https://ledge.ai/articles/niantic_spatial_coco_robotics_geospatial_ai_delivery_robot" target="_blank">https://ledge.ai/articles/niantic_spatial_coco_robotics_geospatial_ai_delivery_robot</a></li>
-      <li><strong>Anthropicの労働市場影響レポートを紹介し、AIの実利用と理論上の対応範囲の差からビジネス機会を考察している</strong><br>
-        <a href="https://www.anthropic.com/research/labor-market-impacts" target="_blank">https://www.anthropic.com/research/labor-market-impacts</a></li>
-      <li><strong>生成AIによる再実装とオープンソースライセンスの問題を解説する記事</strong><br>
-        <a href="https://gigazine.net/news/20260310-legal-legitimate/" target="_blank">https://gigazine.net/news/20260310-legal-legitimate/</a></li>
-      <li><strong>OpenAIの米国防総省向けAI導入合意とAnthropic排除を扱うニュース記事</strong><br>
-        <a href="https://www.itmedia.co.jp/news/spv/2603/01/news019.html" target="_blank">https://www.itmedia.co.jp/news/spv/2603/01/news019.html</a></li>
-    </ul>
-    </div>
+          <div class="contributor">
+            <h3>投稿者：halo</h3>
+            <ul>
+              <li>
+                <span class="entry-date">2026/03/31</span>
+                <strong>axiosに対するサプライチェーン攻撃の注意喚起と状況解説</strong><br />
+                <a href="https://x.com/feross/status/2038807290422370479" target="_blank">https://x.com/feross/status/2038807290422370479</a>
+                <div class="entry-tags">
+                  <span class="tag">#セキュリティ</span>
+                </div>
+              </li>
+              <li>
+                <span class="entry-date">2026/03/31</span>
+                <strong>各種パッケージマネージャの依存関係クールダウン対応を比較した技術記事</strong><br />
+                <a href="https://nesbitt.io/2026/03/04/package-managers-need-to-cool-down.html" target="_blank">https://nesbitt.io/2026/03/04/package-managers-need-to-cool-down.html</a>
+                <div class="entry-tags">
+                  <span class="tag">#解説</span>
+                  <span class="tag">#セキュリティ</span>
+                </div>
+              </li>
+              <li>
+                <span class="entry-date">2026/03/18</span>
+                <strong>ソウルの実世界を基盤にした都市規模のWorld ModelとRAG的な先読みで動画破綻を抑える研究紹介</strong><br />
+                <a href="https://seoul-world-model.github.io/" target="_blank">https://seoul-world-model.github.io/</a>
+                <div class="entry-tags">
+                  <span class="tag">#解説</span>
+                </div>
+              </li>
+              <li>
+                <span class="entry-date">2026/03/02</span>
+                <strong>ニューラルネットワークを視覚的・対話的に解説する学習記事</strong><br />
+                <a href="https://mlu-explain.github.io/neural-networks/" target="_blank">https://mlu-explain.github.io/neural-networks/</a>
+                <div class="entry-tags">
+                  <span class="tag">#解説</span>
+                </div>
+              </li>
+            </ul>
+          </div>
 
-    <div class="contributor">
-    <h3>投稿者：tamikof</h3>
-    <ul>
-      <li><strong>LiteLLMのサプライチェーン攻撃とセキュリティ対策を扱う解説記事</strong><br>
-        <a href="https://qiita.com/emi_ndk/items/2332ff5c93e63ab736ad" target="_blank">https://qiita.com/emi_ndk/items/2332ff5c93e63ab736ad</a></li>
-    </ul>
-    </div>
+          <div class="contributor">
+            <h3>投稿者：oto175</h3>
+            <ul>
+              <li>
+                <span class="entry-date">2026/03/30</span>
+                <strong>RakutenAI 3.0の炎上を題材に、国産LLM開発とLoRA微調整の実態を解説する技術記事</strong><br />
+                <a href="https://zenn.dev/nitic_students/articles/e2e331dea0c616?redirected=1" target="_blank">https://zenn.dev/nitic_students/articles/e2e331dea0c616?redirected=1</a>
+                <div class="entry-tags">
+                  <span class="tag">#モデル</span>
+                  <span class="tag">#解説</span>
+                </div>
+              </li>
+              <li>
+                <span class="entry-date">2026/03/25</span>
+                <strong>Niantic SpatialとポケモンGOの位置情報データを活用したAIの可能性を解説する記事</strong><br />
+                <a href="https://ledge.ai/articles/niantic_spatial_coco_robotics_geospatial_ai_delivery_robot" target="_blank">https://ledge.ai/articles/niantic_spatial_coco_robotics_geospatial_ai_delivery_robot</a>
+                <div class="entry-tags">
+                  <span class="tag">#解説</span>
+                  <span class="tag">#産業</span>
+                </div>
+              </li>
+              <li>
+                <span class="entry-date">2026/03/16</span>
+                <strong>Anthropicの労働市場影響レポートを紹介し、AIの実利用と理論上の対応範囲の差からビジネス機会を考察している</strong><br />
+                <a href="https://www.anthropic.com/research/labor-market-impacts" target="_blank">https://www.anthropic.com/research/labor-market-impacts</a>
+                <div class="entry-tags">
+                  <span class="tag">#Anthropic</span>
+                  <span class="tag">#産業</span>
+                  <span class="tag">#統計</span>
+                </div>
+              </li>
+              <li>
+                <span class="entry-date">2026/03/11</span>
+                <strong>生成AIによる再実装とオープンソースライセンスの問題を解説する記事</strong><br />
+                <a href="https://gigazine.net/news/20260310-legal-legitimate/" target="_blank">https://gigazine.net/news/20260310-legal-legitimate/</a>
+                <div class="entry-tags">
+                  <span class="tag">#解説</span>
+                  <span class="tag">#規約</span>
+                </div>
+              </li>
+              <li>
+                <span class="entry-date">2026/03/02</span>
+                <strong>OpenAIの米国防総省向けAI導入合意とAnthropic排除を扱うニュース記事</strong><br />
+                <a href="https://www.itmedia.co.jp/news/spv/2603/01/news019.html" target="_blank">https://www.itmedia.co.jp/news/spv/2603/01/news019.html</a>
+                <div class="entry-tags">
+                  <span class="tag">#OpenAI</span>
+                  <span class="tag">#産業</span>
+                </div>
+              </li>
+            </ul>
+          </div>
 
-    <div class="contributor">
-    <h3>投稿者：t2hnd</h3>
-    <ul>
-      <li><strong>MetaがAIだけのSNS「モルトブック」関連の人材獲得を報じる記事</strong><br>
-        <a href="https://x.com/nikkei/status/2031446698061369587?s=46&t=-F5NCiEF_QyvElLxy904Hw" target="_blank">https://x.com/nikkei/status/2031446698061369587?s=46&t=-F5NCiEF_QyvElLxy904Hw</a></li>
-      <li><strong>Anthropicのskill-creatorを分析し、Agent Skill設計とオーケストレーション戦略を考察した解説記事</strong><br>
-        <a href="https://nyosegawa.github.io/posts/skill-creator-and-orchestration-skill/" target="_blank">https://nyosegawa.github.io/posts/skill-creator-and-orchestration-skill/</a></li>
-    </ul>
-    </div>
-    </section>
+          <div class="contributor">
+            <h3>投稿者：tamikof</h3>
+            <ul>
+              <li>
+                <span class="entry-date">2026/03/26</span>
+                <strong>LiteLLMのサプライチェーン攻撃とセキュリティ対策を扱う解説記事</strong><br />
+                <a href="https://qiita.com/emi_ndk/items/2332ff5c93e63ab736ad" target="_blank">https://qiita.com/emi_ndk/items/2332ff5c93e63ab736ad</a>
+                <div class="entry-tags">
+                  <span class="tag">#セキュリティ</span>
+                </div>
+              </li>
+            </ul>
+          </div>
 
-     <section class="category">
-     <h2>6. 公式ドキュメント・技術仕様</h2>
+          <div class="contributor">
+            <h3>投稿者：t2hnd</h3>
+            <ul>
+              <li>
+                <span class="entry-date">2026/03/11</span>
+                <strong>MetaがAIだけのSNS「モルトブック」関連の人材獲得を報じる記事</strong><br />
+                <a href="https://x.com/nikkei/status/2031446698061369587?s=46&t=-F5NCiEF_QyvElLxy904Hw" target="_blank">https://x.com/nikkei/status/2031446698061369587?s=46&t=-F5NCiEF_QyvElLxy904Hw</a>
+                <div class="entry-tags">
+                  <span class="tag">#産業</span>
+                </div>
+              </li>
+              <li>
+                <span class="entry-date">2026/03/05</span>
+                <strong>Anthropicのskill-creatorを分析し、Agent Skill設計とオーケストレーション戦略を考察した解説記事</strong><br />
+                <a href="https://nyosegawa.github.io/posts/skill-creator-and-orchestration-skill/" target="_blank">https://nyosegawa.github.io/posts/skill-creator-and-orchestration-skill/</a>
+                <div class="entry-tags">
+                  <span class="tag">#Anthropic</span>
+                  <span class="tag">#ClaudeCode</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
 
-    <div class="contributor">
-    <h3>投稿者：halo</h3>
-    <ul>
-      <li><strong>Claude Code CLIでClaudeにデスクトップ操作をさせるための公式ドキュメント</strong><br>
-        <a href="https://code.claude.com/docs/en/computer-use" target="_blank">https://code.claude.com/docs/en/computer-use</a></li>
-      <li><strong>GitHub DocsのDependabot設定オプション、特にcooldownに関する公式解説</strong><br>
-        <a href="https://docs.github.com/en/code-security/reference/supply-chain-security/dependabot-options-reference#cooldown-" target="_blank">https://docs.github.com/en/code-security/reference/supply-chain-security/dependabot-options-reference#cooldown-</a></li>
-      <li><strong>uvの依存関係更新を遅らせる設定（exclude-newer）についての公式ドキュメント</strong><br>
-        <a href="https://docs.astral.sh/uv/concepts/resolution/#dependency-cooldowns" target="_blank">https://docs.astral.sh/uv/concepts/resolution/#dependency-cooldowns</a></li>
-    </ul>
-    </div>
-    </section>
+        <section class="category">
+          <h2>6. 公式ドキュメント・技術仕様</h2>
 
-     <section class="category">
-     <h2>7. チュートリアル・学習リソース</h2>
+          <div class="contributor">
+            <h3>投稿者：halo</h3>
+            <ul>
+              <li>
+                <span class="entry-date">2026/03/31</span>
+                <strong>Claude Code CLIでClaudeにデスクトップ操作をさせるための公式ドキュメント</strong><br />
+                <a href="https://code.claude.com/docs/en/computer-use" target="_blank">https://code.claude.com/docs/en/computer-use</a>
+                <div class="entry-tags">
+                  <span class="tag">#ClaudeCode</span>
+                  <span class="tag">#ドキュメント</span>
+                </div>
+              </li>
+              <li>
+                <span class="entry-date">2026/03/26</span>
+                <strong>GitHub DocsのDependabot設定オプション、特にcooldownに関する公式解説</strong><br />
+                <a href="https://docs.github.com/en/code-security/reference/supply-chain-security/dependabot-options-reference#cooldown-" target="_blank">https://docs.github.com/en/code-security/reference/supply-chain-security/dependabot-options-reference#cooldown-</a>
+                <div class="entry-tags">
+                  <span class="tag">#ドキュメント</span>
+                  <span class="tag">#セキュリティ</span>
+                </div>
+              </li>
+              <li>
+                <span class="entry-date">2026/03/26</span>
+                <strong>uvの依存関係更新を遅らせる設定（exclude-newer）についての公式ドキュメント</strong><br />
+                <a href="https://docs.astral.sh/uv/concepts/resolution/#dependency-cooldowns" target="_blank">https://docs.astral.sh/uv/concepts/resolution/#dependency-cooldowns</a>
+                <div class="entry-tags">
+                  <span class="tag">#ドキュメント</span>
+                  <span class="tag">#ツール</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
 
-    <div class="contributor">
-    <h3>投稿者：t2hnd</h3>
-    <ul>
-      <li><strong>Claude CodeをDiscordから実行する手順を紹介するハウツー投稿</strong><br>
-        <a href="https://x.com/oikon48/status/2034781962658095476?s=46&t=-F5NCiEF_QyvElLxy904Hw" target="_blank">https://x.com/oikon48/status/2034781962658095476?s=46&t=-F5NCiEF_QyvElLxy904Hw</a></li>
-    </ul>
-    </div>
-    </section>
+        <section class="category">
+          <h2>7. チュートリアル・学習リソース</h2>
 
-     <section class="category">
-     <h2>8. 動画コンテンツ</h2>
+          <div class="contributor">
+            <h3>投稿者：t2hnd</h3>
+            <ul>
+              <li>
+                <span class="entry-date">2026/03/20</span>
+                <strong>Claude CodeをDiscordから実行する手順を紹介するハウツー投稿</strong><br />
+                <a href="https://x.com/oikon48/status/2034781962658095476?s=46&t=-F5NCiEF_QyvElLxy904Hw" target="_blank">https://x.com/oikon48/status/2034781962658095476?s=46&t=-F5NCiEF_QyvElLxy904Hw</a>
+                <div class="entry-tags">
+                  <span class="tag">#ClaudeCode</span>
+                  <span class="tag">#チュートリアル</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
 
-    <div class="contributor">
-    <h3>投稿者：りゅう</h3>
-    <ul>
-      <li><strong>Claude Codeの新機能をまとめた解説動画の紹介</strong><br>
-        <a href="https://x.com/i/status/2032746375600103641" target="_blank">https://x.com/i/status/2032746375600103641</a></li>
-    </ul>
-    </div>
-    </section>
+        <section class="category">
+          <h2>8. 動画コンテンツ</h2>
 
-     <section class="category">
-     <h2>9. その他</h2>
+          <div class="contributor">
+            <h3>投稿者：りゅう</h3>
+            <ul>
+              <li>
+                <span class="entry-date">2026/03/14</span>
+                <strong>Claude Codeの新機能をまとめた解説動画の紹介</strong><br />
+                <a href="https://x.com/i/status/2032746375600103641" target="_blank">https://x.com/i/status/2032746375600103641</a>
+                <div class="entry-tags">
+                  <span class="tag">#ClaudeCode</span>
+                  <span class="tag">#動画</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
 
-    <div class="contributor">
-    <h3>投稿者：りゅう</h3>
-    <ul>
-      <li><strong>X投稿のリンクで、AIや技術カテゴリを特定できる詳細情報がない</strong><br>
-        <a href="https://x.com/i/status/2032586379579052257" target="_blank">https://x.com/i/status/2032586379579052257</a></li>
-    </ul>
-    </div>
-    </section>
+        <section class="category">
+          <h2>9. その他</h2>
 
-    </article>
-  </main>
+          <div class="contributor">
+            <h3>投稿者：りゅう</h3>
+            <ul>
+              <li>
+                <span class="entry-date">2026/03/14</span>
+                <strong>X投稿のリンクで、AIや技術カテゴリを特定できる詳細情報がない</strong><br />
+                <a href="https://x.com/i/status/2032586379579052257" target="_blank">https://x.com/i/status/2032586379579052257</a>
+                <div class="entry-tags">
+                  <span class="tag">#その他</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </article>
+    </main>
 
-  <footer>
-    <p>© 2026 AI BASE. All rights reserved.</p>
-  </footer>
-</body>
+    <footer>
+      <p>&copy; 2026 AI BASE. All rights reserved.</p>
+    </footer>
+
+    <script>
+      (function () {
+        // タグ一覧を収集（登場順・重複除去）
+        const tagSet = new Set();
+        document
+          .querySelectorAll(".entry-tags .tag")
+          .forEach((el) => tagSet.add(el.textContent.trim()));
+        const tags = Array.from(tagSet);
+
+        // フィルターボタン生成
+        const bar = document.getElementById("tag-filter");
+        const makeBtn = (label, value) => {
+          const btn = document.createElement("button");
+          btn.className = "filter-btn" + (value === null ? " active" : "");
+          btn.textContent = label;
+          btn.dataset.tag = value ?? "";
+          bar.appendChild(btn);
+        };
+        makeBtn("すべて", null);
+        tags.forEach((t) => makeBtn(t, t));
+
+        // フィルター適用
+        const applyFilter = (selectedTag) => {
+          const all = selectedTag === "";
+
+          document.querySelectorAll("article li").forEach((li) => {
+            if (all) {
+              li.classList.remove("hidden");
+              return;
+            }
+            const liTags = Array.from(
+              li.querySelectorAll(".entry-tags .tag"),
+            ).map((el) => el.textContent.trim());
+            li.classList.toggle("hidden", !liTags.includes(selectedTag));
+          });
+
+          // 中身が全て hidden の contributor を隠す
+          document.querySelectorAll(".contributor").forEach((div) => {
+            const visible = div.querySelectorAll("li:not(.hidden)").length > 0;
+            div.classList.toggle("hidden", !visible);
+          });
+
+          // 中身が全て hidden の category を隠す
+          document.querySelectorAll(".category").forEach((sec) => {
+            const visible = sec.querySelectorAll("li:not(.hidden)").length > 0;
+            sec.classList.toggle("hidden", !visible);
+          });
+        };
+
+        bar.addEventListener("click", (e) => {
+          const btn = e.target.closest(".filter-btn");
+          if (!btn) return;
+          bar
+            .querySelectorAll(".filter-btn")
+            .forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          applyFilter(btn.dataset.tag);
+        });
+      })();
+    </script>
+  </body>
 </html>
