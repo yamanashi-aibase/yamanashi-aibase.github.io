@@ -29,11 +29,39 @@
         color: #c0504d;
         white-space: nowrap;
       }
+      #view-tabs {
+        display: flex;
+        gap: 0.4rem;
+        margin: 1.2rem 0 0;
+      }
+      .tab-btn {
+        padding: 0.4rem 1.1rem;
+        border-radius: 6px 6px 0 0;
+        border: 1.5px solid #ddd;
+        border-bottom: none;
+        background: #f7f7f7;
+        color: #888;
+        font-size: 0.85rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.15s, color 0.15s;
+      }
+      .tab-btn.active {
+        background: #fff;
+        color: #e85876;
+        border-color: #ddd;
+        position: relative;
+        bottom: -1px;
+        z-index: 1;
+      }
       #tag-filter {
         display: flex;
         flex-wrap: wrap;
         gap: 0.5rem;
-        margin: 1.2rem 0 2rem;
+        margin: 0 0 2rem;
+        padding: 0.8rem 0.6rem;
+        border: 1.5px solid #ddd;
+        border-radius: 0 6px 6px 6px;
       }
       .filter-btn {
         padding: 0.3rem 0.8rem;
@@ -87,6 +115,33 @@
         margin: 0.3rem 0;
         white-space: pre;
       }
+      /* 時系列ビュー */
+      #timeline-view {
+        display: none;
+      }
+      .timeline-entry {
+        padding: 0.75rem 0;
+        border-bottom: 1px solid #f0f0f0;
+      }
+      .timeline-entry.hidden {
+        display: none;
+      }
+      .timeline-meta {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        margin-bottom: 0.3rem;
+        flex-wrap: wrap;
+      }
+      .timeline-contributor {
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: #e85876;
+      }
+      .timeline-category {
+        font-size: 0.72rem;
+        color: #aaa;
+      }
     </style>
   </head>
   <body>
@@ -102,266 +157,274 @@
       <article class="summary">
         <h1>2026年5月まとめ - #朝活_202605</h1>
 
+        <div id="view-tabs">
+          <button class="tab-btn" data-view="category">カテゴリ別</button>
+          <button class="tab-btn active" data-view="timeline">時系列</button>
+        </div>
         <div id="tag-filter"></div>
 
-        <section class="category">
-          <h2>1. ツール・ライブラリ</h2>
+        <div id="category-view" style="display:none">
+          <section class="category">
+            <h2>1. ツール・ライブラリ</h2>
 
-          <div class="contributor">
-            <h3>投稿者：りゅう</h3>
-            <ul>
-              <li>
-                <span class="entry-date">2026/04/30</span>
-                <strong>AI動画・画像生成ツールHiggsfield MCPが正式リリース、30以上のトップモデルが使用可能</strong><br />
-                <a href="https://x.com/i/status/2049266631600476170" target="_blank">https://x.com/i/status/2049266631600476170</a>
-                <div class="entry-tags">
-                  <span class="tag">#ツール</span>
-                  <span class="tag">#MCP</span>
-                </div>
-              </li>
-              <li>
-                <span class="entry-date">2026/04/26</span>
-                <strong>ClaudeにWeb・論文・ドキュメント・企業/人物情報への検索力を与えるプラグイン、Exa for Claudeの紹介</strong><br />
-                <a href="https://x.com/i/status/2048168179554562061" target="_blank">https://x.com/i/status/2048168179554562061</a>
-                <div class="entry-tags">
-                  <span class="tag">#ツール</span>
-                  <span class="tag">#Claude</span>
-                </div>
-              </li>
-              <li>
-                <span class="entry-date">2026/04/18</span>
-                <strong>Claude Codeに新たなコマンド「/team-onboarding 」が追加された</strong><br />
-                <a href="https://x.com/i/status/2044704237402325249" target="_blank">https://x.com/i/status/2044704237402325249</a>
-                <div class="entry-tags">
-                  <span class="tag">#ClaudeCode</span>
-                  <span class="tag">#ツール</span>
-                </div>
-              </li>
-              <li>
-                <span class="entry-date">2026/04/18</span>
-                <strong>Anthropicが新しいデザインツール「Claude Design」を公開</strong><br />
-                <a href="https://x.com/i/status/2045164547833762137" target="_blank">https://x.com/i/status/2045164547833762137</a>
-                <div class="entry-tags">
-                  <span class="tag">#Anthropic</span>
-                  <span class="tag">#ツール</span>
-                </div>
-              </li>
-              <li>
-                <span class="entry-date">2026/04/12</span>
-                <strong>Claude Codeの新機能「Ultraplan」の紹介</strong><br />
-                <a href="https://x.com/i/status/2042722362643398719" target="_blank">https://x.com/i/status/2042722362643398719</a>
-                <div class="entry-tags">
-                  <span class="tag">#ClaudeCode</span>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </section>
+            <div class="contributor">
+              <h3>投稿者：りゅう</h3>
+              <ul>
+                <li>
+                  <span class="entry-date">2026/04/30</span>
+                  <strong>AI動画・画像生成ツールHiggsfield MCPが正式リリース、30以上のトップモデルが使用可能</strong><br />
+                  <a href="https://x.com/i/status/2049266631600476170" target="_blank">https://x.com/i/status/2049266631600476170</a>
+                  <div class="entry-tags">
+                    <span class="tag">#ツール</span>
+                    <span class="tag">#MCP</span>
+                  </div>
+                </li>
+                <li>
+                  <span class="entry-date">2026/04/26</span>
+                  <strong>ClaudeにWeb・論文・ドキュメント・企業/人物情報への検索力を与えるプラグイン、Exa for Claudeの紹介</strong><br />
+                  <a href="https://x.com/i/status/2048168179554562061" target="_blank">https://x.com/i/status/2048168179554562061</a>
+                  <div class="entry-tags">
+                    <span class="tag">#ツール</span>
+                    <span class="tag">#Claude</span>
+                  </div>
+                </li>
+                <li>
+                  <span class="entry-date">2026/04/18</span>
+                  <strong>Claude Codeに新たなコマンド「/team-onboarding 」が追加された</strong><br />
+                  <a href="https://x.com/i/status/2044704237402325249" target="_blank">https://x.com/i/status/2044704237402325249</a>
+                  <div class="entry-tags">
+                    <span class="tag">#ClaudeCode</span>
+                    <span class="tag">#ツール</span>
+                  </div>
+                </li>
+                <li>
+                  <span class="entry-date">2026/04/18</span>
+                  <strong>Anthropicが新しいデザインツール「Claude Design」を公開</strong><br />
+                  <a href="https://x.com/i/status/2045164547833762137" target="_blank">https://x.com/i/status/2045164547833762137</a>
+                  <div class="entry-tags">
+                    <span class="tag">#Anthropic</span>
+                    <span class="tag">#ツール</span>
+                  </div>
+                </li>
+                <li>
+                  <span class="entry-date">2026/04/12</span>
+                  <strong>Claude Codeの新機能「Ultraplan」の紹介</strong><br />
+                  <a href="https://x.com/i/status/2042722362643398719" target="_blank">https://x.com/i/status/2042722362643398719</a>
+                  <div class="entry-tags">
+                    <span class="tag">#ClaudeCode</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
 
-        <section class="category">
-          <h2>2. AIエージェント／自動化</h2>
+          <section class="category">
+            <h2>2. AIエージェント／自動化</h2>
 
-          <div class="contributor">
-            <h3>投稿者：りゅう</h3>
-            <ul>
-              <li>
-                <span class="entry-date">2026/04/27</span>
-                <strong>海外で話題のAIエージェント「HERMES-AGENT」の解説</strong><br />
-                <a href="https://x.com/i/status/2048719606555234635" target="_blank">https://x.com/i/status/2048719606555234635</a>
-                <div class="entry-tags">
-                  <span class="tag">#エージェント</span>
-                </div>
-              </li>
-              <li>
-                <span class="entry-date">2026/04/23</span>
-                <strong>Claude Codeに新機能/ultrareviewが登場。バグ狩り専門のAIエージェントがコードをレビュー</strong><br />
-                <a href="https://x.com/claudecode_lab/status/2047146433334378585?s=20" target="_blank">https://x.com/claudecode_lab/status/2047146433334378585?s=20</a>
-                <div class="entry-tags">
-                  <span class="tag">#ClaudeCode</span>
-                  <span class="tag">#エージェント</span>
-                </div>
-              </li>
-              <li>
-                <span class="entry-date">2026/04/09</span>
-                <strong>Claude Managed Agents（ベータ版）がリリースされ、AIエージェント開発のインフラ構築が大幅に期間短縮</strong><br />
-                <a href="https://x.com/i/status/2041984548658147632" target="_blank">https://x.com/i/status/2041984548658147632</a>
-                <div class="entry-tags">
-                  <span class="tag">#エージェント</span>
-                  <span class="tag">#Anthropic</span>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </section>
+            <div class="contributor">
+              <h3>投稿者：りゅう</h3>
+              <ul>
+                <li>
+                  <span class="entry-date">2026/04/27</span>
+                  <strong>海外で話題のAIエージェント「HERMES-AGENT」の解説</strong><br />
+                  <a href="https://x.com/i/status/2048719606555234635" target="_blank">https://x.com/i/status/2048719606555234635</a>
+                  <div class="entry-tags">
+                    <span class="tag">#エージェント</span>
+                  </div>
+                </li>
+                <li>
+                  <span class="entry-date">2026/04/23</span>
+                  <strong>Claude Codeに新機能/ultrareviewが登場。バグ狩り専門のAIエージェントがコードをレビュー</strong><br />
+                  <a href="https://x.com/claudecode_lab/status/2047146433334378585?s=20" target="_blank">https://x.com/claudecode_lab/status/2047146433334378585?s=20</a>
+                  <div class="entry-tags">
+                    <span class="tag">#ClaudeCode</span>
+                    <span class="tag">#エージェント</span>
+                  </div>
+                </li>
+                <li>
+                  <span class="entry-date">2026/04/09</span>
+                  <strong>Claude Managed Agents（ベータ版）がリリースされ、AIエージェント開発のインフラ構築が大幅に期間短縮</strong><br />
+                  <a href="https://x.com/i/status/2041984548658147632" target="_blank">https://x.com/i/status/2041984548658147632</a>
+                  <div class="entry-tags">
+                    <span class="tag">#エージェント</span>
+                    <span class="tag">#Anthropic</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
 
-        <section class="category">
-          <h2>3. OpenAI／ChatGPT関連</h2>
+          <section class="category">
+            <h2>3. OpenAI／ChatGPT関連</h2>
 
-          <div class="contributor">
-            <h3>投稿者：halo</h3>
-            <ul>
-              <li>
-                <span class="entry-date">2026/04/23</span>
-                <strong>新たなAIインテリジェンス、GPT-5.5の紹介</strong><br />
-                <a href="https://x.com/OpenAI/status/2047376561205325845" target="_blank">https://x.com/OpenAI/status/2047376561205325845</a>
-                <div class="entry-tags">
-                  <span class="tag">#モデル</span>
-                  <span class="tag">#OpenAI</span>
-                </div>
-              </li>
-              <li>
-                <span class="entry-date">2026/04/16</span>
-                <strong>Gemini 3.1 Flash TTS、新しいテキストトゥースピーチモデルの紹介</strong><br />
-                <a href="https://x.com/OfficialLoganK/status/2044447596010435054" target="_blank">https://x.com/OfficialLoganK/status/2044447596010435054</a>
-                <div class="entry-tags">
-                  <span class="tag">#モデル</span>
-                  <span class="tag">#Google</span>
-                </div>
-              </li>
-            </ul>
-          </div>
+            <div class="contributor">
+              <h3>投稿者：halo</h3>
+              <ul>
+                <li>
+                  <span class="entry-date">2026/04/23</span>
+                  <strong>新たなAIインテリジェンス、GPT-5.5の紹介</strong><br />
+                  <a href="https://x.com/OpenAI/status/2047376561205325845" target="_blank">https://x.com/OpenAI/status/2047376561205325845</a>
+                  <div class="entry-tags">
+                    <span class="tag">#モデル</span>
+                    <span class="tag">#OpenAI</span>
+                  </div>
+                </li>
+                <li>
+                  <span class="entry-date">2026/04/16</span>
+                  <strong>Gemini 3.1 Flash TTS、新しいテキストトゥースピーチモデルの紹介</strong><br />
+                  <a href="https://x.com/OfficialLoganK/status/2044447596010435054" target="_blank">https://x.com/OfficialLoganK/status/2044447596010435054</a>
+                  <div class="entry-tags">
+                    <span class="tag">#モデル</span>
+                    <span class="tag">#Google</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
 
-          <div class="contributor">
-            <h3>投稿者：りゅう</h3>
-            <ul>
-              <li>
-                <span class="entry-date">2026/04/23</span>
-                <strong>AnthropicがOpenClawの使用を再許可</strong><br />
-                <a href="https://x.com/ichiaimarketer/status/2046965461565497424?s=20" target="_blank">https://x.com/ichiaimarketer/status/2046965461565497424?s=20</a>
-                <div class="entry-tags">
-                  <span class="tag">#Anthropic</span>
-                  <span class="tag">#規約</span>
-                </div>
-              </li>
-              <li>
-                <span class="entry-date">2026/04/07</span>
-                <strong>GLM-5.1 のリリースとその使用方法</strong><br />
-                <a href="https://x.com/i/status/2041556572334428576" target="_blank">https://x.com/i/status/2041556572334428576</a>
-                <div class="entry-tags">
-                  <span class="tag">#モデル</span>
-                </div>
-              </li>
-            </ul>
-          </div>
+            <div class="contributor">
+              <h3>投稿者：りゅう</h3>
+              <ul>
+                <li>
+                  <span class="entry-date">2026/04/23</span>
+                  <strong>AnthropicがOpenClawの使用を再許可</strong><br />
+                  <a href="https://x.com/ichiaimarketer/status/2046965461565497424?s=20" target="_blank">https://x.com/ichiaimarketer/status/2046965461565497424?s=20</a>
+                  <div class="entry-tags">
+                    <span class="tag">#Anthropic</span>
+                    <span class="tag">#規約</span>
+                  </div>
+                </li>
+                <li>
+                  <span class="entry-date">2026/04/07</span>
+                  <strong>GLM-5.1 のリリースとその使用方法</strong><br />
+                  <a href="https://x.com/i/status/2041556572334428576" target="_blank">https://x.com/i/status/2041556572334428576</a>
+                  <div class="entry-tags">
+                    <span class="tag">#モデル</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
 
-          <div class="contributor">
-            <h3>投稿者：t2hnd</h3>
-            <ul>
-              <li>
-                <span class="entry-date">2026/04/17</span>
-                <strong>OpenAIの「Codex」が大幅アップデート、PCアプリの操作も可能</strong><br />
-                <a href="https://japan.cnet.com/article/35246560/#" target="_blank">https://japan.cnet.com/article/35246560/#</a>
-                <div class="entry-tags">
-                  <span class="tag">#OpenAI</span>
-                  <span class="tag">#ツール</span>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </section>
+            <div class="contributor">
+              <h3>投稿者：t2hnd</h3>
+              <ul>
+                <li>
+                  <span class="entry-date">2026/04/17</span>
+                  <strong>OpenAIの「Codex」が大幅アップデート、PCアプリの操作も可能</strong><br />
+                  <a href="https://japan.cnet.com/article/35246560/#" target="_blank">https://japan.cnet.com/article/35246560/#</a>
+                  <div class="entry-tags">
+                    <span class="tag">#OpenAI</span>
+                    <span class="tag">#ツール</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
 
-        <section class="category">
-          <h2>4. チュートリアル・学習リソース</h2>
+          <section class="category">
+            <h2>4. チュートリアル・学習リソース</h2>
 
-          <div class="contributor">
-            <h3>投稿者：りゅう</h3>
-            <ul>
-              <li>
-                <span class="entry-date">2026/04/21</span>
-                <strong>GPT-Image-2で出来ることのまとめと動画化するときのコツについての解説</strong><br />
-                <a href="https://x.com/i/status/2045443892305420320" target="_blank">https://x.com/i/status/2045443892305420320</a>
-                <div class="entry-tags">
-                  <span class="tag">#チュートリアル</span>
-                  <span class="tag">#OpenAI</span>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </section>
+            <div class="contributor">
+              <h3>投稿者：りゅう</h3>
+              <ul>
+                <li>
+                  <span class="entry-date">2026/04/21</span>
+                  <strong>GPT-Image-2で出来ることのまとめと動画化するときのコツについての解説</strong><br />
+                  <a href="https://x.com/i/status/2045443892305420320" target="_blank">https://x.com/i/status/2045443892305420320</a>
+                  <div class="entry-tags">
+                    <span class="tag">#チュートリアル</span>
+                    <span class="tag">#OpenAI</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
 
-        <section class="category">
-          <h2>5. AI技術記事・解説</h2>
+          <section class="category">
+            <h2>5. AI技術記事・解説</h2>
 
-          <div class="contributor">
-            <h3>投稿者：oto175</h3>
-            <ul>
-              <li>
-                <span class="entry-date">2026/04/21</span>
-                <strong>Google DeepMindのロボット向け視覚言語モデル「Gemini」についての記事</strong><br />
-                <a href="https://ledge.ai/articles/google_deepmind_gemini_robotics_er_1_6_boston_dynamics_instrument_reading" target="_blank">https://ledge.ai/articles/google_deepmind_gemini_robotics_er_1_6_boston_dynamics_instrument_reading</a>
-                <div class="entry-tags">
-                  <span class="tag">#解説</span>
-                  <span class="tag">#Google</span>
-                </div>
-              </li>
-              <li>
-                <span class="entry-date">2026/04/06</span>
-                <strong>AIと人間が「車洗い」に関する質問に対する理解度を比較するテストの結果についての記事</strong><br />
-                <a href="https://ledge.ai/articles/ai_roundtable_car_wash_test_opper_ai" target="_blank">https://ledge.ai/articles/ai_roundtable_car_wash_test_opper_ai</a>
-                <div class="entry-tags">
-                  <span class="tag">#解説</span>
-                </div>
-              </li>
-            </ul>
-          </div>
+            <div class="contributor">
+              <h3>投稿者：oto175</h3>
+              <ul>
+                <li>
+                  <span class="entry-date">2026/04/21</span>
+                  <strong>Google DeepMindのロボット向け視覚言語モデル「Gemini」についての記事</strong><br />
+                  <a href="https://ledge.ai/articles/google_deepmind_gemini_robotics_er_1_6_boston_dynamics_instrument_reading" target="_blank">https://ledge.ai/articles/google_deepmind_gemini_robotics_er_1_6_boston_dynamics_instrument_reading</a>
+                  <div class="entry-tags">
+                    <span class="tag">#解説</span>
+                    <span class="tag">#Google</span>
+                  </div>
+                </li>
+                <li>
+                  <span class="entry-date">2026/04/06</span>
+                  <strong>AIと人間が「車洗い」に関する質問に対する理解度を比較するテストの結果についての記事</strong><br />
+                  <a href="https://ledge.ai/articles/ai_roundtable_car_wash_test_opper_ai" target="_blank">https://ledge.ai/articles/ai_roundtable_car_wash_test_opper_ai</a>
+                  <div class="entry-tags">
+                    <span class="tag">#解説</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
 
-          <div class="contributor">
-            <h3>投稿者：りゅう</h3>
-            <ul>
-              <li>
-                <span class="entry-date">2026/04/15</span>
-                <strong>Claude Codeのアップデート情報についての記事</strong><br />
-                <a href="https://x.com/i/status/2044198049594126581" target="_blank">https://x.com/i/status/2044198049594126581</a>
-                <div class="entry-tags">
-                  <span class="tag">#ClaudeCode</span>
-                  <span class="tag">#解説</span>
-                </div>
-              </li>
-            </ul>
-          </div>
+            <div class="contributor">
+              <h3>投稿者：りゅう</h3>
+              <ul>
+                <li>
+                  <span class="entry-date">2026/04/15</span>
+                  <strong>Claude Codeのアップデート情報についての記事</strong><br />
+                  <a href="https://x.com/i/status/2044198049594126581" target="_blank">https://x.com/i/status/2044198049594126581</a>
+                  <div class="entry-tags">
+                    <span class="tag">#ClaudeCode</span>
+                    <span class="tag">#解説</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
 
-          <div class="contributor">
-            <h3>投稿者：t2hnd</h3>
-            <ul>
-              <li>
-                <span class="entry-date">2026/04/09</span>
-                <strong>CadQueryを用いた3Dモデル作成についての話</strong><br />
-                <a href="https://x.com/shutoito/status/2041803292666368291?s=46&t=-F5NCiEF_QyvElLxy904Hw" target="_blank">https://x.com/shutoito/status/2041803292666368291?s=46&t=-F5NCiEF_QyvElLxy904Hw</a>
-                <div class="entry-tags">
-                  <span class="tag">#解説</span>
-                  <span class="tag">#ツール</span>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </section>
+            <div class="contributor">
+              <h3>投稿者：t2hnd</h3>
+              <ul>
+                <li>
+                  <span class="entry-date">2026/04/09</span>
+                  <strong>CadQueryを用いた3Dモデル作成についての話</strong><br />
+                  <a href="https://x.com/shutoito/status/2041803292666368291?s=46&t=-F5NCiEF_QyvElLxy904Hw" target="_blank">https://x.com/shutoito/status/2041803292666368291?s=46&t=-F5NCiEF_QyvElLxy904Hw</a>
+                  <div class="entry-tags">
+                    <span class="tag">#解説</span>
+                    <span class="tag">#ツール</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
 
-        <section class="category">
-          <h2>6. その他</h2>
+          <section class="category">
+            <h2>6. その他</h2>
 
-          <div class="contributor">
-            <h3>投稿者：halo</h3>
-            <ul>
-              <li>
-                <span class="entry-date">2026/04/07</span>
-                <strong>Gemma4の活用について述べた投稿</strong><br />
-                <a href="https://x.com/tegnike/status/2041276786323935451?s=20" target="_blank">https://x.com/tegnike/status/2041276786323935451?s=20</a>
-                <div class="entry-tags">
-                  <span class="tag">#Gemma</span>
-                  <span class="tag">#その他</span>
-                </div>
-              </li>
-              <li>
-                <span class="entry-date">2026/04/06</span>
-                <strong>ユーザーがソーシャルメディアでの会話を参照</strong><br />
-                <a href="https://x.com/yukimasakiyu/status/2040442412359987394?s=20" target="_blank">https://x.com/yukimasakiyu/status/2040442412359987394?s=20</a>
-                <div class="entry-tags">
-                  <span class="tag">#その他</span>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </section>
+            <div class="contributor">
+              <h3>投稿者：halo</h3>
+              <ul>
+                <li>
+                  <span class="entry-date">2026/04/07</span>
+                  <strong>Gemma4の活用について述べた投稿</strong><br />
+                  <a href="https://x.com/tegnike/status/2041276786323935451?s=20" target="_blank">https://x.com/tegnike/status/2041276786323935451?s=20</a>
+                  <div class="entry-tags">
+                    <span class="tag">#Gemma</span>
+                    <span class="tag">#その他</span>
+                  </div>
+                </li>
+                <li>
+                  <span class="entry-date">2026/04/06</span>
+                  <strong>ユーザーがソーシャルメディアでの会話を参照</strong><br />
+                  <a href="https://x.com/yukimasakiyu/status/2040442412359987394?s=20" target="_blank">https://x.com/yukimasakiyu/status/2040442412359987394?s=20</a>
+                  <div class="entry-tags">
+                    <span class="tag">#その他</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </div>
+
+        <div id="timeline-view" style="display:block"></div>
       </article>
     </main>
 
@@ -371,6 +434,9 @@
 
     <script>
       (function () {
+        let currentView = "timeline";
+        let currentTag = "";
+
         // タグ一覧を収集（登場順・重複除去）
         const tagSet = new Set();
         document
@@ -380,50 +446,131 @@
 
         // フィルターボタン生成
         const bar = document.getElementById("tag-filter");
-        const makeBtn = (label, value) => {
+        const makeFilterBtn = (label, value) => {
           const btn = document.createElement("button");
           btn.className = "filter-btn" + (value === null ? " active" : "");
           btn.textContent = label;
           btn.dataset.tag = value ?? "";
           bar.appendChild(btn);
         };
-        makeBtn("すべて", null);
-        tags.forEach((t) => makeBtn(t, t));
+        makeFilterBtn("すべて", null);
+        tags.forEach((t) => makeFilterBtn(t, t));
+
+        // 時系列ビューを構築
+        const buildTimeline = () => {
+          const items = [];
+          document.querySelectorAll("#category-view .category").forEach((section) => {
+            const categoryName = section.querySelector("h2").textContent.replace(/^\d+\.\s*/, "");
+            section.querySelectorAll(".contributor").forEach((contributor) => {
+              const contributorName = contributor
+                .querySelector("h3")
+                .textContent.replace("投稿者：", "");
+              contributor.querySelectorAll("li").forEach((li) => {
+                const dateEl = li.querySelector(".entry-date");
+                const date = dateEl ? dateEl.textContent.trim() : "";
+                const entryTags = Array.from(
+                  li.querySelectorAll(".entry-tags .tag")
+                ).map((el) => el.textContent.trim());
+                items.push({ date, contributorName, categoryName, li, entryTags });
+              });
+            });
+          });
+
+          // 日付昇順ソート
+          items.sort((a, b) => a.date.localeCompare(b.date));
+
+          const container = document.getElementById("timeline-view");
+          items.forEach(({ date, contributorName, categoryName, li, entryTags }) => {
+            const entry = document.createElement("div");
+            entry.className = "timeline-entry";
+            entry.dataset.tags = JSON.stringify(entryTags);
+
+            const meta = document.createElement("div");
+            meta.className = "timeline-meta";
+
+            const dateSpan = document.createElement("span");
+            dateSpan.className = "entry-date";
+            dateSpan.style.display = "inline";
+            dateSpan.textContent = date;
+
+            const contribSpan = document.createElement("span");
+            contribSpan.className = "timeline-contributor";
+            contribSpan.textContent = contributorName;
+
+            const catSpan = document.createElement("span");
+            catSpan.className = "timeline-category";
+            catSpan.textContent = categoryName;
+
+            meta.appendChild(dateSpan);
+            meta.appendChild(contribSpan);
+            meta.appendChild(catSpan);
+            entry.appendChild(meta);
+
+            // li の内容から entry-date を除いてコピー
+            const liClone = li.cloneNode(true);
+            liClone.querySelector(".entry-date")?.remove();
+            entry.innerHTML += liClone.innerHTML;
+
+            container.appendChild(entry);
+          });
+        };
+
+        buildTimeline();
 
         // フィルター適用
         const applyFilter = (selectedTag) => {
+          currentTag = selectedTag;
           const all = selectedTag === "";
 
-          document.querySelectorAll("article li").forEach((li) => {
-            if (all) {
-              li.classList.remove("hidden");
-              return;
-            }
-            const liTags = Array.from(
-              li.querySelectorAll(".entry-tags .tag"),
-            ).map((el) => el.textContent.trim());
-            li.classList.toggle("hidden", !liTags.includes(selectedTag));
-          });
-
-          // 中身が全て hidden の contributor を隠す
-          document.querySelectorAll(".contributor").forEach((div) => {
-            const visible = div.querySelectorAll("li:not(.hidden)").length > 0;
-            div.classList.toggle("hidden", !visible);
-          });
-
-          // 中身が全て hidden の category を隠す
-          document.querySelectorAll(".category").forEach((sec) => {
-            const visible = sec.querySelectorAll("li:not(.hidden)").length > 0;
-            sec.classList.toggle("hidden", !visible);
-          });
+          if (currentView === "category") {
+            document.querySelectorAll("#category-view li").forEach((li) => {
+              if (all) { li.classList.remove("hidden"); return; }
+              const liTags = Array.from(li.querySelectorAll(".entry-tags .tag"))
+                .map((el) => el.textContent.trim());
+              li.classList.toggle("hidden", !liTags.includes(selectedTag));
+            });
+            document.querySelectorAll(".contributor").forEach((div) => {
+              div.classList.toggle("hidden", div.querySelectorAll("li:not(.hidden)").length === 0);
+            });
+            document.querySelectorAll(".category").forEach((sec) => {
+              sec.classList.toggle("hidden", sec.querySelectorAll("li:not(.hidden)").length === 0);
+            });
+          } else {
+            document.querySelectorAll("#timeline-view .timeline-entry").forEach((entry) => {
+              if (all) { entry.classList.remove("hidden"); return; }
+              const entryTags = JSON.parse(entry.dataset.tags || "[]");
+              entry.classList.toggle("hidden", !entryTags.includes(selectedTag));
+            });
+          }
         };
+
+        // タブ切り替え
+        const switchView = (view) => {
+          currentView = view;
+          const categoryView = document.getElementById("category-view");
+          const timelineView = document.getElementById("timeline-view");
+          if (view === "timeline") {
+            categoryView.style.display = "none";
+            timelineView.style.display = "block";
+          } else {
+            categoryView.style.display = "block";
+            timelineView.style.display = "none";
+          }
+          applyFilter(currentTag);
+        };
+
+        document.getElementById("view-tabs").addEventListener("click", (e) => {
+          const btn = e.target.closest(".tab-btn");
+          if (!btn) return;
+          document.querySelectorAll(".tab-btn").forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          switchView(btn.dataset.view);
+        });
 
         bar.addEventListener("click", (e) => {
           const btn = e.target.closest(".filter-btn");
           if (!btn) return;
-          bar
-            .querySelectorAll(".filter-btn")
-            .forEach((b) => b.classList.remove("active"));
+          bar.querySelectorAll(".filter-btn").forEach((b) => b.classList.remove("active"));
           btn.classList.add("active");
           applyFilter(btn.dataset.tag);
         });
