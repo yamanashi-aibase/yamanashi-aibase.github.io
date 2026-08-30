@@ -2,7 +2,7 @@
 
 Discord チャンネルのメッセージから月次まとめ HTML を生成し、GitHub PR を作成します。
 
-分類（カテゴリ・headline・タグ付け）は、デフォルトではこの Claude Code セッション自身が行います（サブスクリプション利用、追加API課金なし）。`ANTHROPIC_API_KEY` はオプションで、セッションなしで完結させたいヘッドレス/CI実行のときだけ使う分類の代替手段です。
+分類（カテゴリ・headline・タグ付け）は、デフォルトではこの Codex セッション自身が行います（今使っているモデル・サブスクリプション利用、追加API課金なし）。`ANTHROPIC_API_KEY` はオプションで、ライブなセッションなしで完結させたいヘッドレス/CI実行のときだけ使う分類の代替手段です。
 
 ## 必要な環境変数
 
@@ -21,7 +21,7 @@ DISCORD_BOT_TOKEN=<token> node scripts/generate-summary.mjs <channel_id> <channe
 
 `ANTHROPIC_API_KEY` が未設定の場合、ここで処理は止まり、分類済みエントリを書き出すファイルパスと分類ルール（カテゴリキー・タグ一覧）が標準出力に表示されます。
 
-2. 表示された処理済みエントリ（JSON）を読み、各エントリを分類ルールに従って自分自身（Claude）で分類する。結果を指示されたパスに JSON 配列として書き出す：
+2. 表示された処理済みエントリ（JSON）を読み、各エントリを分類ルールに従って自分自身（Codex）で分類する。結果を指示されたパスに JSON 配列として書き出す：
 
 ```json
 [
@@ -46,7 +46,7 @@ node scripts/generate-summary.mjs render <processed.json> <classified.json> <cha
 
 1. **Discord 取得**（`fetch`） — Bot API でメッセージを全件取得（100件ずつページング）
 2. **前処理**（`fetch`） — URL を含むメッセージのみ抽出、URL/日付(JST)/投稿者コメント/埋め込み(Xポストの投稿者名・本文)を分離し、一時ファイルに書き出す
-3. **分類** — デフォルトはこのセッション（Claude）自身が処理済みエントリを読んで分類。`ANTHROPIC_API_KEY` が設定されている場合は `fetch` が自動でAnthropic APIを呼び出し、そのまま4以降まで一気に進む
+3. **分類** — デフォルトはこのセッション（Codex）自身が処理済みエントリを読んで分類。`ANTHROPIC_API_KEY` が設定されている場合は `fetch` が自動でAnthropic APIを呼び出し、そのまま4以降まで一気に進む
 4. **HTML 生成**（`render`） — カテゴリ別／時系列タブ切り替え、タグフィルタリング、投稿者コメント、Xポストの投稿者・本文プレビュー（折りたたみ表示）付きの完全テンプレートで生成
 5. **PR 作成**（`render`） — `auto-summary-YYYY-MM-DD-HHmmss` ブランチを切って commit → push → PR
 
@@ -69,3 +69,7 @@ node scripts/generate-summary.mjs render <processed.json> <classified.json> <cha
 1. `DISCORD_BOT_TOKEN` と対象チャンネル ID・チャンネル名をユーザーに確認する
 2. 上記「使い方」の手順1〜3を順番に実行する（手順2の分類は自分で行う。`ANTHROPIC_API_KEY` が設定済みならスキップされ自動で進む）
 3. 生成された HTML の内容を確認し、問題があれば修正してから PR を作成する
+
+## 補足
+
+このプロンプトの本体（`scripts/generate-summary.mjs`）は Claude Code の `/generate-summary`（`.claude/commands/generate-summary.md`）と共通です。プロジェクト全体のルール（n8n自動化ワークフロー、DO NOT等）は `AGENTS.md` を参照してください。
