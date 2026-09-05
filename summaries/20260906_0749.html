@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI BASE - 2026年9月まとめ</title>
+    <link rel="stylesheet" href="../style.css" />
+    <style>
+      .entry-date {
+        display: block;
+        font-size: 0.78rem;
+        color: #999;
+        margin-bottom: 0.3rem;
+        font-variant-numeric: tabular-nums;
+      }
+      .entry-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-top: 0.5rem;
+      }
+      .tag {
+        display: inline-block;
+        padding: 0.15rem 0.55rem;
+        border-radius: 999px;
+        font-size: 0.72rem;
+        font-weight: 600;
+        background-color: #fde8ed;
+        color: #c0504d;
+        white-space: nowrap;
+      }
+      #view-tabs {
+        display: flex;
+        gap: 0.4rem;
+        margin: 1.2rem 0 0;
+      }
+      .tab-btn {
+        padding: 0.4rem 1.1rem;
+        border-radius: 6px 6px 0 0;
+        border: 1.5px solid #ddd;
+        border-bottom: 0;
+        background: #f7f7f7;
+        color: #888;
+        font-size: 0.85rem;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .tab-btn.active { background: #fff; color: #e85876; position: relative; bottom: -1px; z-index: 1; }
+      #tag-filter {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 0 0 2rem;
+        padding: 0.8rem 0.6rem;
+        border: 1.5px solid #ddd;
+        border-radius: 0 6px 6px 6px;
+      }
+      .filter-btn {
+        padding: 0.3rem 0.8rem;
+        border-radius: 999px;
+        border: 1.5px solid #ddd;
+        background: #fff;
+        color: #555;
+        font-size: 0.8rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.15s, color 0.15s, border-color 0.15s;
+      }
+      .filter-btn:hover { border-color: #e85876; color: #e85876; }
+      .filter-btn.active { background: #e85876; border-color: #e85876; color: #fff; }
+      .hidden { display: none !important; }
+      .entry-comment {
+        font-size: 0.85rem;
+        color: #666;
+        margin: 0.6rem 0 0.2rem;
+        padding: 0.4rem 0.75rem;
+        border-left: 3px solid #e85876;
+        background: #fdf5f7;
+        border-radius: 0 4px 4px 0;
+        white-space: pre-line;
+        line-height: 1.6;
+      }
+      .x-meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.3rem 0.8rem;
+        margin-top: 0.35rem;
+      }
+      .x-author { font-size: 0.78rem; color: #888; }
+      .x-preview { margin-top: 0.4rem; font-size: 0.85rem; }
+      .x-preview summary { cursor: pointer; color: #e85876; font-size: 0.78rem; font-weight: 600; }
+      .x-preview p {
+        margin: 0.4rem 0 0;
+        padding: 0.5rem 0.75rem;
+        background: #f8f8f8;
+        border-radius: 4px;
+        color: #555;
+        white-space: pre-line;
+        line-height: 1.6;
+      }
+      #timeline-view { display: block; }
+      .timeline-entry { padding: 0.75rem 0; border-bottom: 1px solid #f0f0f0; }
+      .timeline-meta { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.3rem; flex-wrap: wrap; }
+      .timeline-contributor { font-size: 0.78rem; font-weight: 600; color: #e85876; }
+      .timeline-category { font-size: 0.72rem; color: #aaa; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo-container">
+        <img src="../img/yamanashi-aibase.png" alt="AI BASE Logo" class="logo" />
+      </div>
+      <h1>AI BASE</h1>
+      <p class="tagline"><a href="../index.html">← Back to Home</a></p>
+    </header>
+
+    <main>
+      <article class="summary">
+        <h1>2026年9月まとめ - #朝活_202609</h1>
+
+        <div id="view-tabs">
+          <button class="tab-btn" data-view="category">カテゴリ別</button>
+          <button class="tab-btn active" data-view="timeline">時系列</button>
+        </div>
+        <div id="tag-filter"></div>
+        <div id="category-view" style="display:none">
+
+        <section class="category">
+          <h2>1. OpenAIのAIエージェントを巡るトラブル</h2>
+
+          <div class="contributor">
+            <h3>投稿者：t2hnd</h3>
+            <ul>
+              <li>
+                <span class="entry-date">2026/09/06</span>
+                <strong>OpenAIの社内AIエージェントが休眠Wikiを不正に掲示板化し、評価情報を共有していたと判明</strong><br />
+                <a href="https://www.itmedia.co.jp/news/article/2609/05/2000001200/" target="_blank" rel="noopener noreferrer">https://www.itmedia.co.jp/news/article/2609/05/2000001200/</a>
+                <div class="entry-tags">
+                  <span class="tag">#OpenAI</span>
+                  <span class="tag">#エージェント</span>
+                  <span class="tag">#セキュリティ</span>
+                </div>
+                <div class="entry-comment">関連してかこんな話題も</div>
+              </li>
+            </ul>
+          </div>
+          <div class="contributor">
+            <h3>投稿者：oto175</h3>
+            <ul>
+              <li>
+                <span class="entry-date">2026/09/02</span>
+                <strong>OpenAIのAIエージェントがHuggingFaceを意図せず攻撃した件、第三者調査で深刻さが判明</strong><br />
+                <a href="https://x.com/umiyuki_ai/status/2094470610634346864" target="_blank" rel="noopener noreferrer">https://x.com/umiyuki_ai/status/2094470610634346864</a>
+                <div class="x-meta"><span class="x-author">@umiyuki_ai（うみゆき@AI研究）</span></div>
+                <details class="x-preview"><summary>ポスト本文</summary><p>OpenAIが意図せずHuggingFaceをサイバー攻撃してしまった事件、第三者による調査の結果、その驚愕の実態が明らかになりつつある！事件は当初思われていたより事態は深刻だった！
+まずOpenAIは「さて、いっちょ最新モデルをExploitGymで評価してサイバー攻撃能力...</p></details>
+                <div class="entry-tags">
+                  <span class="tag">#OpenAI</span>
+                  <span class="tag">#セキュリティ</span>
+                  <span class="tag">#エージェント</span>
+                </div>
+                <div class="entry-comment">OpenAIが意図せずHuggingFaceを攻撃した件。詳細を読むと当初自分が想像していた範囲を大きく超えている。AIエージェント同士の同調圧力って、そんなのあるの？</div>
+              </li>
+            </ul>
+          </div>
+        </section>
+        <section class="category">
+          <h2>2. Anthropic / Claudeの動向</h2>
+
+          <div class="contributor">
+            <h3>投稿者：halo</h3>
+            <ul>
+              <li>
+                <span class="entry-date">2026/09/05</span>
+                <strong>Claude CodeのRulesが動作しなくなる問題と回避策(CLAUDE_CODE_THRIFTY_SONIC無効化)を解説</strong><br />
+                <a href="https://kawasin73.hatenablog.com/entry/2026/09/05/092056" target="_blank" rel="noopener noreferrer">https://kawasin73.hatenablog.com/entry/2026/09/05/092056</a>
+                <div class="entry-tags">
+                  <span class="tag">#ClaudeCode</span>
+                  <span class="tag">#Tips</span>
+                </div>
+                <div class="entry-comment">まあ　今時 rules なんて維持してる人いないとは思う</div>
+              </li>
+              <li>
+                <span class="entry-date">2026/09/03</span>
+                <strong>Claude Commerce Agentsがオープンソース公開、EC・旅行・通信・エンタメ向け参考実装つき</strong><br />
+                <a href="https://x.com/ClaudeDevs/status/2095233745167282602" target="_blank" rel="noopener noreferrer">https://x.com/ClaudeDevs/status/2095233745167282602</a>
+                <div class="x-meta"><span class="x-author">@ClaudeDevs（ClaudeDevs）</span></div>
+                <details class="x-preview"><summary>ポスト本文</summary><p>We're open-sourcing Claude Commerce Agents.
+
+This is a blueprint for building shopping and merchant agents, with reference implementations across retail, travel, telecom, and entertainment.</p></details>
+                <div class="entry-tags">
+                  <span class="tag">#Claude</span>
+                  <span class="tag">#リポジトリ</span>
+                  <span class="tag">#エージェント</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="contributor">
+            <h3>投稿者：りゅう</h3>
+            <ul>
+              <li>
+                <span class="entry-date">2026/09/02</span>
+                <strong>Claude Fable 5.1の価格まとめ、キャッシュ読み取り75%減で実効コスト最大45%減</strong><br />
+                <a href="https://x.com/ctgptlb/status/2094875359640703184" target="_blank" rel="noopener noreferrer">https://x.com/ctgptlb/status/2094875359640703184</a>
+                <div class="x-meta"><span class="x-author">@ctgptlb（AGIラボ）</span></div>
+                <details class="x-preview"><summary>ポスト本文</summary><p>Fable 5の後継モデル「Claude Fable 5.1」について知っておくべきことまとめ
+
+Claude Fable 5.1について重要な情報をまとめました。入出力の単価はFable 5と同じまま、キャッシュ読み取りが75%安くなり、公式は典型用途で約25%、エージェント用途で最大約45%の実効コス...</p></details>
+                <div class="entry-tags">
+                  <span class="tag">#Anthropic</span>
+                  <span class="tag">#Claude</span>
+                  <span class="tag">#モデル</span>
+                </div>
+              </li>
+              <li>
+                <span class="entry-date">2026/08/12</span>
+                <strong>Anthropic、Claude生成テキストへの電子透かしを日本含む全世界に適用と発表(EU AI Act対応)</strong><br />
+                <a href="https://www.itmedia.co.jp/news/article/2608/12/2000000497/" target="_blank" rel="noopener noreferrer">https://www.itmedia.co.jp/news/article/2608/12/2000000497/</a>
+                <div class="entry-tags">
+                  <span class="tag">#Anthropic</span>
+                  <span class="tag">#Claude</span>
+                  <span class="tag">#規約</span>
+                </div>
+                <div class="entry-comment">Anthropic、「Claude」で生成したテキストに“見えない透かし” 日本を含むグローバルに適用へ</div>
+              </li>
+            </ul>
+          </div>
+          <div class="contributor">
+            <h3>投稿者：t2hnd</h3>
+            <ul>
+              <li>
+                <span class="entry-date">2026/09/02</span>
+                <strong>Anthropicが「Claude Fable 5.1」「Claude Mythos 5.1」を発表、コーディング・知識労働で世界最高水準と主張</strong><br />
+                <a href="https://x.com/claudeai/status/2094848572143407483" target="_blank" rel="noopener noreferrer">https://x.com/claudeai/status/2094848572143407483</a>
+                <div class="x-meta"><span class="x-author">@claudeai（Claude）</span></div>
+                <details class="x-preview"><summary>ポスト本文</summary><p>We’re introducing Claude Fable 5.1 and Claude Mythos 5.1.
+
+They're the world’s most advanced models for coding and knowledge work.</p></details>
+                <div class="entry-tags">
+                  <span class="tag">#Anthropic</span>
+                  <span class="tag">#Claude</span>
+                  <span class="tag">#モデル</span>
+                </div>
+              </li>
+              <li>
+                <span class="entry-date">2026/08/13</span>
+                <strong>Claudeがテキストに電子透かしを導入した件の解説記事</strong><br />
+                <a href="https://zenn.dev/hellorusk/articles/3328866ca9e922" target="_blank" rel="noopener noreferrer">https://zenn.dev/hellorusk/articles/3328866ca9e922</a>
+                <div class="entry-tags">
+                  <span class="tag">#Claude</span>
+                  <span class="tag">#Anthropic</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+        <section class="category">
+          <h2>3. OpenAIの新モデル「GPT-6 Astra」発表と反応</h2>
+
+          <div class="contributor">
+            <h3>投稿者：りゅう</h3>
+            <ul>
+              <li>
+                <span class="entry-date">2026/09/04</span>
+                <strong>GPT-6 Astraを先行利用した著名人たち(Theo・Box CEO・swyxら)の評価まとめ</strong><br />
+                <a href="https://x.com/ctgptlb/status/2095659126055673938" target="_blank" rel="noopener noreferrer">https://x.com/ctgptlb/status/2095659126055673938</a>
+                <div class="x-meta"><span class="x-author">@ctgptlb（AGIラボ）</span></div>
+                <details class="x-preview"><summary>ポスト本文</summary><p>【まとめ】GPT-6 Astra を数週間前から先行利用していた人たちの評価
+
+Theo、Box CEO、swyx、Cognition、Epoch AI など、実際に触った人の声を1人ずつ解説します
+
+画像は Theo の一枚まとめ。Fable 5.1 が勝つのは「マージできるコード」と「フロントエンド」だけという整...</p></details>
+                <div class="entry-tags">
+                  <span class="tag">#OpenAI</span>
+                  <span class="tag">#モデル</span>
+                </div>
+              </li>
+              <li>
+                <span class="entry-date">2026/09/04</span>
+                <strong>Sam AltmanがGPT-6 Astraのリリースを発表</strong><br />
+                <a href="https://x.com/sama/status/2095600005772104059" target="_blank" rel="noopener noreferrer">https://x.com/sama/status/2095600005772104059</a>
+                <div class="x-meta"><span class="x-author">@sama（Sam Altman）</span></div>
+                <details class="x-preview"><summary>ポスト本文</summary><p>GPT-6 Astra is here.
+
+We hope it will begin to enable a new generation of entrepreneurship, scientific discovery, and building.
+
+We believe it is the best model in the world for computer use, professional work, science, coding, cybersecurity, and more.
+
+It took us some extra time to ensure that we …</p></details>
+                <div class="entry-tags">
+                  <span class="tag">#OpenAI</span>
+                  <span class="tag">#モデル</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="contributor">
+            <h3>投稿者：t2hnd</h3>
+            <ul>
+              <li>
+                <span class="entry-date">2026/09/04</span>
+                <strong>OpenAIが次世代モデル「GPT-6 Astra」を発表、コーディング・科学分野で世界最高と主張</strong><br />
+                <a href="https://forest.watch.impress.co.jp/docs/news/2138156.html" target="_blank" rel="noopener noreferrer">https://forest.watch.impress.co.jp/docs/news/2138156.html</a>
+                <div class="entry-tags">
+                  <span class="tag">#OpenAI</span>
+                  <span class="tag">#モデル</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+        <section class="category">
+          <h2>4. 業界動向・買収・規制</h2>
+
+          <div class="contributor">
+            <h3>投稿者：はまこ</h3>
+            <ul>
+              <li>
+                <span class="entry-date">2026/09/03</span>
+                <strong>AI出力を検証せずそのまま送る人を指す新語「ミート・プロキシ」が浸透するか</strong><br />
+                <a href="https://www.businessinsider.jp/article/2609-meat-proxy-tech-new-term-ai/" target="_blank" rel="noopener noreferrer">https://www.businessinsider.jp/article/2609-meat-proxy-tech-new-term-ai/</a>
+                <div class="entry-tags">
+                  <span class="tag">#解説</span>
+                </div>
+                <div class="entry-comment">ミート・プロキシ
+これから使う言葉になるか、日本では浸透せずに終わるのか</div>
+              </li>
+            </ul>
+          </div>
+          <div class="contributor">
+            <h3>投稿者：oto175</h3>
+            <ul>
+              <li>
+                <span class="entry-date">2026/09/03</span>
+                <strong>NVIDIAがHugging Faceを2兆640億円で買収へ、狙いをFORBESが解説</strong><br />
+                <a href="https://forbesjapan.com/articles/detail/103647" target="_blank" rel="noopener noreferrer">https://forbesjapan.com/articles/detail/103647</a>
+                <div class="entry-tags">
+                  <span class="tag">#産業</span>
+                </div>
+                <div class="entry-comment">NVIDIAがHuggingfaceを2兆640億円で買収へという記事。Huggingfaceは年商240億円あまり、それを何故こんなにお金をかけて買収するのか？って説明が納得でした。</div>
+              </li>
+              <li>
+                <span class="entry-date">2026/08/25</span>
+                <strong>米FTCが「パーソナライズド・プライシング」規制へ、購買者ごとの価格差を問題視</strong><br />
+                <a href="https://japan.cnet.com/article/35251798/" target="_blank" rel="noopener noreferrer">https://japan.cnet.com/article/35251798/</a>
+                <div class="entry-tags">
+                  <span class="tag">#規約</span>
+                </div>
+                <div class="entry-comment">個人情報を使って人によって価格を変えるパーソナライズド・プライシングを米連邦取引委員会は規制するって話。
+実際にmacからホテルを予約した時とWindowsからでは価格が違ったという話は聞いたことがあります。現状はVPNやプライベートブラウジング機能を使えって話だけど、AIを使って予約や購入をするようになるとその辺も上手くAIが偽装してくれないのかな。つまり「あんまりお金は持っていないけど、安くしてくれればギリ買う顧客」をAIが演出してくれれば最安値が表示される😅</div>
+              </li>
+            </ul>
+          </div>
+          <div class="contributor">
+            <h3>投稿者：りゅう</h3>
+            <ul>
+              <li>
+                <span class="entry-date">2026/08/30</span>
+                <strong>399ドルで買える二足歩行フィジカルAIロボットが登場、予約受付中</strong><br />
+                <a href="https://x.com/masahirochaen/status/2093686864079360474" target="_blank" rel="noopener noreferrer">https://x.com/masahirochaen/status/2093686864079360474</a>
+                <div class="x-meta"><span class="x-author">@masahirochaen（チャエン | デジライズ CEO《重要AIニュースを毎日...）</span></div>
+                <details class="x-preview"><summary>ポスト本文</summary><p>【朗報】399ドルで買えるフィジカルAIロボットが登場。
+
+AIに体を持たせて動かす、いわゆるフィジカルAIを机の上で試せる二足歩行ロボット。もう予約できるので普通に欲しい。フィジカルAIの勉強にも良い。
+
+・本体399ドル、コントローラー付属で開けたら...</p></details>
+                <div class="entry-tags">
+                  <span class="tag">#産業</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="contributor">
+            <h3>投稿者：halo</h3>
+            <ul>
+              <li>
+                <span class="entry-date">2026/08/14</span>
+                <strong>東大松尾・岩澤研、AI活用人材育成「AXエバンジェリスト講座」を9月開講</strong><br />
+                <a href="https://weblab.t.u-tokyo.ac.jp/news/2026-08-14/?utm_source=twitter&amp;utm_medium=social&amp;utm_campaign=post-0814" target="_blank" rel="noopener noreferrer">https://weblab.t.u-tokyo.ac.jp/news/2026-08-14/?utm_source=twitter&amp;utm_medium=social&amp;utm_campaign=post-0814</a>
+                <div class="entry-tags">
+                  <span class="tag">#チュートリアル</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+        <section class="category">
+          <h2>5. AIエージェントの実践活用（Grok Bot・Gemini）</h2>
+
+          <div class="contributor">
+            <h3>投稿者：りゅう</h3>
+            <ul>
+              <li>
+                <span class="entry-date">2026/09/03</span>
+                <strong>Geminiに「エージェント型動画理解」機能、トークン最大88%減・精度も向上</strong><br />
+                <a href="https://x.com/masahirochaen/status/2095122631569879420" target="_blank" rel="noopener noreferrer">https://x.com/masahirochaen/status/2095122631569879420</a>
+                <div class="x-meta"><span class="x-author">@masahirochaen（チャエン | デジライズ CEO《重要AIニュースを毎日...）</span></div>
+                <details class="x-preview"><summary>ポスト本文</summary><p>【朗報】Geminiに「エージェント型動画理解」機能が登場
+
+長尺動画の解析コストがここまで下がるとは驚いた
+
+・トークン消費を最大88%削減
+・解析コストを最大66%削減
+・精度は最大7%向上
+・対象はGemini 3.7/3.6 Flash・3.5 Flash-Lite
+
+10分の解説動画から90分講義まで...</p></details>
+                <div class="entry-tags">
+                  <span class="tag">#Google</span>
+                  <span class="tag">#エージェント</span>
+                </div>
+              </li>
+              <li>
+                <span class="entry-date">2026/08/30</span>
+                <strong>「AIを雇う」というイーロン・マスクの発想とGrok Botの実践例が4100万再生で話題</strong><br />
+                <a href="https://x.com/Argona0x/status/2093350245027475797" target="_blank" rel="noopener noreferrer">https://x.com/Argona0x/status/2093350245027475797</a>
+                <div class="x-meta"><span class="x-author">@Argona0x（Argona）</span></div>
+                <details class="x-preview"><summary>ポスト本文</summary><p>i genuinely don't understand why everyone isn't doing this yet
+
+Elon Musk posted a simple idea that hit 41 million views:
+
+stop chatting with AI. hire it. give it its own computer, its own memory, its own job
+
+that's literally what Grok Bot is. and the smartest setup right now</p></details>
+                <div class="entry-tags">
+                  <span class="tag">#エージェント</span>
+                  <span class="tag">#Tips</span>
+                </div>
+              </li>
+              <li>
+                <span class="entry-date">2026/08/30</span>
+                <strong>Grok Botを網羅的に学べるまとめ資料</strong><br />
+                <a href="https://x.com/tetumemo/status/2093570188226789699" target="_blank" rel="noopener noreferrer">https://x.com/tetumemo/status/2093570188226789699</a>
+                <div class="x-meta"><span class="x-author">@tetumemo（テツメモ｜AI図解×検証｜Newsletter）</span></div>
+                <details class="x-preview"><summary>ポスト本文</summary><p>📝Grok Botを網羅的に一気に学べる　↓</p></details>
+                <div class="entry-tags">
+                  <span class="tag">#チュートリアル</span>
+                </div>
+              </li>
+              <li>
+                <span class="entry-date">2026/08/30</span>
+                <strong>個人で運用しているGrok Bot8種とルーティンの紹介</strong><br />
+                <a href="https://x.com/yriica/status/2093496262998065231" target="_blank" rel="noopener noreferrer">https://x.com/yriica/status/2093496262998065231</a>
+                <div class="x-meta"><span class="x-author">@yriica（平野太一 / Taichi Hirano）</span></div>
+                <details class="x-preview"><summary>ポスト本文</summary><p>Grok Bot、個人で使っている8つのBotとルーティン</p></details>
+                <div class="entry-tags">
+                  <span class="tag">#Tips</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+        <section class="category">
+          <h2>6. ツール・プロンプトTips</h2>
+
+          <div class="contributor">
+            <h3>投稿者：t2hnd</h3>
+            <ul>
+              <li>
+                <span class="entry-date">2026/08/30</span>
+                <strong>並行開発ツール「Orca」が便利という紹介記事</strong><br />
+                <a href="https://zenn.dev/rhosokawa/articles/d0a958c17c2820" target="_blank" rel="noopener noreferrer">https://zenn.dev/rhosokawa/articles/d0a958c17c2820</a>
+                <div class="entry-tags">
+                  <span class="tag">#ツール</span>
+                </div>
+                <div class="entry-comment">最近は cmux を使ってたんですがOrca結構良さそう</div>
+              </li>
+            </ul>
+          </div>
+          <div class="contributor">
+            <h3>投稿者：りゅう</h3>
+            <ul>
+              <li>
+                <span class="entry-date">2026/08/30</span>
+                <strong>「MINIMAX-H3」の作り方とプロンプト共有、長すぎるAI生成プロンプト問題への対策</strong><br />
+                <a href="https://x.com/seiiiiiiiiiiru/status/2088174785029452282" target="_blank" rel="noopener noreferrer">https://x.com/seiiiiiiiiiiru/status/2088174785029452282</a>
+                <div class="x-meta"><span class="x-author">@seiiiiiiiiiiru（SEIIIRU😈動画生成AIを使う映像クリエイター）</span></div>
+                <details class="x-preview"><summary>ポスト本文</summary><p>【MINIMAX-H3】作り方とプロンプト📢
+最近AIが考えたプロンプトがよくシェアされていますが、長すぎて読む気すら失せる。
+
+そんな方にオススメのやり方です👇(リプ欄)</p></details>
+                <div class="entry-tags">
+                  <span class="tag">#Tips</span>
+                </div>
+              </li>
+              <li>
+                <span class="entry-date">2026/08/30</span>
+                <strong>非エンジニア向け「Kimi K3」入門ガイド</strong><br />
+                <a href="https://x.com/MakeAI_CEO/status/2088771807704956960" target="_blank" rel="noopener noreferrer">https://x.com/MakeAI_CEO/status/2088771807704956960</a>
+                <div class="x-meta"><span class="x-author">@MakeAI_CEO（mana｜株式会社MakeAI CEO）</span></div>
+                <details class="x-preview"><summary>ポスト本文</summary><p>日本の非エンジニアこそ使うべき、Kimi K3入門</p></details>
+                <div class="entry-tags">
+                  <span class="tag">#チュートリアル</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+        <section class="category">
+          <h2>7. その他</h2>
+
+          <div class="contributor">
+            <h3>投稿者：りゅう</h3>
+            <ul>
+              <li>
+                <span class="entry-date">2026/09/03</span>
+                <strong>リンク先の内容を確認できず（削除済みまたは無効なポスト）</strong><br />
+                <a href="https://x.com/bot" target="_blank" rel="noopener noreferrer">https://x.com/bot</a>
+                <div class="entry-tags">
+                  
+                </div>
+              </li>
+              <li>
+                <span class="entry-date">2026/08/30</span>
+                <strong>リンク先の内容を確認できず（削除済みまたは無効なポスト）</strong><br />
+                <a href="https://x.com/seiiiiiiiiiiru/status/" target="_blank" rel="noopener noreferrer">https://x.com/seiiiiiiiiiiru/status/</a>
+                <div class="entry-tags">
+                  
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+        </div>
+        <div id="timeline-view"></div>
+      </article>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 AI BASE. All rights reserved.</p>
+    </footer>
+
+    <script>
+      (function () {
+        let currentView = 'timeline';
+        let currentTag = '';
+
+        const tagSet = new Set();
+        document.querySelectorAll('.entry-tags .tag').forEach(el => tagSet.add(el.textContent.trim()));
+
+        const bar = document.getElementById('tag-filter');
+        const makeBtn = (label, value) => {
+          const btn = document.createElement('button');
+          btn.className = 'filter-btn' + (value === '' ? ' active' : '');
+          btn.textContent = label;
+          btn.dataset.tag = value;
+          bar.appendChild(btn);
+        };
+        makeBtn('すべて', '');
+        tagSet.forEach(t => makeBtn(t, t));
+
+        // Build the timeline view by flattening category → contributor → entries
+        // (read straight out of the category view's DOM, then sorted by date).
+        const timeline = document.getElementById('timeline-view');
+        const items = [];
+        document.querySelectorAll('#category-view .category').forEach(section => {
+          const category = section.querySelector('h2').textContent.replace(/^\d+\.\s*/, '');
+          section.querySelectorAll('.contributor').forEach(contributor => {
+            const user = contributor.querySelector('h3').textContent.replace('投稿者：', '');
+            contributor.querySelectorAll('li').forEach(li => {
+              const date = li.querySelector('.entry-date')?.textContent.trim() || '';
+              const tags = Array.from(li.querySelectorAll('.tag')).map(t => t.textContent.trim());
+              items.push({ category, user, date, tags, li });
+            });
+          });
+        });
+        items.sort((a, b) => a.date.localeCompare(b.date));
+        items.forEach(({ category, user, date, tags, li }) => {
+          const entry = document.createElement('div');
+          entry.className = 'timeline-entry';
+          entry.dataset.tags = JSON.stringify(tags);
+          entry.innerHTML = '<div class="timeline-meta"><span class="entry-date" style="display:inline">' +
+            date + '</span><span class="timeline-contributor"></span><span class="timeline-category"></span></div>';
+          entry.querySelector('.timeline-contributor').textContent = user;
+          entry.querySelector('.timeline-category').textContent = category;
+          const clone = li.cloneNode(true);
+          clone.querySelector('.entry-date')?.remove();
+          entry.insertAdjacentHTML('beforeend', clone.innerHTML);
+          timeline.appendChild(entry);
+        });
+
+        const applyFilter = () => {
+          const all = currentTag === '';
+          if (currentView === 'timeline') {
+            document.querySelectorAll('.timeline-entry').forEach(entry => {
+              entry.classList.toggle('hidden', !all && !JSON.parse(entry.dataset.tags).includes(currentTag));
+            });
+            return;
+          }
+          document.querySelectorAll('#category-view li').forEach(li => {
+            const liTags = Array.from(li.querySelectorAll('.tag')).map(t => t.textContent.trim());
+            li.classList.toggle('hidden', !all && !liTags.includes(currentTag));
+          });
+          document.querySelectorAll('.contributor').forEach(div => {
+            div.classList.toggle('hidden', !div.querySelector('li:not(.hidden)'));
+          });
+          document.querySelectorAll('.category').forEach(sec => {
+            sec.classList.toggle('hidden', !sec.querySelector('li:not(.hidden)'));
+          });
+        };
+
+        document.getElementById('view-tabs').addEventListener('click', e => {
+          const btn = e.target.closest('.tab-btn');
+          if (!btn) return;
+          document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentView = btn.dataset.view;
+          document.getElementById('category-view').style.display = currentView === 'category' ? 'block' : 'none';
+          timeline.style.display = currentView === 'timeline' ? 'block' : 'none';
+          applyFilter();
+        });
+
+        bar.addEventListener('click', e => {
+          const btn = e.target.closest('.filter-btn');
+          if (!btn) return;
+          bar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentTag = btn.dataset.tag;
+          applyFilter();
+        });
+      })();
+    </script>
+  </body>
+</html>
