@@ -27,9 +27,10 @@ Claude の役割は、n8n が作成したブランチ上に追加コミットを
 `scripts/generate-summary.mjs` は、n8n を使わずにこのセッション自身が Discord メッセージの分類まで担う代替ワークフロー。詳細は `.claude/commands/generate-summary.md` を参照（`/generate-summary` で起動）。
 
 要点:
-- 分類（カテゴリ・headline・タグ付け）はデフォルトでこのセッション自身が行う。追加のAPI課金は発生せず、今使っているモデル・サブスクリプションで完結する
-- `ANTHROPIC_API_KEY` は任意。設定した場合のみ Anthropic API 経由の自動分類にフォールバックできる（ライブなセッションがないヘッドレス/CI実行向け）
-- 使い方（2段階）: `node scripts/generate-summary.mjs <channel_id> <channel_name>` で取得・前処理 → 表示された処理済みエントリを自分で分類 → `node scripts/generate-summary.mjs render <processed.json> <classified.json> <channel_name>` でHTML生成・PR作成
+- 分類（グループ分け・headline・タグ付け）はデフォルトでこのセッション自身が行う。追加のAPI課金は発生せず、今使っているモデル・サブスクリプションで完結する
+- グループ分けは固定のカテゴリ一覧ではなく、そのバッチのリンク群を見て6〜7個程度の自然なグループをその場で決める
+- `ANTHROPIC_API_KEY` は任意。設定した場合のみ Anthropic API 経由の自動分類 + レビューなしでのPR作成までフォールバックできる（ライブなセッションがないヘッドレス/CI実行向け）
+- 使い方（3段階、`ANTHROPIC_API_KEY` 未設定時）: `node scripts/generate-summary.mjs <channel_id> <channel_name>` で取得・前処理 → 表示された処理済みエントリを自分でグループ分け → `node scripts/generate-summary.mjs render <processed.json> <classified.json> <channel_name>` でHTMLを`summaries/`に生成（一旦停止）→ レビュー後 `node scripts/generate-summary.mjs publish <filename> <channel_name>` でPR作成
 
 ## ディレクトリ構成
 

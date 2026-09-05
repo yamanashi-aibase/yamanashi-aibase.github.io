@@ -5,25 +5,34 @@
  * Fetches Discord channel messages, categorizes them (normally by whichever
  * coding-agent session — Claude Code, Codex, etc. — is driving this script;
  * optionally via the Anthropic API), generates a full HTML summary page, and
- * creates a GitHub PR. See the two-phase `fetch` / `render` flow below.
+ * opens a GitHub PR. Three phases, each a separate invocation so there's a
+ * checkpoint to review the generated HTML before it's pushed:
+ *
+ *   1. fetch   (default, no subcommand) — pull Discord messages, extract
+ *              entries that need classification
+ *   2. render  — merge classifications back in, write summaries/*.html
+ *   3. publish — branch, commit, push, open the PR
  *
  * Usage:
  *   node scripts/generate-summary.mjs <channel_id> <channel_name>
  *   node scripts/generate-summary.mjs render <processed.json> <classified.json> <channel_name>
+ *   node scripts/generate-summary.mjs publish <filename> <channel_name>
  *
  * Environment variables:
  *   DISCORD_BOT_TOKEN  - Discord Bot token (required)
  *   ANTHROPIC_API_KEY  - Anthropic API key (optional — only needed for a
- *                        fully automated run with no live agent session;
- *                        the default path classifies via the driving session
- *                        itself, at no extra API cost)
+ *                        fully automated run with no live agent session to
+ *                        classify or review; runs fetch → render → publish
+ *                        straight through with no pause. The default path
+ *                        classifies via the driving session itself, at no
+ *                        extra API cost, and stops after render for review)
  *
  * Example:
  *   DISCORD_BOT_TOKEN=xxx node scripts/generate-summary.mjs 1489234567890 朝活_202604
  */
 
 import { execSync } from 'node:child_process';
-import { writeFileSync, readFileSync, mkdirSync } from 'node:fs';
+import { writeFileSync, readFileSync, mkdirSync, existsSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { tmpdir } from 'node:os';
 import { fileURLToPath } from 'node:url';
@@ -38,22 +47,6 @@ const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY;
 const DISCORD_API   = 'https://discord.com/api/v10';
 const ANTHROPIC_API = 'https://api.anthropic.com/v1/messages';
 const MODEL         = 'claude-sonnet-4-6';
-
-const CATEGORY_NAMES = {
-  openai:        'OpenAI／ChatGPT関連',
-  agent:         'AIエージェント／自動化',
-  tool:          'ツール・ライブラリ',
-  repository:    'リポジトリ・サンプルコード',
-  article:       'AI技術記事・解説',
-  documentation: '公式ドキュメント・技術仕様',
-  tutorial:      'チュートリアル・学習リソース',
-  video:         '動画コンテンツ',
-  other:         'その他',
-};
-const CATEGORY_ORDER = [
-  'openai', 'tool', 'repository', 'agent',
-  'article', 'documentation', 'tutorial', 'video', 'other',
-];
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -96,7 +89,11 @@ function formatXAuthor(name, url) {
   }
   const handleMatch = name.match(/\(@([^)]+)\)\s*$/);
   if (!handle && handleMatch) handle = handleMatch[1];
-  const displayName = name.replace(/\s*\(@[^)]+\)\s*$/, '').trim() || name;
+  // Discord truncates long embed author names and appends "…", which can cut
+  // the "(@handle)" suffix off mid-string with no closing paren (e.g.
+  // "…creator (@handle..."). Strip that trailing fragment too, not just the
+  // well-formed "(@handle)" case, so it doesn't leak into the display name.
+  const displayName = name.replace(/\s*\(@[^()]*\)?\s*$/, '').trim() || name;
   if (!handle) return escapeHtml(displayName);
   return `@${escapeHtml(handle)}（${escapeHtml(displayName)}）`;
 }
@@ -173,12 +170,19 @@ function processMessages(messages) {
 // directly. categorizeMessages() below (Anthropic API, needs ANTHROPIC_API_KEY)
 // is kept only as an optional path for headless/CI runs with no live agent
 // session attached. CLASSIFICATION_RULES is the single source of truth for the
-// category/tag vocabulary, shared by both paths.
+// grouping approach and tag vocabulary, shared by both paths.
+//
+// Categories are freeform, not a fixed enum: look at the whole batch of links
+// and organize it into roughly 6-7 groups that actually fit *this* batch's
+// content (e.g. "OpenAI GPT-6 Astra関連", "Claude/Anthropicの動向"), rather
+// than forcing every month's mixed bag of topics into the same rigid taxonomy.
 
-const CLASSIFICATION_RULES = `カテゴリキー（いずれか1つ）:
-openai / agent / tool / repository / article / documentation / tutorial / video / other
+const CLASSIFICATION_RULES = `グループ分け:
+- このバッチのリンク群全体を見渡し、内容に応じて6〜7個程度の自然なグループに分けること（固定のカテゴリキーではなく、このバッチの内容に合わせた日本語のグループ名を自分で決める）
+- 1件しかないグループが乱立しないよう、近いトピックはまとめて7個を大きく超えないようにする
+- 各エントリは必ずいずれか1つのグループ名に属させる（同じグループのエントリには全く同じ文字列を使うこと）
 
-使用できるタグ（1〜3個）:
+使用できるタグ（1〜3個、必要なら他のタグを追加してもよい）:
 #Anthropic #OpenAI #Claude #ClaudeCode #Google #Gemma #モデル
 #エージェント #ツール #セキュリティ #解説 #産業 #規約 #MCP
 #リポジトリ #ドキュメント #チュートリアル #動画 #Tips #統計 #その他
@@ -189,7 +193,7 @@ openai / agent / tool / repository / article / documentation / tutorial / video 
 
 const CLASSIFICATION_ITEM_SHAPE = {
   id: '<元のメッセージID>',
-  category: '<カテゴリキー>',
+  category: '<このバッチ用に決めたグループ名（日本語、自由記述）>',
   headline: '<内容を一行で要約した日本語>',
   tags: ['#タグ1', '#タグ2'],
 };
@@ -209,8 +213,12 @@ ${CLASSIFICATION_RULES}
 async function categorizeMessages(messages) {
   if (!ANTHROPIC_KEY) throw new Error('ANTHROPIC_API_KEY is not set');
 
-  // Batch in chunks of 20 to stay within context limits
-  const CHUNK = 20;
+  // Batch in chunks of 60: large enough that a typical month's worth of links
+  // fits in a single call, so group names stay consistent across the batch.
+  // Batches beyond that span multiple calls and may produce overlapping group
+  // names — an accepted limitation of this secondary/fallback path (the
+  // primary, agent-driven path sees the whole batch at once and doesn't hit this).
+  const CHUNK = 60;
   const results = [];
 
   for (let i = 0; i < messages.length; i += CHUNK) {
@@ -277,25 +285,28 @@ function escapeHtml(str) {
 }
 
 function generateHTML(entries, channelName, yearMonth) {
-  // Merge categorization with original data
-  const byId = Object.fromEntries(entries.map(e => [e.id, e]));
-
-  // Group by category → author
+  // Group by category → author. Categories are freeform (decided per batch by
+  // whoever classified the entries, not a fixed taxonomy) — sections are
+  // emitted in the order each category first appears among the entries,
+  // except the "その他" catch-all (unclassified / broken links), which always
+  // sinks to the bottom regardless of where it first appears.
   const grouped = {};
+  const categoryOrder = [];
   for (const entry of entries) {
-    const cat = entry.category || 'other';
-    if (!grouped[cat]) grouped[cat] = {};
+    const cat = entry.category || 'その他';
+    if (!grouped[cat]) {
+      grouped[cat] = {};
+      categoryOrder.push(cat);
+    }
     if (!grouped[cat][entry.author]) grouped[cat][entry.author] = [];
     grouped[cat][entry.author].push(entry);
   }
+  categoryOrder.sort((a, b) => (a === 'その他') - (b === 'その他'));
 
-  // Build sections in fixed order
+  // Build sections in the order categories first appeared
   let sections = '';
   let catIndex = 1;
-  for (const cat of CATEGORY_ORDER) {
-    if (!grouped[cat]) continue;
-    const catName = CATEGORY_NAMES[cat] || cat;
-
+  for (const cat of categoryOrder) {
     let contributors = '';
     for (const [author, items] of Object.entries(grouped[cat])) {
       let lis = '';
@@ -337,7 +348,7 @@ function generateHTML(entries, channelName, yearMonth) {
 
     sections += `
         <section class="category">
-          <h2>${catIndex}. ${escapeHtml(catName)}</h2>
+          <h2>${catIndex}. ${escapeHtml(cat)}</h2>
 ${contributors}
         </section>`;
     catIndex++;
@@ -586,18 +597,19 @@ function generateFilename() {
 
 // ── Git / PR ──────────────────────────────────────────────────────────────────
 
-function createPR(html, filename, channelName, yearMonth) {
+// Assumes `filename` was already written under summaries/ by a prior `render`
+// call (and, ideally, reviewed) — this step only handles git/GitHub.
+function publishPR(filename, channelName, yearMonth) {
+  const htmlPath = resolve(ROOT, 'summaries', filename);
+  if (!existsSync(htmlPath)) {
+    throw new Error(`summaries/${filename} not found — run 'render' first`);
+  }
+
   const branch = `auto-summary-${new Date().toISOString().slice(0, 19).replace(/[T:]/g, '-').replace(/--/g, '-')}`;
 
   console.log(`\nCreating branch ${branch}...`);
   exec('git checkout main');
   exec(`git checkout -b ${branch}`);
-
-  // Write HTML
-  const htmlPath = resolve(ROOT, 'summaries', filename);
-  mkdirSync(resolve(ROOT, 'summaries'), { recursive: true });
-  writeFileSync(htmlPath, html, 'utf-8');
-  console.log(`  Written summaries/${filename}`);
 
   // Commit HTML
   exec(`git add summaries/${filename}`);
@@ -629,8 +641,9 @@ function deriveYearMonth(channelName) {
 // coding-agent session is driving the command — Claude Code, Codex, or
 // anything else (no API call, no extra cost — runs on that session's own
 // model/subscription). If ANTHROPIC_API_KEY is set, it classifies via the
-// Anthropic API instead and goes straight to render — useful for headless/CI
-// runs with no live agent session attached.
+// Anthropic API and runs straight through render + publish — useful for
+// headless/CI runs with no live agent session (and so no one) around to
+// review the HTML before it ships.
 async function runFetch(channelId, channelName) {
   const yearMonth = deriveYearMonth(channelName);
 
@@ -661,7 +674,8 @@ async function runFetch(channelId, channelName) {
     const classifiedPath = resolve(tmpdir(), `ai-base-summary-${channelId}.classified.json`);
     writeFileSync(classifiedPath, JSON.stringify(classified, null, 2), 'utf-8');
     console.log(`  Wrote classifications to ${classifiedPath}`);
-    return runRender(processedPath, classifiedPath, channelName);
+    const filename = await runRender(processedPath, classifiedPath, channelName);
+    return runPublish(filename, channelName);
   }
 
   console.log(`
@@ -677,8 +691,10 @@ ${JSON.stringify([CLASSIFICATION_ITEM_SHAPE], null, 2)}
 ${CLASSIFICATION_RULES}`);
 }
 
-// Phase 2: merge classifications back into the processed entries, generate
-// the HTML, and open the PR.
+// Phase 2: merge classifications back into the processed entries and write
+// the HTML to summaries/ for review. Does NOT touch git — that's `publish`,
+// a deliberately separate step so there's a checkpoint to look the page over
+// before it's pushed and a PR is opened.
 async function runRender(processedPath, classifiedPath, channelName) {
   const processed = JSON.parse(readFileSync(processedPath, 'utf-8'));
   const classified = JSON.parse(readFileSync(classifiedPath, 'utf-8'));
@@ -687,16 +703,25 @@ async function runRender(processedPath, classifiedPath, channelName) {
   const classMap = Object.fromEntries(classified.map(c => [c.id, c]));
   const entries = processed.map(m => ({
     ...m,
-    ...(classMap[m.id] ?? { category: 'other', headline: m.embedTitle || m.url, tags: [] }),
+    ...(classMap[m.id] ?? { category: 'その他', headline: m.embedTitle || m.url, tags: [] }),
   }));
 
   console.log('\nGenerating HTML...');
   const filename = generateFilename();
   const html = generateHTML(entries, channelName, yearMonth);
-  console.log(`  Filename: ${filename}`);
+  const htmlPath = resolve(ROOT, 'summaries', filename);
+  mkdirSync(resolve(ROOT, 'summaries'), { recursive: true });
+  writeFileSync(htmlPath, html, 'utf-8');
+  console.log(`  Wrote summaries/${filename}`);
 
-  createPR(html, filename, channelName, yearMonth);
+  return filename;
+}
 
+// Phase 3: branch, commit, push, and open the PR for an already-rendered
+// (and, ideally, reviewed) summaries/<filename>.
+async function runPublish(filename, channelName) {
+  const yearMonth = deriveYearMonth(channelName);
+  publishPR(filename, channelName, yearMonth);
   console.log('\nDone!');
 }
 
@@ -709,7 +734,23 @@ async function main() {
       console.error('Usage: node scripts/generate-summary.mjs render <processed.json> <classified.json> <channel_name>');
       process.exit(1);
     }
-    return runRender(processedPath, classifiedPath, channelName);
+    const filename = await runRender(processedPath, classifiedPath, channelName);
+    console.log(`
+Review summaries/${filename}, then run:
+
+  node scripts/generate-summary.mjs publish ${filename} ${JSON.stringify(channelName)}
+
+That creates a branch, commits, pushes, and opens the PR.`);
+    return;
+  }
+
+  if (arg1 === 'publish') {
+    const [filename, channelName] = rest;
+    if (!filename || !channelName) {
+      console.error('Usage: node scripts/generate-summary.mjs publish <filename> <channel_name>');
+      process.exit(1);
+    }
+    return runPublish(filename, channelName);
   }
 
   const channelId = arg1;
@@ -717,6 +758,7 @@ async function main() {
   if (!channelId || !channelName) {
     console.error('Usage: node scripts/generate-summary.mjs <channel_id> <channel_name>');
     console.error('   or: node scripts/generate-summary.mjs render <processed.json> <classified.json> <channel_name>');
+    console.error('   or: node scripts/generate-summary.mjs publish <filename> <channel_name>');
     console.error('Example: node scripts/generate-summary.mjs 1489234567890 朝活_202604');
     process.exit(1);
   }

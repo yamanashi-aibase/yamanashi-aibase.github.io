@@ -27,11 +27,13 @@ GitHub Pages 静的サイト。AI関連ミートアップ（AI BASE）の月次�
 `scripts/generate-summary.mjs` は、n8n を使わずにこのエージェントセッション自身（Codex・Claude Code どちらでも可）が Discord メッセージの分類まで担う代替ワークフロー。詳細は `.codex/prompts/generate-summary.md`（Codex）または `.claude/commands/generate-summary.md`（Claude Code）を参照。
 
 要点:
-- 分類（カテゴリ・headline・タグ付け）はデフォルトでこのセッション自身が行う。追加のAPI課金は発生せず、今使っているモデル・サブスクリプションで完結する
-- `ANTHROPIC_API_KEY` は任意。設定した場合のみ Anthropic API 経由の自動分類にフォールバックできる（ライブなエージェントセッションがないヘッドレス/CI実行向け）
-- 使い方（2段階）:
-  1. `node scripts/generate-summary.mjs <channel_id> <channel_name>` — Discord取得・前処理。`ANTHROPIC_API_KEY` 未設定なら分類ルールと次コマンドを表示して停止
-  2. 表示された処理済みエントリを自分（エージェント）で分類し、`node scripts/generate-summary.mjs render <processed.json> <classified.json> <channel_name>` でHTML生成・PR作成まで進める
+- 分類（グループ分け・headline・タグ付け）はデフォルトでこのセッション自身が行う。追加のAPI課金は発生せず、今使っているモデル・サブスクリプションで完結する
+- グループ分けは固定のカテゴリ一覧ではなく、そのバッチのリンク群を見て6〜7個程度の自然なグループをその場で決める（例:「OpenAI GPT-6 Astra関連」「Claude/Anthropicの動向」）
+- `ANTHROPIC_API_KEY` は任意。設定した場合のみ Anthropic API 経由の自動分類 + レビューなしでのPR作成までフォールバックできる（ライブなエージェントセッションがないヘッドレス/CI実行向け）
+- 使い方（3段階、`ANTHROPIC_API_KEY` 未設定時）:
+  1. `node scripts/generate-summary.mjs <channel_id> <channel_name>` — Discord取得・前処理。グループ分けルールと次コマンドを表示して停止
+  2. 表示された処理済みエントリを自分（エージェント）でグループ分けし、`node scripts/generate-summary.mjs render <processed.json> <classified.json> <channel_name>` でHTMLを `summaries/` に生成（PRはまだ作らず、ここで一旦停止）
+  3. 生成されたHTMLを**必ずレビュー**し、問題なければ `node scripts/generate-summary.mjs publish <filename> <channel_name>` でブランチ作成・commit・push・PR作成まで進める
 
 ## ディレクトリ構成
 
