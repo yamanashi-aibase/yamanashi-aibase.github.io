@@ -32,7 +32,7 @@
  */
 
 import { execSync } from 'node:child_process';
-import { writeFileSync, readFileSync, mkdirSync, existsSync } from 'node:fs';
+import { writeFileSync, readFileSync, mkdirSync, existsSync, unlinkSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { tmpdir } from 'node:os';
 import { fileURLToPath } from 'node:url';
@@ -605,14 +605,28 @@ function publishPR(filename, channelName, yearMonth) {
     throw new Error(`summaries/${filename} not found — run 'render' first`);
   }
 
+  // main already has a tracked summaries/response.json from a previous run —
+  // `git checkout` refuses to switch branches over an untracked file it would
+  // have to overwrite, even if we've merely read it (the file still has to be
+  // gone from disk, not just backed up in memory). Delete this run's copy,
+  // checkout, then write it back on the new branch so it still ships with the
+  // HTML (matching prior summary PRs, which commit both together).
+  const responsePath = resolve(ROOT, 'summaries', 'response.json');
+  const responseBackup = existsSync(responsePath) ? readFileSync(responsePath, 'utf-8') : null;
+  if (responseBackup !== null) unlinkSync(responsePath);
+
   const branch = `auto-summary-${new Date().toISOString().slice(0, 19).replace(/[T:]/g, '-').replace(/--/g, '-')}`;
 
   console.log(`\nCreating branch ${branch}...`);
   exec('git checkout main');
   exec(`git checkout -b ${branch}`);
 
-  // Commit HTML
-  exec(`git add summaries/${filename}`);
+  if (responseBackup !== null) {
+    writeFileSync(responsePath, responseBackup, 'utf-8');
+  }
+
+  // Commit HTML (+ response.json, if this run produced one)
+  exec(`git add summaries/${filename}${responseBackup !== null ? ' summaries/response.json' : ''}`);
   exec(`git commit -m "Add ${yearMonth} Discord summary for #${channelName}"`);
 
   // Push and create PR
