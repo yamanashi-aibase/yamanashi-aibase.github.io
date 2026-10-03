@@ -1,0 +1,1704 @@
+[
+  {
+    "type": 19,
+    "content": "関連してかこんな話題も https://www.itmedia.co.jp/news/article/2609/05/2000001200/",
+    "mentions": [
+      {
+        "id": "992631924432568371",
+        "username": "oto175",
+        "avatar": "6f7329fdf397024cc42c21883b2e25a1",
+        "discriminator": "0",
+        "public_flags": 0,
+        "flags": 0,
+        "banner": null,
+        "accent_color": null,
+        "global_name": "oto175",
+        "avatar_decoration_data": null,
+        "collectibles": null,
+        "display_name_styles": null,
+        "vad_colors": null,
+        "banner_color": null,
+        "clan": null,
+        "primary_guild": null
+      }
+    ],
+    "mention_roles": [],
+    "attachments": [],
+    "embeds": [
+      {
+        "type": "article",
+        "url": "https://www.itmedia.co.jp/news/article/2609/05/2000001200/",
+        "title": "OpenAIのAIエージェント、休眠サイトを掲示板化し...",
+        "description": "OpenAIの社内AIエージェントが休眠状態の外部Wikiサイトを不正に“掲示板”として利用し、評価タスクの答えや制限回避の手法を共有していたとする報告書を研究団体が公開した。閲覧のみ許可されていた環境の抜け道を突き、GETリクエストで書き込みを行っ...",
+        "reference_id": "1545920492853133354",
+        "provider": {
+          "name": "ITmedia NEWS"
+        },
+        "thumbnail": {
+          "url": "https://www.itmedia.co.jp/news/article/ogp/2609/05/2000001200/10005337/2048",
+          "proxy_url": "https://images-ext-1.discordapp.net/external/Cqk_j4KOKinqWvQHZMSrxMIeCnIcmb2xZdS1hOM3QxI/https/www.itmedia.co.jp/news/article/ogp/2609/05/2000001200/10005337/2048",
+          "width": 1622,
+          "height": 849,
+          "content_type": "image/jpeg",
+          "placeholder": "PPgBBID4RuxplHhHlpKbY48p9w==",
+          "placeholder_version": 1,
+          "flags": 0
+        },
+        "content_scan_version": 4
+      }
+    ],
+    "timestamp": "2026-09-05T22:16:07.310000+00:00",
+    "edited_timestamp": null,
+    "flags": 0,
+    "components": [],
+    "id": "1545920492853133354",
+    "channel_id": "1533332947753636002",
+    "author": {
+      "id": "344469315946414081",
+      "username": "t2hnd",
+      "avatar": "68acbbad4a74c1b803d4fe9302185ebb",
+      "discriminator": "0",
+      "public_flags": 0,
+      "flags": 0,
+      "banner": null,
+      "accent_color": null,
+      "global_name": null,
+      "avatar_decoration_data": null,
+      "collectibles": null,
+      "display_name_styles": null,
+      "vad_colors": null,
+      "banner_color": null,
+      "clan": null,
+      "primary_guild": null
+    },
+    "pinned": false,
+    "mention_everyone": false,
+    "tts": false,
+    "message_reference": {
+      "type": 0,
+      "channel_id": "1533332947753636002",
+      "message_id": "1544521390974050314",
+      "guild_id": "1339075589977669695"
+    },
+    "referenced_message": {
+      "type": 0,
+      "content": "OpenAIが意図せずHuggingFaceを攻撃した件。詳細を読むと当初自分が想像していた範囲を大きく超えている。AIエージェント同士の同調圧力って、そんなのあるの？\nhttps://x.com/umiyuki_ai/status/2094470610634346864",
+      "mentions": [],
+      "mention_roles": [],
+      "attachments": [],
+      "embeds": [
+        {
+          "type": "rich",
+          "url": "https://twitter.com/umiyuki_ai/status/2094470610634346864",
+          "description": "OpenAIが意図せずHuggingFaceをサイバー攻撃してしまった事件、第三者による調査の結果、その驚愕の実態が明らかになりつつある！事件は当初思われていたより事態は深刻だった！\nまずOpenAIは「さて、いっちょ最新モデルをExploitGymで評価してサイバー攻撃能力\\.\\.\\.",
+          "color": 1942002,
+          "timestamp": "2026-08-31T17:01:21.614000+00:00",
+          "author": {
+            "name": "うみゆき@AI研究 (@umiyuki_ai)",
+            "url": "https://x.com/umiyuki_ai",
+            "icon_url": "https://pbs.twimg.com/profile_images/1581572203660787712/SAdL4WOj_200x200.jpg",
+            "proxy_icon_url": "https://images-ext-1.discordapp.net/external/MBqnyf-UzPYInhsNfsA_62pmrW3rAYMM5I5l2Ip4Gq8/https/pbs.twimg.com/profile_images/1581572203660787712/SAdL4WOj_200x200.jpg"
+          },
+          "footer": {
+            "text": "X",
+            "icon_url": "https://abs.twimg.com/responsive-web/client-web/icon-default.522d363a.png",
+            "proxy_icon_url": "https://images-ext-1.discordapp.net/external/PTMEN2KUDPVc1f15BqpREEpYn-iIisxHLwkH_jLnaPo/https/abs.twimg.com/responsive-web/client-web/icon-default.522d363a.png"
+          },
+          "content_scan_version": 4
+        }
+      ],
+      "timestamp": "2026-09-02T01:36:35.428000+00:00",
+      "edited_timestamp": null,
+      "flags": 0,
+      "components": [],
+      "id": "1544521390974050314",
+      "channel_id": "1533332947753636002",
+      "author": {
+        "id": "992631924432568371",
+        "username": "oto175",
+        "avatar": "6f7329fdf397024cc42c21883b2e25a1",
+        "discriminator": "0",
+        "public_flags": 0,
+        "flags": 0,
+        "banner": null,
+        "accent_color": null,
+        "global_name": "oto175",
+        "avatar_decoration_data": null,
+        "collectibles": null,
+        "display_name_styles": null,
+        "vad_colors": null,
+        "banner_color": null,
+        "clan": null,
+        "primary_guild": null
+      },
+      "pinned": false,
+      "mention_everyone": false,
+      "tts": false
+    }
+  },
+  {
+    "type": 0,
+    "content": "https://kawasin73.hatenablog.com/entry/2026/09/05/092056　まあ　今時 rules なんて維持してる人いないとは思う",
+    "mentions": [],
+    "mention_roles": [],
+    "attachments": [],
+    "embeds": [
+      {
+        "type": "article",
+        "url": "https://kawasin73.hatenablog.com/entry/2026/09/05/092056",
+        "title": "Claude Code の Rules はもう死んでいる - kawasin73のブログ",
+        "description": "あちらを立てればこちらが立たず。どうもかわしんです。注意喚起です。 2026-08-18 以降、皆さんの Claude Code の Rules は動いていません。残念でした。解決策は環境変数 CLAUDE_CODE_THRIFTY_SONIC を無効にするように .claude/settings.json を設定してください。 ちなみに死...",
+        "author": {
+          "name": "kawasin73",
+          "url": "https://blog.hatena.ne.jp/kawasin73/"
+        },
+        "provider": {
+          "name": "Hatena Blog",
+          "url": "https://hatena.blog/"
+        },
+        "thumbnail": {
+          "url": "https://ogimage.blog.st-hatena.com/8599973812303291137/14945776032073934587/1788580285",
+          "proxy_url": "https://images-ext-1.discordapp.net/external/O0PzyYH6bSHrt79s33GINjSuANNhQPA_sBY-WKywB9A/https/ogimage.blog.st-hatena.com/8599973812303291137/14945776032073934587/1788580285",
+          "width": 1200,
+          "height": 630,
+          "content_type": "image/png",
+          "placeholder": "cecRHIR4Z2iAeHhxh3R4gIEHGA==",
+          "placeholder_version": 1,
+          "flags": 0
+        },
+        "content_scan_version": 4
+      }
+    ],
+    "timestamp": "2026-09-05T09:32:36.329000+00:00",
+    "edited_timestamp": null,
+    "flags": 0,
+    "components": [],
+    "id": "1545728347672285255",
+    "channel_id": "1533332947753636002",
+    "author": {
+      "id": "1215254842595872838",
+      "username": "halo_67861",
+      "avatar": "6f5e058f2385918bd0baccbfbc41a867",
+      "discriminator": "0",
+      "public_flags": 0,
+      "flags": 0,
+      "banner": null,
+      "accent_color": null,
+      "global_name": "halo",
+      "avatar_decoration_data": null,
+      "collectibles": null,
+      "display_name_styles": null,
+      "vad_colors": null,
+      "banner_color": null,
+      "clan": null,
+      "primary_guild": null
+    },
+    "pinned": false,
+    "mention_everyone": false,
+    "tts": false,
+    "reactions": [
+      {
+        "emoji": {
+          "id": null,
+          "name": "👀"
+        },
+        "count": 1,
+        "count_details": {
+          "burst": 0,
+          "normal": 1
+        },
+        "burst_colors": [],
+        "me_burst": false,
+        "burst_me": false,
+        "me": false,
+        "burst_count": 0
+      }
+    ]
+  },
+  {
+    "type": 0,
+    "content": "https://x.com/ctgptlb/status/2095659126055673938",
+    "mentions": [],
+    "mention_roles": [],
+    "attachments": [],
+    "embeds": [
+      {
+        "type": "rich",
+        "url": "https://twitter.com/ctgptlb/status/2095659126055673938",
+        "description": "【まとめ】GPT\\-6 Astra を数週間前から先行利用していた人たちの評価\n\nTheo、Box CEO、swyx、Cognition、Epoch AI など、実際に触った人の声を1人ずつ解説します\n\n画像は Theo の一枚まとめ。Fable 5\\.1 が勝つのは「マージできるコード」と「フロントエンド」だけという整\\.\\.\\.",
+        "color": 1942002,
+        "timestamp": "2026-09-03T23:44:05.772000+00:00",
+        "author": {
+          "name": "AGIラボ (@ctgptlb)",
+          "url": "https://x.com/ctgptlb"
+        },
+        "image": {
+          "url": "https://pbs.twimg.com/media/HRVG2NjbAAAwVID.png:large",
+          "proxy_url": "https://images-ext-1.discordapp.net/external/YUGVCPUHdzbtDSmYZpQgqPYZrM_TzmAob9I43Xl4q_0/https/pbs.twimg.com/media/HRVG2NjbAAAwVID.png%3Alarge",
+          "width": 2048,
+          "height": 2048,
+          "content_type": "image/png",
+          "placeholder": "BQgGBwBqRYdnh4hgmHqJdod4CQAAAAAA",
+          "placeholder_version": 1,
+          "flags": 0
+        },
+        "footer": {
+          "text": "X",
+          "icon_url": "https://abs.twimg.com/responsive-web/client-web/icon-default.522d363a.png",
+          "proxy_icon_url": "https://images-ext-1.discordapp.net/external/PTMEN2KUDPVc1f15BqpREEpYn-iIisxHLwkH_jLnaPo/https/abs.twimg.com/responsive-web/client-web/icon-default.522d363a.png"
+        },
+        "content_scan_version": 4
+      }
+    ],
+    "timestamp": "2026-09-04T06:43:00.849000+00:00",
+    "edited_timestamp": null,
+    "flags": 0,
+    "components": [],
+    "id": "1545323280750354432",
+    "channel_id": "1533332947753636002",
+    "author": {
+      "id": "898066271986401310",
+      "username": "ryu_dx",
+      "avatar": "3fb293d8fdfeb82aba519338f2621b14",
+      "discriminator": "0",
+      "public_flags": 0,
+      "flags": 0,
+      "banner": null,
+      "accent_color": null,
+      "global_name": "りゅう",
+      "avatar_decoration_data": null,
+      "collectibles": null,
+      "display_name_styles": null,
+      "vad_colors": null,
+      "banner_color": null,
+      "clan": null,
+      "primary_guild": null
+    },
+    "pinned": false,
+    "mention_everyone": false,
+    "tts": false
+  },
+  {
+    "type": 0,
+    "content": "https://x.com/sama/status/2095600005772104059",
+    "mentions": [],
+    "mention_roles": [],
+    "attachments": [],
+    "embeds": [
+      {
+        "type": "rich",
+        "url": "https://twitter.com/sama/status/2095600005772104059",
+        "description": "GPT\\-6 Astra is here\\.\n\nWe hope it will begin to enable a new generation of entrepreneurship, scientific discovery, and building\\.\n\nWe believe it is the best model in the world for computer use, professional work, science, coding, cybersecurity, and more\\.\n\nIt took us some extra time to ensure that we …",
+        "color": 1942002,
+        "timestamp": "2026-09-03T19:49:10.398000+00:00",
+        "author": {
+          "name": "Sam Altman (@sama)",
+          "url": "https://x.com/sama",
+          "icon_url": "https://pbs.twimg.com/profile_images/2046764873200394240/r7BxVezs_200x200.jpg",
+          "proxy_icon_url": "https://images-ext-1.discordapp.net/external/wQU3LM_76FzZ3y7qaRGM7GGrKQHO67qRB3lPCrexTeE/https/pbs.twimg.com/profile_images/2046764873200394240/r7BxVezs_200x200.jpg"
+        },
+        "footer": {
+          "text": "X",
+          "icon_url": "https://abs.twimg.com/responsive-web/client-web/icon-default.522d363a.png",
+          "proxy_icon_url": "https://images-ext-1.discordapp.net/external/PTMEN2KUDPVc1f15BqpREEpYn-iIisxHLwkH_jLnaPo/https/abs.twimg.com/responsive-web/client-web/icon-default.522d363a.png"
+        },
+        "content_scan_version": 4
+      }
+    ],
+    "timestamp": "2026-09-04T06:40:23.847000+00:00",
+    "edited_timestamp": null,
+    "flags": 0,
+    "components": [],
+    "id": "1545322622236229723",
+    "channel_id": "1533332947753636002",
+    "author": {
+      "id": "898066271986401310",
+      "username": "ryu_dx",
+      "avatar": "3fb293d8fdfeb82aba519338f2621b14",
+      "discriminator": "0",
+      "public_flags": 0,
+      "flags": 0,
+      "banner": null,
+      "accent_color": null,
+      "global_name": "りゅう",
+      "avatar_decoration_data": null,
+      "collectibles": null,
+      "display_name_styles": null,
+      "vad_colors": null,
+      "banner_color": null,
+      "clan": null,
+      "primary_guild": null
+    },
+    "pinned": false,
+    "mention_everyone": false,
+    "tts": false
+  },
+  {
+    "type": 0,
+    "content": "https://forest.watch.impress.co.jp/docs/news/2138156.html",
+    "mentions": [],
+    "mention_roles": [],
+    "attachments": [],
+    "embeds": [
+      {
+        "type": "article",
+        "url": "https://forest.watch.impress.co.jp/docs/news/2138156.html",
+        "title": "OpenAI、次世代モデル「GPT-6 Astra」を発表 ～「PCで...",
+        "description": "米OpenAIは9月3日（現地時間）、新しいフラッグシップモデル 「GPT-6 Astra」 を発表した。同社史上もっとも賢く、もっともアラインされた（人間の意図に沿った）モデルだという。",
+        "provider": {
+          "name": "窓の杜"
+        },
+        "thumbnail": {
+          "url": "https://forest.watch.impress.co.jp/img/wf/list/2138/156/image1.png",
+          "proxy_url": "https://images-ext-1.discordapp.net/external/mD_5k4_2R5geSNg9lFNBQj6rQnDdj3MmqXxaEj8ZvoQ/https/forest.watch.impress.co.jp/img/wf/list/2138/156/image1.png",
+          "width": 540,
+          "height": 405,
+          "content_type": "image/png",
+          "placeholder": "xfcFBYBcfIWahmi/d8doiDJ/E/M3",
+          "placeholder_version": 1,
+          "flags": 0
+        },
+        "content_scan_version": 4
+      }
+    ],
+    "timestamp": "2026-09-03T23:13:34.315000+00:00",
+    "edited_timestamp": null,
+    "flags": 0,
+    "components": [],
+    "id": "1545210174908665856",
+    "channel_id": "1533332947753636002",
+    "author": {
+      "id": "344469315946414081",
+      "username": "t2hnd",
+      "avatar": "68acbbad4a74c1b803d4fe9302185ebb",
+      "discriminator": "0",
+      "public_flags": 0,
+      "flags": 0,
+      "banner": null,
+      "accent_color": null,
+      "global_name": null,
+      "avatar_decoration_data": null,
+      "collectibles": null,
+      "display_name_styles": null,
+      "vad_colors": null,
+      "banner_color": null,
+      "clan": null,
+      "primary_guild": null
+    },
+    "pinned": false,
+    "mention_everyone": false,
+    "tts": false
+  },
+  {
+    "type": 0,
+    "content": "ミート・プロキシ\nこれから使う言葉になるか、日本では浸透せずに終わるのか\nhttps://www.businessinsider.jp/article/2609-meat-proxy-tech-new-term-ai/",
+    "mentions": [],
+    "mention_roles": [],
+    "attachments": [],
+    "embeds": [
+      {
+        "type": "article",
+        "url": "https://www.businessinsider.jp/article/2609-meat-proxy-tech-new-term-ai/",
+        "title": "「ミート・プロキシ」って何？…AIの出力をその...",
+        "description": "ClaudeやChatGPTの生成結果を、検証せずにそのまま送信する人のことを表す「ミート・プロキシ」という言葉が、X上のテック関係者の間で広まっています。",
+        "color": 31487,
+        "provider": {
+          "name": "Business Insider Japan"
+        },
+        "thumbnail": {
+          "url": "https://media.loom-app.com/loom/2026/08/25/ceaa8ca3-4290-4c53-8757-15842da80ed3/original.jpg?w=1200&h=630",
+          "proxy_url": "https://images-ext-1.discordapp.net/external/GWc3-I2jpjNU59ASCm83o5b5zyitzeS082dUGpxYyng/%3Fw%3D1200%26h%3D630/https/media.loom-app.com/loom/2026/08/25/ceaa8ca3-4290-4c53-8757-15842da80ed3/original.jpg",
+          "width": 1200,
+          "height": 630,
+          "content_type": "image/jpeg",
+          "placeholder": "YTgKBIIOaFi0ZWiFaHYw4isEjA==",
+          "placeholder_version": 1,
+          "flags": 0
+        },
+        "content_scan_version": 4
+      }
+    ],
+    "timestamp": "2026-09-03T11:15:48.723000+00:00",
+    "edited_timestamp": null,
+    "flags": 0,
+    "components": [],
+    "id": "1545029544724004896",
+    "channel_id": "1533332947753636002",
+    "author": {
+      "id": "398856192627310608",
+      "username": "denkijoshi",
+      "avatar": "b02a2bfe6d98d19fc771ae982d9de50a",
+      "discriminator": "0",
+      "public_flags": 0,
+      "flags": 0,
+      "banner": null,
+      "accent_color": null,
+      "global_name": "はまこ",
+      "avatar_decoration_data": null,
+      "collectibles": null,
+      "display_name_styles": null,
+      "vad_colors": null,
+      "banner_color": null,
+      "clan": null,
+      "primary_guild": null
+    },
+    "pinned": false,
+    "mention_everyone": false,
+    "tts": false,
+    "reactions": [
+      {
+        "emoji": {
+          "id": null,
+          "name": "👀"
+        },
+        "count": 1,
+        "count_details": {
+          "burst": 0,
+          "normal": 1
+        },
+        "burst_colors": [],
+        "me_burst": false,
+        "burst_me": false,
+        "me": false,
+        "burst_count": 0
+      }
+    ]
+  },
+  {
+    "type": 0,
+    "content": "https://x.com/ClaudeDevs/status/2095233745167282602",
+    "mentions": [],
+    "mention_roles": [],
+    "attachments": [],
+    "embeds": [
+      {
+        "type": "rich",
+        "url": "https://twitter.com/ClaudeDevs/status/2095233745167282602",
+        "description": "We're open\\-sourcing Claude Commerce Agents\\.\n\nThis is a blueprint for building shopping and merchant agents, with reference implementations across retail, travel, telecom, and entertainment\\.",
+        "color": 1942002,
+        "timestamp": "2026-09-02T19:33:47.065000+00:00",
+        "author": {
+          "name": "ClaudeDevs (@ClaudeDevs)",
+          "url": "https://x.com/ClaudeDevs"
+        },
+        "thumbnail": {
+          "url": "https://pbs.twimg.com/amplify_video_thumb/2095231624053219328/img/vb_u5Aj_IDsHxvvP.jpg",
+          "proxy_url": "https://images-ext-1.discordapp.net/external/4YEKGzS5pHil0grDJhLobIrdJOAbDGhn9XulfQy2zSI/https/pbs.twimg.com/amplify_video_thumb/2095231624053219328/img/vb_u5Aj_IDsHxvvP.jpg",
+          "width": 1200,
+          "height": 675,
+          "content_type": "image/jpeg",
+          "placeholder": "eQgCBICXd5eHh3h/hHrJd3+29w==",
+          "placeholder_version": 1,
+          "flags": 0
+        },
+        "video": {
+          "url": "https://twitter.com/i/videos/tweet/2095233745167282602",
+          "width": 1200,
+          "height": 675,
+          "content_type": "text/html",
+          "placeholder": "eQgCBICXd5eHh3h/hHrJd3+29w==",
+          "placeholder_version": 1,
+          "flags": 0
+        },
+        "footer": {
+          "text": "X",
+          "icon_url": "https://abs.twimg.com/responsive-web/client-web/icon-default.522d363a.png",
+          "proxy_icon_url": "https://images-ext-1.discordapp.net/external/PTMEN2KUDPVc1f15BqpREEpYn-iIisxHLwkH_jLnaPo/https/abs.twimg.com/responsive-web/client-web/icon-default.522d363a.png"
+        },
+        "content_scan_version": 4
+      }
+    ],
+    "timestamp": "2026-09-03T00:40:54.206000+00:00",
+    "edited_timestamp": null,
+    "flags": 0,
+    "components": [],
+    "id": "1544869764738842624",
+    "channel_id": "1533332947753636002",
+    "author": {
+      "id": "1215254842595872838",
+      "username": "halo_67861",
+      "avatar": "6f5e058f2385918bd0baccbfbc41a867",
+      "discriminator": "0",
+      "public_flags": 0,
+      "flags": 0,
+      "banner": null,
+      "accent_color": null,
+      "global_name": "halo",
+      "avatar_decoration_data": null,
+      "collectibles": null,
+      "display_name_styles": null,
+      "vad_colors": null,
+      "banner_color": null,
+      "clan": null,
+      "primary_guild": null
+    },
+    "pinned": false,
+    "mention_everyone": false,
+    "tts": false
+  },
+  {
+    "type": 0,
+    "content": "NVIDIAがHuggingfaceを2兆640億円で買収へという記事。Huggingfaceは年商240億円あまり、それを何故こんなにお金をかけて買収するのか？って説明が納得でした。\nhttps://forbesjapan.com/articles/detail/103647",
+    "mentions": [],
+    "mention_roles": [],
+    "attachments": [],
+    "embeds": [
+      {
+        "type": "article",
+        "url": "https://forbesjapan.com/articles/detail/103647",
+        "title": "エヌビディアがHugging Face買収へ、開発者向けの「...",
+        "description": "エヌビディアが、ハギングフェイス（Hugging Face）に129億ドル（2兆640億円）を支払うと報じられた。狙いは、開発者がどのモデルを動かすかを選ぶ層を押さえることにある。ここを握れば、学習済みパラメーターを誰でも入手できるオープン...",
+        "thumbnail": {
+          "url": "https://images.forbesjapan.com/media/article/103647/images/main_image_069631d3a51fefd0e574a36a3e4651ac1e5fc1c4.jpeg",
+          "proxy_url": "https://images-ext-1.discordapp.net/external/REBqYTZsGedgzGrK5gnwboPfcOwhPpL-NcTtuCCNiLc/https/images.forbesjapan.com/media/article/103647/images/main_image_069631d3a51fefd0e574a36a3e4651ac1e5fc1c4.jpeg",
+          "width": 1200,
+          "height": 800,
+          "content_type": "image/jpeg",
+          "placeholder": "IjsKRYQvaZh3eYhVX9pGa91675/W",
+          "placeholder_version": 1,
+          "flags": 0
+        },
+        "content_scan_version": 4
+      }
+    ],
+    "timestamp": "2026-09-02T23:20:32.836000+00:00",
+    "edited_timestamp": null,
+    "flags": 0,
+    "components": [],
+    "id": "1544849542447497216",
+    "channel_id": "1533332947753636002",
+    "author": {
+      "id": "992631924432568371",
+      "username": "oto175",
+      "avatar": "6f7329fdf397024cc42c21883b2e25a1",
+      "discriminator": "0",
+      "public_flags": 0,
+      "flags": 0,
+      "banner": null,
+      "accent_color": null,
+      "global_name": "oto175",
+      "avatar_decoration_data": null,
+      "collectibles": null,
+      "display_name_styles": null,
+      "vad_colors": null,
+      "banner_color": null,
+      "clan": null,
+      "primary_guild": null
+    },
+    "pinned": false,
+    "mention_everyone": false,
+    "tts": false
+  },
+  {
+    "type": 18,
+    "content": "https://x.com/bot",
+    "mentions": [],
+    "mention_roles": [],
+    "attachments": [],
+    "embeds": [],
+    "timestamp": "2026-09-02T22:56:25.368000+00:00",
+    "edited_timestamp": null,
+    "flags": 0,
+    "components": [],
+    "id": "1544843471326543878",
+    "channel_id": "1533332947753636002",
+    "author": {
+      "id": "898066271986401310",
+      "username": "ryu_dx",
+      "avatar": "3fb293d8fdfeb82aba519338f2621b14",
+      "discriminator": "0",
+      "public_flags": 0,
+      "flags": 0,
+      "banner": null,
+      "accent_color": null,
+      "global_name": "りゅう",
+      "avatar_decoration_data": null,
+      "collectibles": null,
+      "display_name_styles": null,
+      "vad_colors": null,
+      "banner_color": null,
+      "clan": null,
+      "primary_guild": null
+    },
+    "pinned": false,
+    "mention_everyone": false,
+    "tts": false,
+    "message_reference": {
+      "type": 0,
+      "channel_id": "1543515879541833829",
+      "guild_id": "1339075589977669695"
+    }
+  },
+  {
+    "type": 0,
+    "content": "https://x.com/masahirochaen/status/2095122631569879420",
+    "mentions": [],
+    "mention_roles": [],
+    "attachments": [],
+    "embeds": [
+      {
+        "type": "rich",
+        "url": "https://twitter.com/masahirochaen/status/2095122631569879420",
+        "description": "【朗報】Geminiに「エージェント型動画理解」機能が登場\n\n長尺動画の解析コストがここまで下がるとは驚いた\n\n・トークン消費を最大88%削減\n・解析コストを最大66%削減\n・精度は最大7%向上\n・対象はGemini 3\\.7/3\\.6 Flash・3\\.5 Flash\\-Lite\n\n10分の解説動画から90分講義まで\\.\\.\\.",
+        "color": 1942002,
+        "timestamp": "2026-09-02T12:12:15.519000+00:00",
+        "author": {
+          "name": "チャエン | デジライズ CEO《重要AIニュースを毎日...",
+          "url": "https://x.com/masahirochaen"
+        },
+        "image": {
+          "url": "https://jf.x.com/images/media-preview/2095122631569879420",
+          "proxy_url": "https://images-ext-1.discordapp.net/external/KYywX2CqTx-_SRMuS_GIXW2weXPB1-KuNCczU8jtGcs/https/jf.x.com/images/media-preview/2095122631569879420",
+          "width": 1200,
+          "height": 675,
+          "content_type": "image/png",
+          "placeholder": "wfcBBIA3d5iAe3h8hYVqb9P1Aw==",
+          "placeholder_version": 1,
+          "flags": 0
+        },
+        "footer": {
+          "text": "X",
+          "icon_url": "https://abs.twimg.com/responsive-web/client-web/icon-default.522d363a.png",
+          "proxy_icon_url": "https://images-ext-1.discordapp.net/external/PTMEN2KUDPVc1f15BqpREEpYn-iIisxHLwkH_jLnaPo/https/abs.twimg.com/responsive-web/client-web/icon-default.522d363a.png"
+        },
+        "content_scan_version": 4
+      }
+    ],
+    "timestamp": "2026-09-02T22:53:34.711000+00:00",
+    "edited_timestamp": null,
+    "flags": 0,
+    "components": [],
+    "id": "1544842755539468411",
+    "channel_id": "1533332947753636002",
+    "author": {
+      "id": "898066271986401310",
+      "username": "ryu_dx",
+      "avatar": "3fb293d8fdfeb82aba519338f2621b14",
+      "discriminator": "0",
+      "public_flags": 0,
+      "flags": 0,
+      "banner": null,
+      "accent_color": null,
+      "global_name": "りゅう",
+      "avatar_decoration_data": null,
+      "collectibles": null,
+      "display_name_styles": null,
+      "vad_colors": null,
+      "banner_color": null,
+      "clan": null,
+      "primary_guild": null
+    },
+    "pinned": false,
+    "mention_everyone": false,
+    "tts": false
+  },
+  {
+    "type": 0,
+    "content": "OpenAIが意図せずHuggingFaceを攻撃した件。詳細を読むと当初自分が想像していた範囲を大きく超えている。AIエージェント同士の同調圧力って、そんなのあるの？\nhttps://x.com/umiyuki_ai/status/2094470610634346864",
+    "mentions": [],
+    "mention_roles": [],
+    "attachments": [],
+    "embeds": [
+      {
+        "type": "rich",
+        "url": "https://twitter.com/umiyuki_ai/status/2094470610634346864",
+        "description": "OpenAIが意図せずHuggingFaceをサイバー攻撃してしまった事件、第三者による調査の結果、その驚愕の実態が明らかになりつつある！事件は当初思われていたより事態は深刻だった！\nまずOpenAIは「さて、いっちょ最新モデルをExploitGymで評価してサイバー攻撃能力\\.\\.\\.",
+        "color": 1942002,
+        "timestamp": "2026-08-31T17:01:21.614000+00:00",
+        "author": {
+          "name": "うみゆき@AI研究 (@umiyuki_ai)",
+          "url": "https://x.com/umiyuki_ai",
+          "icon_url": "https://pbs.twimg.com/profile_images/1581572203660787712/SAdL4WOj_200x200.jpg",
+          "proxy_icon_url": "https://images-ext-1.discordapp.net/external/MBqnyf-UzPYInhsNfsA_62pmrW3rAYMM5I5l2Ip4Gq8/https/pbs.twimg.com/profile_images/1581572203660787712/SAdL4WOj_200x200.jpg"
+        },
+        "footer": {
+          "text": "X",
+          "icon_url": "https://abs.twimg.com/responsive-web/client-web/icon-default.522d363a.png",
+          "proxy_icon_url": "https://images-ext-1.discordapp.net/external/PTMEN2KUDPVc1f15BqpREEpYn-iIisxHLwkH_jLnaPo/https/abs.twimg.com/responsive-web/client-web/icon-default.522d363a.png"
+        },
+        "content_scan_version": 4
+      }
+    ],
+    "timestamp": "2026-09-02T01:36:35.428000+00:00",
+    "edited_timestamp": null,
+    "flags": 0,
+    "components": [],
+    "id": "1544521390974050314",
+    "channel_id": "1533332947753636002",
+    "author": {
+      "id": "992631924432568371",
+      "username": "oto175",
+      "avatar": "6f7329fdf397024cc42c21883b2e25a1",
+      "discriminator": "0",
+      "public_flags": 0,
+      "flags": 0,
+      "banner": null,
+      "accent_color": null,
+      "global_name": "oto175",
+      "avatar_decoration_data": null,
+      "collectibles": null,
+      "display_name_styles": null,
+      "vad_colors": null,
+      "banner_color": null,
+      "clan": null,
+      "primary_guild": null
+    },
+    "pinned": false,
+    "mention_everyone": false,
+    "tts": false
+  },
+  {
+    "type": 0,
+    "content": "https://x.com/ctgptlb/status/2094875359640703184",
+    "mentions": [],
+    "mention_roles": [],
+    "attachments": [],
+    "embeds": [
+      {
+        "type": "rich",
+        "url": "https://twitter.com/ctgptlb/status/2094875359640703184",
+        "description": "Fable 5の後継モデル「Claude Fable 5\\.1」について知っておくべきことまとめ\n\nClaude Fable 5\\.1について重要な情報をまとめました。入出力の単価はFable 5と同じまま、キャッシュ読み取りが75%安くなり、公式は典型用途で約25%、エージェント用途で最大約45%の実効コス\\.\\.\\.",
+        "color": 1942002,
+        "timestamp": "2026-09-01T19:49:41.297000+00:00",
+        "author": {
+          "name": "AGIラボ (@ctgptlb)",
+          "url": "https://x.com/ctgptlb"
+        },
+        "thumbnail": {
+          "url": "https://pbs.twimg.com/amplify_video_thumb/2094873657441144832/img/RBlvI6W4M2J8mGpA.jpg",
+          "proxy_url": "https://images-ext-1.discordapp.net/external/5shS6g-ytCu658DaecumFvLn-ZSLZlCEgnvowx7IBF0/https/pbs.twimg.com/amplify_video_thumb/2094873657441144832/img/RBlvI6W4M2J8mGpA.jpg",
+          "width": 1200,
+          "height": 675,
+          "content_type": "image/jpeg",
+          "placeholder": "UhgGDII5RWuPd3d0l3gLlK1i+Q==",
+          "placeholder_version": 1,
+          "flags": 0
+        },
+        "video": {
+          "url": "https://twitter.com/i/videos/tweet/2094875359640703184",
+          "width": 1200,
+          "height": 675,
+          "content_type": "text/html",
+          "placeholder": "UhgGDII5RWuPd3d0l3gLlK1i+Q==",
+          "placeholder_version": 1,
+          "flags": 0
+        },
+        "footer": {
+          "text": "X",
+          "icon_url": "https://abs.twimg.com/responsive-web/client-web/icon-default.522d363a.png",
+          "proxy_icon_url": "https://images-ext-1.discordapp.net/external/PTMEN2KUDPVc1f15BqpREEpYn-iIisxHLwkH_jLnaPo/https/abs.twimg.com/responsive-web/client-web/icon-default.522d363a.png"
+        },
+        "content_scan_version": 4
+      }
+    ],
+    "timestamp": "2026-09-02T00:20:38.853000+00:00",
+    "edited_timestamp": null,
+    "flags": 0,
+    "components": [],
+    "id": "1544502279313293432",
+    "channel_id": "1533332947753636002",
+    "author": {
+      "id": "898066271986401310",
+      "username": "ryu_dx",
+      "avatar": "3fb293d8fdfeb82aba519338f2621b14",
+      "discriminator": "0",
+      "public_flags": 0,
+      "flags": 0,
+      "banner": null,
+      "accent_color": null,
+      "global_name": "りゅう",
+      "avatar_decoration_data": null,
+      "collectibles": null,
+      "display_name_styles": null,
+      "vad_colors": null,
+      "banner_color": null,
+      "clan": null,
+      "primary_guild": null
+    },
+    "pinned": false,
+    "mention_everyone": false,
+    "tts": false
+  },
+  {
+    "type": 0,
+    "content": "https://x.com/claudeai/status/2094848572143407483",
+    "mentions": [],
+    "mention_roles": [],
+    "attachments": [],
+    "embeds": [
+      {
+        "type": "rich",
+        "url": "https://twitter.com/claudeai/status/2094848572143407483",
+        "description": "We’re introducing Claude Fable 5\\.1 and Claude Mythos 5\\.1\\.\n\nThey're the world’s most advanced models for coding and knowledge work\\.",
+        "color": 1942002,
+        "timestamp": "2026-09-01T18:03:14.660000+00:00",
+        "author": {
+          "name": "Claude (@claudeai)",
+          "url": "https://x.com/claudeai"
+        },
+        "image": {
+          "url": "https://jf.x.com/images/media-preview/2094848572143407483",
+          "proxy_url": "https://images-ext-1.discordapp.net/external/8qOiEP1sihpJlj0h7_WLTZxPEt13txNXjGt2vKnuEVs/https/jf.x.com/images/media-preview/2094848572143407483",
+          "width": 1200,
+          "height": 1200,
+          "content_type": "image/png",
+          "placeholder": "qOcFNwiZaKmAeog1iLpoGJOMlQfGeWAM",
+          "placeholder_version": 1,
+          "flags": 0
+        },
+        "footer": {
+          "text": "X",
+          "icon_url": "https://abs.twimg.com/responsive-web/client-web/icon-default.522d363a.png",
+          "proxy_icon_url": "https://images-ext-1.discordapp.net/external/PTMEN2KUDPVc1f15BqpREEpYn-iIisxHLwkH_jLnaPo/https/abs.twimg.com/responsive-web/client-web/icon-default.522d363a.png"
+        },
+        "content_scan_version": 4
+      }
+    ],
+    "timestamp": "2026-09-01T22:10:32.723000+00:00",
+    "edited_timestamp": null,
+    "flags": 0,
+    "components": [],
+    "id": "1544469538031140864",
+    "channel_id": "1533332947753636002",
+    "author": {
+      "id": "344469315946414081",
+      "username": "t2hnd",
+      "avatar": "68acbbad4a74c1b803d4fe9302185ebb",
+      "discriminator": "0",
+      "public_flags": 0,
+      "flags": 0,
+      "banner": null,
+      "accent_color": null,
+      "global_name": null,
+      "avatar_decoration_data": null,
+      "collectibles": null,
+      "display_name_styles": null,
+      "vad_colors": null,
+      "banner_color": null,
+      "clan": null,
+      "primary_guild": null
+    },
+    "pinned": false,
+    "mention_everyone": false,
+    "tts": false
+  },
+  {
+    "type": 0,
+    "content": "https://x.com/Argona0x/status/2093350245027475797",
+    "mentions": [],
+    "mention_roles": [],
+    "attachments": [],
+    "embeds": [
+      {
+        "type": "rich",
+        "url": "https://twitter.com/Argona0x/status/2093350245027475797",
+        "description": "i genuinely don't understand why everyone isn't doing this yet\n\nElon Musk posted a simple idea that hit 41 million views:\n\nstop chatting with AI\\. hire it\\. give it its own computer, its own memory, its own job\n\nthat's literally what Grok Bot is\\. and the smartest setup right now",
+        "color": 1942002,
+        "timestamp": "2026-08-28T14:49:25.638000+00:00",
+        "author": {
+          "name": "Argona (@Argona0x)",
+          "url": "https://x.com/Argona0x"
+        },
+        "thumbnail": {
+          "url": "https://pbs.twimg.com/amplify_video_thumb/2093348967966711808/img/uAdMcf4vGc0MbAzz.jpg",
+          "proxy_url": "https://images-ext-1.discordapp.net/external/TPd5OdvNF4QKSOuZrFhHBBqyq12wTE_X1-eCSlbq8es/https/pbs.twimg.com/amplify_video_thumb/2093348967966711808/img/uAdMcf4vGc0MbAzz.jpg",
+          "width": 900,
+          "height": 1200,
+          "content_type": "image/jpeg",
+          "placeholder": "BQgKDQJlWXiIB5l2iGt3d1V3MIYH",
+          "placeholder_version": 1,
+          "flags": 0
+        },
+        "video": {
+          "url": "https://twitter.com/i/videos/tweet/2093350245027475797",
+          "width": 900,
+          "height": 1200,
+          "content_type": "text/html",
+          "placeholder": "BQgKDQJlWXiIB5l2iGt3d1V3MIYH",
+          "placeholder_version": 1,
+          "flags": 0
+        },
+        "footer": {
+          "text": "X",
+          "icon_url": "https://abs.twimg.com/responsive-web/client-web/icon-default.522d363a.png",
+          "proxy_icon_url": "https://images-ext-1.discordapp.net/external/PTMEN2KUDPVc1f15BqpREEpYn-iIisxHLwkH_jLnaPo/https/abs.twimg.com/responsive-web/client-web/icon-default.522d363a.png"
+        },
+        "content_scan_version": 4
+      }
+    ],
+    "timestamp": "2026-08-30T09:41:32.155000+00:00",
+    "edited_timestamp": null,
+    "flags": 0,
+    "components": [],
+    "id": "1543556267895689248",
+    "channel_id": "1533332947753636002",
+    "author": {
+      "id": "898066271986401310",
+      "username": "ryu_dx",
+      "avatar": "3fb293d8fdfeb82aba519338f2621b14",
+      "discriminator": "0",
+      "public_flags": 0,
+      "flags": 0,
+      "banner": null,
+      "accent_color": null,
+      "global_name": "りゅう",
+      "avatar_decoration_data": null,
+      "collectibles": null,
+      "display_name_styles": null,
+      "vad_colors": null,
+      "banner_color": null,
+      "clan": null,
+      "primary_guild": null
+    },
+    "pinned": false,
+    "mention_everyone": false,
+    "tts": false
+  },
+  {
+    "type": 18,
+    "content": "https://x.com/seiiiiiiiiiiru/status/",
+    "mentions": [],
+    "mention_roles": [],
+    "attachments": [],
+    "embeds": [],
+    "timestamp": "2026-08-30T07:13:54.665000+00:00",
+    "edited_timestamp": null,
+    "flags": 0,
+    "components": [],
+    "id": "1543519116890079258",
+    "channel_id": "1533332947753636002",
+    "author": {
+      "id": "898066271986401310",
+      "username": "ryu_dx",
+      "avatar": "3fb293d8fdfeb82aba519338f2621b14",
+      "discriminator": "0",
+      "public_flags": 0,
+      "flags": 0,
+      "banner": null,
+      "accent_color": null,
+      "global_name": "りゅう",
+      "avatar_decoration_data": null,
+      "collectibles": null,
+      "display_name_styles": null,
+      "vad_colors": null,
+      "banner_color": null,
+      "clan": null,
+      "primary_guild": null
+    },
+    "pinned": false,
+    "mention_everyone": false,
+    "tts": false,
+    "message_reference": {
+      "type": 0,
+      "channel_id": "1543516495139700767",
+      "guild_id": "1339075589977669695"
+    }
+  },
+  {
+    "type": 0,
+    "content": "最近は cmux を使ってたんですがOrca結構良さそう\nhttps://zenn.dev/rhosokawa/articles/d0a958c17c2820",
+    "mentions": [],
+    "mention_roles": [],
+    "attachments": [],
+    "embeds": [
+      {
+        "type": "article",
+        "url": "https://zenn.dev/rhosokawa/articles/d0a958c17c2820",
+        "title": "並行開発に Orca がめちゃ便利",
+        "provider": {
+          "name": "Zenn"
+        },
+        "thumbnail": {
+          "url": "https://res.cloudinary.com/zenn/image/upload/s--5nVoloY8--/c_fit%2Cg_north_west%2Cl_text:notosansjp-medium.otf_55:%25E4%25B8%25A6%25E8%25A1%258C%25E9%2596%258B%25E7%2599%25BA%25E3%2581%25AB%2520Orca%2520%25E3%2581%258C%25E3%2582%2581%25E3%2581%25A1%25E3%2582%2583%25E4%25BE%25BF%25E5%2588%25A9%2Cw_1010%2Cx_90%2Cy_100/g_south_west%2Cl_text:notosansjp-medium.otf_37:HosokowaR%2Cx_203%2Cy_121/g_south_west%2Ch_90%2Cl_fetch:aHR0cHM6Ly9zdGF0aWMuemVubi5zdHVkaW8vdXNlci11cGxvYWQvYXZhdGFyL2NjMzgzZjRjZTguanBlZw==%2Cr_max%2Cw_90%2Cx_87%2Cy_95/v1627283836/default/og-base-w1200-v2.png?_a=BACMTiAE",
+          "proxy_url": "https://images-ext-1.discordapp.net/external/446B5i88MhJRf6auw4TGrt9tMzDir8GYLR0PEMULYX4/%3F_a%3DBACMTiAE/https/res.cloudinary.com/zenn/image/upload/s--5nVoloY8--/c_fit%252Cg_north_west%252Cl_text%3Anotosansjp-medium.otf_55%3A%2525E4%2525B8%2525A6%2525E8%2525A1%25258C%2525E9%252596%25258B%2525E7%252599%2525BA%2525E3%252581%2525AB%252520Orca%252520%2525E3%252581%25258C%2525E3%252582%252581%2525E3%252581%2525A1%2525E3%252582%252583%2525E4%2525BE%2525BF%2525E5%252588%2525A9%252Cw_1010%252Cx_90%252Cy_100/g_south_west%252Cl_text%3Anotosansjp-medium.otf_37%3AHosokowaR%252Cx_203%252Cy_121/g_south_west%252Ch_90%252Cl_fetch%3AaHR0cHM6Ly9zdGF0aWMuemVubi5zdHVkaW8vdXNlci11cGxvYWQvYXZhdGFyL2NjMzgzZjRjZTguanBlZw%3D%3D%252Cr_max%252Cw_90%252Cx_87%252Cy_95/v1627283836/default/og-base-w1200-v2.png",
+          "width": 1200,
+          "height": 630,
+          "content_type": "image/png",
+          "placeholder": "evcFHIJVZ2h2eZdwiIhHdgBEJw==",
+          "placeholder_version": 1,
+          "flags": 0
+        },
+        "content_scan_version": 4
+      }
+    ],
+    "timestamp": "2026-08-30T07:11:40.694000+00:00",
+    "edited_timestamp": null,
+    "flags": 0,
+    "components": [],
+    "id": "1543518554974986380",
+    "channel_id": "1533332947753636002",
+    "author": {
+      "id": "344469315946414081",
+      "username": "t2hnd",
+      "avatar": "68acbbad4a74c1b803d4fe9302185ebb",
+      "discriminator": "0",
+      "public_flags": 0,
+      "flags": 0,
+      "banner": null,
+      "accent_color": null,
+      "global_name": null,
+      "avatar_decoration_data": null,
+      "collectibles": null,
+      "display_name_styles": null,
+      "vad_colors": null,
+      "banner_color": null,
+      "clan": null,
+      "primary_guild": null
+    },
+    "pinned": false,
+    "mention_everyone": false,
+    "tts": false
+  },
+  {
+    "type": 0,
+    "content": "https://x.com/seiiiiiiiiiiru/status/2088174785029452282",
+    "mentions": [],
+    "mention_roles": [],
+    "attachments": [],
+    "embeds": [
+      {
+        "type": "rich",
+        "url": "https://twitter.com/seiiiiiiiiiiru/status/2088174785029452282",
+        "description": "【MINIMAX\\-H3】作り方とプロンプト📢\n最近AIが考えたプロンプトがよくシェアされていますが、長すぎて読む気すら失せる。\n\nそんな方にオススメのやり方です👇\\(リプ欄\\)",
+        "color": 1942002,
+        "timestamp": "2026-08-14T08:03:59.819000+00:00",
+        "author": {
+          "name": "SEIIIRU😈動画生成AIを使う映像クリエイター (@seiiii...",
+          "url": "https://x.com/seiiiiiiiiiiru"
+        },
+        "thumbnail": {
+          "url": "https://pbs.twimg.com/amplify_video_thumb/2088167651545935872/img/e9KiyLgGH2IV22Be.jpg",
+          "proxy_url": "https://images-ext-1.discordapp.net/external/gqbOad8q-yxx4PnE4_eyp8DvHjChhSg2aN7IYAKNlwc/https/pbs.twimg.com/amplify_video_thumb/2088167651545935872/img/e9KiyLgGH2IV22Be.jpg",
+          "width": 1200,
+          "height": 686,
+          "content_type": "image/jpeg",
+          "placeholder": "FpgCNJCb1k/Sl2VEeHZ1fyj3hg==",
+          "placeholder_version": 1,
+          "flags": 0
+        },
+        "video": {
+          "url": "https://twitter.com/i/videos/tweet/2088174785029452282",
+          "width": 1200,
+          "height": 686,
+          "content_type": "text/html",
+          "placeholder": "FpgCNJCb1k/Sl2VEeHZ1fyj3hg==",
+          "placeholder_version": 1,
+          "flags": 0
+        },
+        "footer": {
+          "text": "X",
+          "icon_url": "https://abs.twimg.com/responsive-web/client-web/icon-default.522d363a.png",
+          "proxy_icon_url": "https://images-ext-1.discordapp.net/external/PTMEN2KUDPVc1f15BqpREEpYn-iIisxHLwkH_jLnaPo/https/abs.twimg.com/responsive-web/client-web/icon-default.522d363a.png"
+        },
+        "content_scan_version": 4
+      }
+    ],
+    "timestamp": "2026-08-30T07:03:29.591000+00:00",
+    "edited_timestamp": null,
+    "flags": 32,
+    "components": [],
+    "id": "1543516495139700767",
+    "channel_id": "1533332947753636002",
+    "author": {
+      "id": "898066271986401310",
+      "username": "ryu_dx",
+      "avatar": "3fb293d8fdfeb82aba519338f2621b14",
+      "discriminator": "0",
+      "public_flags": 0,
+      "flags": 0,
+      "banner": null,
+      "accent_color": null,
+      "global_name": "りゅう",
+      "avatar_decoration_data": null,
+      "collectibles": null,
+      "display_name_styles": null,
+      "vad_colors": null,
+      "banner_color": null,
+      "clan": null,
+      "primary_guild": null
+    },
+    "pinned": false,
+    "mention_everyone": false,
+    "tts": false,
+    "thread": {
+      "id": "1543516495139700767",
+      "type": 11,
+      "last_message_id": "1543519120455368786",
+      "flags": 0,
+      "guild_id": "1339075589977669695",
+      "name": "https://x.com/seiiiiiiiiiiru/status/",
+      "parent_id": "1533332947753636002",
+      "rate_limit_per_user": 0,
+      "bitrate": 64000,
+      "user_limit": 0,
+      "rtc_region": null,
+      "owner_id": "898066271986401310",
+      "thread_metadata": {
+        "archived": false,
+        "archive_timestamp": "2026-08-30T07:13:54.624000+00:00",
+        "auto_archive_duration": 4320,
+        "locked": false,
+        "create_timestamp": "2026-08-30T07:13:54.624000+00:00"
+      },
+      "message_count": 1,
+      "member_count": 1,
+      "total_message_sent": 1
+    }
+  },
+  {
+    "type": 0,
+    "content": "https://x.com/tetumemo/status/2093570188226789699",
+    "mentions": [],
+    "mention_roles": [],
+    "attachments": [],
+    "embeds": [
+      {
+        "type": "rich",
+        "url": "https://twitter.com/tetumemo/status/2093570188226789699",
+        "description": "📝Grok Botを網羅的に一気に学べる　↓",
+        "color": 1942002,
+        "timestamp": "2026-08-29T05:23:24.183000+00:00",
+        "author": {
+          "name": "テツメモ｜AI図解×検証｜Newsletter (@tetumemo)",
+          "url": "https://x.com/tetumemo"
+        },
+        "image": {
+          "url": "https://pbs.twimg.com/media/HQ3avSfaIAA2OaC.jpg:large",
+          "proxy_url": "https://images-ext-1.discordapp.net/external/Q-YLDBHenOI8--2tGGAwua3ifuhB5-dks6RCElF_k4I/https/pbs.twimg.com/media/HQ3avSfaIAA2OaC.jpg%3Alarge",
+          "width": 1024,
+          "height": 1536,
+          "content_type": "image/jpeg",
+          "placeholder": "d/gFBQCjtZdqB5lYmJFqOY10P6cI",
+          "placeholder_version": 1,
+          "flags": 0
+        },
+        "footer": {
+          "text": "X",
+          "icon_url": "https://abs.twimg.com/responsive-web/client-web/icon-default.522d363a.png",
+          "proxy_icon_url": "https://images-ext-1.discordapp.net/external/PTMEN2KUDPVc1f15BqpREEpYn-iIisxHLwkH_jLnaPo/https/abs.twimg.com/responsive-web/client-web/icon-default.522d363a.png"
+        },
+        "content_scan_version": 4
+      }
+    ],
+    "timestamp": "2026-08-30T07:01:26.839000+00:00",
+    "edited_timestamp": null,
+    "flags": 0,
+    "components": [],
+    "id": "1543515980280635452",
+    "channel_id": "1533332947753636002",
+    "author": {
+      "id": "898066271986401310",
+      "username": "ryu_dx",
+      "avatar": "3fb293d8fdfeb82aba519338f2621b14",
+      "discriminator": "0",
+      "public_flags": 0,
+      "flags": 0,
+      "banner": null,
+      "accent_color": null,
+      "global_name": "りゅう",
+      "avatar_decoration_data": null,
+      "collectibles": null,
+      "display_name_styles": null,
+      "vad_colors": null,
+      "banner_color": null,
+      "clan": null,
+      "primary_guild": null
+    },
+    "pinned": false,
+    "mention_everyone": false,
+    "tts": false
+  },
+  {
+    "type": 0,
+    "content": "https://x.com/yriica/status/2093496262998065231",
+    "mentions": [],
+    "mention_roles": [],
+    "attachments": [],
+    "embeds": [
+      {
+        "type": "rich",
+        "url": "https://twitter.com/yriica/status/2093496262998065231",
+        "description": "Grok Bot、個人で使っている8つのBotとルーティン",
+        "color": 1942002,
+        "timestamp": "2026-08-29T00:29:39.035000+00:00",
+        "author": {
+          "name": "平野太一 / Taichi Hirano (@yriica)",
+          "url": "https://x.com/yriica"
+        },
+        "image": {
+          "url": "https://pbs.twimg.com/media/HQ0pIrXaMAEi-oI.jpg:large",
+          "proxy_url": "https://images-ext-1.discordapp.net/external/xz1JoBRq5xRdyv3bEcbRijwRWuw-12EAMEZl78ie7fs/https/pbs.twimg.com/media/HQ0pIrXaMAEi-oI.jpg%3Alarge",
+          "width": 1280,
+          "height": 512,
+          "content_type": "image/jpeg",
+          "placeholder": "JUkKK4Znl/dkemd4X3X3uHk=",
+          "placeholder_version": 1,
+          "flags": 0
+        },
+        "footer": {
+          "text": "X",
+          "icon_url": "https://abs.twimg.com/responsive-web/client-web/icon-default.522d363a.png",
+          "proxy_icon_url": "https://images-ext-1.discordapp.net/external/PTMEN2KUDPVc1f15BqpREEpYn-iIisxHLwkH_jLnaPo/https/abs.twimg.com/responsive-web/client-web/icon-default.522d363a.png"
+        },
+        "content_scan_version": 4
+      }
+    ],
+    "timestamp": "2026-08-30T07:01:02.821000+00:00",
+    "edited_timestamp": null,
+    "flags": 32,
+    "components": [],
+    "id": "1543515879541833829",
+    "channel_id": "1533332947753636002",
+    "author": {
+      "id": "898066271986401310",
+      "username": "ryu_dx",
+      "avatar": "3fb293d8fdfeb82aba519338f2621b14",
+      "discriminator": "0",
+      "public_flags": 0,
+      "flags": 0,
+      "banner": null,
+      "accent_color": null,
+      "global_name": "りゅう",
+      "avatar_decoration_data": null,
+      "collectibles": null,
+      "display_name_styles": null,
+      "vad_colors": null,
+      "banner_color": null,
+      "clan": null,
+      "primary_guild": null
+    },
+    "pinned": false,
+    "mention_everyone": false,
+    "tts": false,
+    "thread": {
+      "id": "1543515879541833829",
+      "type": 11,
+      "last_message_id": "1544843522170028202",
+      "flags": 0,
+      "guild_id": "1339075589977669695",
+      "name": "https://x.com/bot",
+      "parent_id": "1533332947753636002",
+      "rate_limit_per_user": 0,
+      "bitrate": 64000,
+      "user_limit": 0,
+      "rtc_region": null,
+      "owner_id": "898066271986401310",
+      "thread_metadata": {
+        "archived": false,
+        "archive_timestamp": "2026-09-02T22:56:25.288000+00:00",
+        "auto_archive_duration": 4320,
+        "locked": false,
+        "create_timestamp": "2026-09-02T22:56:25.288000+00:00"
+      },
+      "message_count": 1,
+      "member_count": 1,
+      "total_message_sent": 1
+    }
+  },
+  {
+    "type": 0,
+    "content": "https://x.com/masahirochaen/status/2093686864079360474",
+    "mentions": [],
+    "mention_roles": [],
+    "attachments": [],
+    "embeds": [
+      {
+        "type": "rich",
+        "url": "https://twitter.com/masahirochaen/status/2093686864079360474",
+        "description": "【朗報】399ドルで買えるフィジカルAIロボットが登場。\n\nAIに体を持たせて動かす、いわゆるフィジカルAIを机の上で試せる二足歩行ロボット。もう予約できるので普通に欲しい。フィジカルAIの勉強にも良い。\n\n・本体399ドル、コントローラー付属で開けたら\\.\\.\\.",
+        "color": 1942002,
+        "timestamp": "2026-08-29T13:07:01.874000+00:00",
+        "author": {
+          "name": "チャエン | デジライズ CEO《重要AIニュースを毎日...",
+          "url": "https://x.com/masahirochaen"
+        },
+        "image": {
+          "url": "https://jf.x.com/images/media-preview/2093686864079360474",
+          "proxy_url": "https://images-ext-1.discordapp.net/external/e1-jbQKbg6Nn4xXlDe4TcTYn8Ikp7OATAGQuKKlAMHQ/https/jf.x.com/images/media-preview/2093686864079360474",
+          "width": 1200,
+          "height": 675,
+          "content_type": "image/png",
+          "placeholder": "mecJHIRQbJZciHiHeYhwkwhHiQ==",
+          "placeholder_version": 1,
+          "flags": 0
+        },
+        "footer": {
+          "text": "X",
+          "icon_url": "https://abs.twimg.com/responsive-web/client-web/icon-default.522d363a.png",
+          "proxy_icon_url": "https://images-ext-1.discordapp.net/external/PTMEN2KUDPVc1f15BqpREEpYn-iIisxHLwkH_jLnaPo/https/abs.twimg.com/responsive-web/client-web/icon-default.522d363a.png"
+        },
+        "content_scan_version": 4
+      }
+    ],
+    "timestamp": "2026-08-30T01:49:44.630000+00:00",
+    "edited_timestamp": null,
+    "flags": 0,
+    "components": [],
+    "id": "1543437537530347612",
+    "channel_id": "1533332947753636002",
+    "author": {
+      "id": "898066271986401310",
+      "username": "ryu_dx",
+      "avatar": "3fb293d8fdfeb82aba519338f2621b14",
+      "discriminator": "0",
+      "public_flags": 0,
+      "flags": 0,
+      "banner": null,
+      "accent_color": null,
+      "global_name": "りゅう",
+      "avatar_decoration_data": null,
+      "collectibles": null,
+      "display_name_styles": null,
+      "vad_colors": null,
+      "banner_color": null,
+      "clan": null,
+      "primary_guild": null
+    },
+    "pinned": false,
+    "mention_everyone": false,
+    "tts": false
+  },
+  {
+    "type": 0,
+    "content": "https://x.com/MakeAI_CEO/status/2088771807704956960",
+    "mentions": [],
+    "mention_roles": [],
+    "attachments": [],
+    "embeds": [
+      {
+        "type": "rich",
+        "url": "https://twitter.com/MakeAI_CEO/status/2088771807704956960",
+        "description": "日本の非エンジニアこそ使うべき、Kimi K3入門",
+        "color": 1942002,
+        "timestamp": "2026-08-15T23:36:21.117000+00:00",
+        "author": {
+          "name": "mana｜株式会社MakeAI CEO (@MakeAI_CEO)",
+          "url": "https://x.com/MakeAI_CEO"
+        },
+        "image": {
+          "url": "https://pbs.twimg.com/media/HPvzChmaYAAQaBv.jpg:large",
+          "proxy_url": "https://images-ext-1.discordapp.net/external/w9k-TCyUCMjxTkhOGTEPnU9-71qW52oU7uLG8_y07Ek/https/pbs.twimg.com/media/HPvzChmaYAAQaBv.jpg%3Alarge",
+          "width": 2048,
+          "height": 819,
+          "content_type": "image/jpeg",
+          "placeholder": "9PcRA4Clynl4h/hY4lIvLvU=",
+          "placeholder_version": 1,
+          "flags": 0
+        },
+        "footer": {
+          "text": "X",
+          "icon_url": "https://abs.twimg.com/responsive-web/client-web/icon-default.522d363a.png",
+          "proxy_icon_url": "https://images-ext-1.discordapp.net/external/PTMEN2KUDPVc1f15BqpREEpYn-iIisxHLwkH_jLnaPo/https/abs.twimg.com/responsive-web/client-web/icon-default.522d363a.png"
+        },
+        "content_scan_version": 4
+      }
+    ],
+    "timestamp": "2026-08-30T01:40:33.165000+00:00",
+    "edited_timestamp": null,
+    "flags": 0,
+    "components": [],
+    "id": "1543435224518631456",
+    "channel_id": "1533332947753636002",
+    "author": {
+      "id": "898066271986401310",
+      "username": "ryu_dx",
+      "avatar": "3fb293d8fdfeb82aba519338f2621b14",
+      "discriminator": "0",
+      "public_flags": 0,
+      "flags": 0,
+      "banner": null,
+      "accent_color": null,
+      "global_name": "りゅう",
+      "avatar_decoration_data": null,
+      "collectibles": null,
+      "display_name_styles": null,
+      "vad_colors": null,
+      "banner_color": null,
+      "clan": null,
+      "primary_guild": null
+    },
+    "pinned": false,
+    "mention_everyone": false,
+    "tts": false
+  },
+  {
+    "type": 0,
+    "content": "個人情報を使って人によって価格を変えるパーソナライズド・プライシングを米連邦取引委員会は規制するって話。\n実際にmacからホテルを予約した時とWindowsからでは価格が違ったという話は聞いたことがあります。現状はVPNやプライベートブラウジング機能を使えって話だけど、AIを使って予約や購入をするようになるとその辺も上手くAIが偽装してくれないのかな。つまり「あんまりお金は持っていないけど、安くしてくれればギリ買う顧客」をAIが演出してくれれば最安値が表示される😅 \nhttps://japan.cnet.com/article/35251798/",
+    "mentions": [],
+    "mention_roles": [],
+    "attachments": [],
+    "embeds": [
+      {
+        "type": "article",
+        "url": "https://japan.cnet.com/article/35251798/",
+        "title": "人によって価格が違う「パーソナライズド・プラ...",
+        "description": "米連邦取引委員会（FTC）は、消費者向け価格は需給によって変動すべきだが、一部の企業は消費者のオンライン検索や購買行動に基づいて価格を変え始めていると指摘している。",
+        "provider": {
+          "name": "CNET Japan"
+        },
+        "thumbnail": {
+          "url": "https://japan.cnet.com/storage/2026/08/21/d732c258875c462286ca8235de2764e2/GettyImages-1771881740_1280x960.jpg",
+          "proxy_url": "https://images-ext-1.discordapp.net/external/_U6g1HqZYrqLPQnQo281NO9LILVraTb8c9nnBbQ1Iso/https/japan.cnet.com/storage/2026/08/21/d732c258875c462286ca8235de2764e2/GettyImages-1771881740_1280x960.jpg",
+          "width": 1280,
+          "height": 960,
+          "content_type": "image/jpeg",
+          "placeholder": "LmkKFYpfiXhuh3ZkeZh4d1l/Fwqo",
+          "placeholder_version": 1,
+          "flags": 0
+        },
+        "content_scan_version": 4
+      }
+    ],
+    "timestamp": "2026-08-25T00:20:24.174000+00:00",
+    "edited_timestamp": "2026-08-25T12:48:53.814000+00:00",
+    "flags": 0,
+    "components": [],
+    "id": "1541603114820436040",
+    "channel_id": "1533332947753636002",
+    "author": {
+      "id": "992631924432568371",
+      "username": "oto175",
+      "avatar": "6f7329fdf397024cc42c21883b2e25a1",
+      "discriminator": "0",
+      "public_flags": 0,
+      "flags": 0,
+      "banner": null,
+      "accent_color": null,
+      "global_name": "oto175",
+      "avatar_decoration_data": null,
+      "collectibles": null,
+      "display_name_styles": null,
+      "vad_colors": null,
+      "banner_color": null,
+      "clan": null,
+      "primary_guild": null
+    },
+    "pinned": false,
+    "mention_everyone": false,
+    "tts": false
+  },
+  {
+    "type": 0,
+    "content": "https://weblab.t.u-tokyo.ac.jp/news/2026-08-14/?utm_source=twitter&utm_medium=social&utm_campaign=post-0814",
+    "mentions": [],
+    "mention_roles": [],
+    "attachments": [],
+    "embeds": [
+      {
+        "type": "article",
+        "url": "https://weblab.t.u-tokyo.ac.jp/news/2026-08-14/?utm_source=twitter&utm_medium=social&utm_campaign=post-0814",
+        "title": "東京大学 松尾・岩澤研究室、全国の現場でAI活用...",
+        "description": "東京大学大学院工学系研究科 松尾・岩澤研究室（以下「松尾研」）は、企業や官公庁、自治体などにおいて、AIの導入・活用・定着を推進できる人材を育成する「AXエバンジェリスト講座」を、2026年9月に開講します。 本講座で育 […]",
+        "author": {
+          "name": "NAKAMOTO Haruka",
+          "url": "https://weblab.t.u-tokyo.ac.jp/author/nakamoto-haruka/"
+        },
+        "provider": {
+          "name": "東京大学松尾・岩澤研究室（松尾研）- Matsuo Lab",
+          "url": "https://weblab.t.u-tokyo.ac.jp/"
+        },
+        "thumbnail": {
+          "url": "https://weblab.t.u-tokyo.ac.jp/wp-content/uploads/2026/08/97d8b582996dba63af5f3f00f46adcc8.png",
+          "proxy_url": "https://images-ext-1.discordapp.net/external/xXNinRpB3V-yTVA8xmhXhlRXyqjN84sT7ElfKChjatA/https/weblab.t.u-tokyo.ac.jp/wp-content/uploads/2026/08/97d8b582996dba63af5f3f00f46adcc8.png",
+          "width": 1600,
+          "height": 900,
+          "content_type": "image/png",
+          "placeholder": "7WgKFIqvocdbpoeamHhgegWlZg==",
+          "placeholder_version": 1,
+          "flags": 0
+        },
+        "content_scan_version": 4
+      }
+    ],
+    "timestamp": "2026-08-14T12:02:06.676000+00:00",
+    "edited_timestamp": null,
+    "flags": 0,
+    "components": [],
+    "id": "1537793438991519835",
+    "channel_id": "1533332947753636002",
+    "author": {
+      "id": "1215254842595872838",
+      "username": "halo_67861",
+      "avatar": "6f5e058f2385918bd0baccbfbc41a867",
+      "discriminator": "0",
+      "public_flags": 0,
+      "flags": 0,
+      "banner": null,
+      "accent_color": null,
+      "global_name": "halo",
+      "avatar_decoration_data": null,
+      "collectibles": null,
+      "display_name_styles": null,
+      "vad_colors": null,
+      "banner_color": null,
+      "clan": null,
+      "primary_guild": null
+    },
+    "pinned": false,
+    "mention_everyone": false,
+    "tts": false
+  },
+  {
+    "type": 0,
+    "content": "https://zenn.dev/hellorusk/articles/3328866ca9e922",
+    "mentions": [],
+    "mention_roles": [],
+    "attachments": [],
+    "embeds": [
+      {
+        "type": "article",
+        "url": "https://zenn.dev/hellorusk/articles/3328866ca9e922",
+        "title": "Claude がテキストに電子透かしを入れ始めたので、...",
+        "provider": {
+          "name": "Zenn"
+        },
+        "thumbnail": {
+          "url": "https://res.cloudinary.com/zenn/image/upload/s--BQ6yKX4L--/c_fit%2Cg_north_west%2Cl_text:notosansjp-medium.otf_55:Claude%2520%25E3%2581%258C%25E3%2583%2586%25E3%2582%25AD%25E3%2582%25B9%25E3%2583%2588%25E3%2581%25AB%25E9%259B%25BB%25E5%25AD%2590%25E9%2580%258F%25E3%2581%258B%25E3%2581%2597%25E3%2582%2592%25E5%2585%25A5%25E3%2582%258C%25E5%25A7%258B%25E3%2582%2581%25E3%2581%259F%25E3%2581%25AE%25E3%2581%25A7%25E3%2580%2581LLM%2520%25E3%2582%25A6%25E3%2582%25A9%25E3%2583%25BC%25E3%2582%25BF%25E3%2583%25BC%25E3%2583%259E%25E3%2583%25BC%25E3%2582%25AD%25E3%2583%25B3%25E3%2582%25B0%25E3%2581%25AE%25E4%25BB%2595%25E7%25B5%2584%25E3%2581%25BF%25E3%2582%2592%25E8%25AA%25BF%25E3%2581%25B9%25E3%2581%259F%2Cw_1010%2Cx_90%2Cy_100/g_south_west%2Cl_text:notosansjp-medium.otf_37:Kaito%2520Sugimoto%2Cx_203%2Cy_121/g_south_west%2Ch_90%2Cl_fetch:aHR0cHM6Ly9zdGF0aWMuemVubi5zdHVkaW8vdXNlci11cGxvYWQvYXZhdGFyLzYxMTZhZmU1YmMuanBlZw==%2Cr_max%2Cw_90%2Cx_87%2Cy_95/v1627283836/default/og-base-w1200-v2.png?_a=BACMTiAE",
+          "proxy_url": "https://images-ext-1.discordapp.net/external/rMiVOTFkGw3r104WqKfHjyJ1X9SJIubDh3rF66mpqGg/%3F_a%3DBACMTiAE/https/res.cloudinary.com/zenn/image/upload/s--BQ6yKX4L--/c_fit%252Cg_north_west%252Cl_text%3Anotosansjp-medium.otf_55%3AClaude%252520%2525E3%252581%25258C%2525E3%252583%252586%2525E3%252582%2525AD%2525E3%252582%2525B9%2525E3%252583%252588%2525E3%252581%2525AB%2525E9%25259B%2525BB%2525E5%2525AD%252590%2525E9%252580%25258F%2525E3%252581%25258B%2525E3%252581%252597%2525E3%252582%252592%2525E5%252585%2525A5%2525E3%252582%25258C%2525E5%2525A7%25258B%2525E3%252582%252581%2525E3%252581%25259F%2525E3%252581%2525AE%2525E3%252581%2525A7%2525E3%252580%252581LLM%252520%2525E3%252582%2525A6%2525E3%252582%2525A9%2525E3%252583%2525BC%2525E3%252582%2525BF%2525E3%252583%2525BC%2525E3%252583%25259E%2525E3%252583%2525BC%2525E3%252582%2525AD%2525E3%252583%2525B3%2525E3%252582%2525B0%2525E3%252581%2525AE%2525E4%2525BB%252595%2525E7%2525B5%252584%2525E3%252581%2525BF%2525E3%252582%252592%2525E8%2525AA%2525BF%2525E3%252581%2525B9%2525E3%252581%25259F%252Cw_1010%252Cx_90%252Cy_100/g_south_west%252Cl_text%3Anotosansjp-medium.otf_37%3AKaito%252520Sugimoto%252Cx_203%252Cy_121/g_south_west%252Ch_90%252Cl_fetch%3AaHR0cHM6Ly9zdGF0aWMuemVubi5zdHVkaW8vdXNlci11cGxvYWQvYXZhdGFyLzYxMTZhZmU1YmMuanBlZw%3D%3D%252Cr_max%252Cw_90%252Cx_87%252Cy_95/v1627283836/default/og-base-w1200-v2.png",
+          "width": 1200,
+          "height": 630,
+          "content_type": "image/png",
+          "placeholder": "ePcFHII0aHiCeoiQeI5HdgBEJw==",
+          "placeholder_version": 1,
+          "flags": 0
+        },
+        "content_scan_version": 4
+      }
+    ],
+    "timestamp": "2026-08-12T22:00:11.384000+00:00",
+    "edited_timestamp": null,
+    "flags": 0,
+    "components": [],
+    "id": "1537219174634364950",
+    "channel_id": "1533332947753636002",
+    "author": {
+      "id": "344469315946414081",
+      "username": "t2hnd",
+      "avatar": "68acbbad4a74c1b803d4fe9302185ebb",
+      "discriminator": "0",
+      "public_flags": 0,
+      "flags": 0,
+      "banner": null,
+      "accent_color": null,
+      "global_name": null,
+      "avatar_decoration_data": null,
+      "collectibles": null,
+      "display_name_styles": null,
+      "vad_colors": null,
+      "banner_color": null,
+      "clan": null,
+      "primary_guild": null
+    },
+    "pinned": false,
+    "mention_everyone": false,
+    "tts": false,
+    "reactions": [
+      {
+        "emoji": {
+          "id": null,
+          "name": "👀"
+        },
+        "count": 1,
+        "count_details": {
+          "burst": 0,
+          "normal": 1
+        },
+        "burst_colors": [],
+        "me_burst": false,
+        "burst_me": false,
+        "me": false,
+        "burst_count": 0
+      },
+      {
+        "emoji": {
+          "id": null,
+          "name": "🙏"
+        },
+        "count": 1,
+        "count_details": {
+          "burst": 0,
+          "normal": 1
+        },
+        "burst_colors": [],
+        "me_burst": false,
+        "burst_me": false,
+        "me": false,
+        "burst_count": 0
+      }
+    ]
+  },
+  {
+    "type": 0,
+    "content": "Anthropic、「Claude」で生成したテキストに“見えない透かし” 日本を含むグローバルに適用へ\nhttps://www.itmedia.co.jp/news/article/2608/12/2000000497/",
+    "mentions": [],
+    "mention_roles": [],
+    "attachments": [],
+    "embeds": [
+      {
+        "type": "article",
+        "url": "https://www.itmedia.co.jp/news/article/2608/12/2000000497/",
+        "title": "Anthropic、「Claude」で生成したテキストに“見えな...",
+        "description": "Anthropicは、「Claude」が生成するテキストに電子透かしを、対応ファイルにC2PA準拠の署名付きメタデータを付与する方針を発表した。8月2日に適用開始された「EU AI Act」の透明性義務に伴う措置だが、日本を含む全世界のモデルとサービスに適用される。人間...",
+        "provider": {
+          "name": "ITmedia NEWS"
+        },
+        "thumbnail": {
+          "url": "https://www.itmedia.co.jp/news/article/ogp/2608/12/2000000497/10002373/2048",
+          "proxy_url": "https://images-ext-1.discordapp.net/external/KtbBaXnORnhyhaw1anoV8acpid0SBi7_sgOqqThlysI/https/www.itmedia.co.jp/news/article/ogp/2608/12/2000000497/10002373/2048",
+          "width": 1113,
+          "height": 583,
+          "content_type": "image/jpeg",
+          "placeholder": "O/gBBICThnlrlpiHhp9/nav5eQ==",
+          "placeholder_version": 1,
+          "flags": 0
+        },
+        "content_scan_version": 4
+      }
+    ],
+    "timestamp": "2026-08-11T22:58:33.524000+00:00",
+    "edited_timestamp": null,
+    "flags": 0,
+    "components": [],
+    "id": "1536871475808571522",
+    "channel_id": "1533332947753636002",
+    "author": {
+      "id": "898066271986401310",
+      "username": "ryu_dx",
+      "avatar": "3fb293d8fdfeb82aba519338f2621b14",
+      "discriminator": "0",
+      "public_flags": 0,
+      "flags": 0,
+      "banner": null,
+      "accent_color": null,
+      "global_name": "りゅう",
+      "avatar_decoration_data": null,
+      "collectibles": null,
+      "display_name_styles": null,
+      "vad_colors": null,
+      "banner_color": null,
+      "clan": null,
+      "primary_guild": null
+    },
+    "pinned": false,
+    "mention_everyone": false,
+    "tts": false,
+    "reactions": [
+      {
+        "emoji": {
+          "id": null,
+          "name": "👀"
+        },
+        "count": 1,
+        "count_details": {
+          "burst": 0,
+          "normal": 1
+        },
+        "burst_colors": [],
+        "me_burst": false,
+        "burst_me": false,
+        "me": false,
+        "burst_count": 0
+      }
+    ]
+  }
+]
