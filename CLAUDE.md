@@ -2,13 +2,13 @@
 
 GitHub Pages 静的サイト。AI関連ミートアップ（AI BASE）の月次まとめを掲載。
 
-> Codex など Claude Code 以外のコーディングエージェントは `AGENTS.md` を参照。内容は同期させること。
+> このファイルは Codex など Claude Code 以外のコーディングエージェント向けの指示書です。Claude Code は同じ内容を `CLAUDE.md` から読みます。両ファイルは同期させてください。
 
 ## 自動化ワークフロー（n8n）
 
 **ブランチ・PR・HTMLテンプレートはすべて n8n が自動生成する。絶対に削除・上書きしないこと。**
 
-Claude の役割は、n8n が作成したブランチ上に追加コミットをすることで、自動生成されたコンテンツを補完・修正すること。
+エージェントの役割は、n8n が作成したブランチ上に追加コミットをすることで、自動生成されたコンテンツを補完・修正すること。
 
 ### n8n が行うこと
 - Discord チャンネルデータ → `summaries/response.json` に保存
@@ -17,20 +17,24 @@ Claude の役割は、n8n が作成したブランチ上に追加コミットを
 - PR を作成して `main` にマージ申請
 - `index.html` に新しい `.summary-card` を追加
 
-### Claude が行うこと
+### エージェントが行うこと
 - 既存の `auto-summary-*` ブランチ上で追加コミットをする
 - HTML の内容確認・修正（リンク切れ、フォーマット崩れ等）
 - n8n の PR・ブランチには干渉しない（force push, ブランチ削除 禁止）
 
 ## generate-summary スキル（n8nを介さない代替フロー）
 
-`scripts/generate-summary.mjs` は、n8n を使わずにこのセッション自身が Discord メッセージの分類まで担う代替ワークフロー。詳細は `.claude/commands/generate-summary.md` を参照（`/generate-summary` で起動）。
+`scripts/generate-summary.mjs` は、n8n を使わずにこのエージェントセッション自身（Codex・Claude Code どちらでも可）が Discord メッセージの分類まで担う代替ワークフロー。詳細は `.codex/prompts/generate-summary.md`（Codex）または `.claude/commands/generate-summary.md`（Claude Code）を参照。
 
 要点:
 - 分類（グループ分け・headline・タグ付け）はデフォルトでこのセッション自身が行う。追加のAPI課金は発生せず、今使っているモデル・サブスクリプションで完結する
-- グループ分けは固定のカテゴリ一覧ではなく、そのバッチのリンク群を見て6〜7個程度の自然なグループをその場で決める
-- `ANTHROPIC_API_KEY` は任意。設定した場合のみ Anthropic API 経由の自動分類 + レビューなしでのPR作成までフォールバックできる（ライブなセッションがないヘッドレス/CI実行向け）
-- 使い方（3段階、`ANTHROPIC_API_KEY` 未設定時）: `node scripts/generate-summary.mjs <channel_id> <channel_name>` で取得・前処理 → 表示された処理済みエントリを自分でグループ分け → `node scripts/generate-summary.mjs render <processed.json> <classified.json> <channel_name>` でHTMLを`summaries/`に生成（一旦停止）→ レビュー後 `node scripts/generate-summary.mjs publish <filename> <channel_name>` でPR作成
+- グループ分けは固定のカテゴリ一覧ではなく、そのバッチのリンク群を見て6〜7個程度の自然なグループをその場で決める（例:「OpenAI GPT-6 Astra関連」「Claude/Anthropicの動向」）
+- `ANTHROPIC_API_KEY` は任意。設定した場合のみ Anthropic API 経由の自動分類 + レビューなしでのPR作成までフォールバックできる（ライブなエージェントセッションがないヘッドレス/CI実行向け）
+- 公開するのは生成 HTML とトップページのカードのみ。Discord 生メッセージは一時ディレクトリに置くだけでコミットしない。URL の共有トラッキングパラメータ（`utm_*`、X の `s` / `t`）は自動で除去される
+- 使い方（3段階、`ANTHROPIC_API_KEY` 未設定時）:
+  1. `node scripts/generate-summary.mjs <channel_id> <channel_name>` — Discord取得・前処理。グループ分けルールと次コマンドを表示して停止
+  2. 表示された処理済みエントリを自分（エージェント）でグループ分けし、`node scripts/generate-summary.mjs render <processed.json> <classified.json> <channel_name>` でHTMLを `summaries/` に生成（PRはまだ作らず、ここで一旦停止）
+  3. 生成されたHTMLを**必ずレビュー**し、問題なければ `node scripts/generate-summary.mjs publish <filename> <channel_name>` でブランチ作成・commit・push・PR作成まで進める
 
 ## ディレクトリ構成
 
@@ -40,10 +44,10 @@ style.css             # 共通スタイル（変更は慎重に）
 CNAME                 # カスタムドメイン設定（変更禁止）
 img/                  # ロゴ等の画像
 scripts/
-  generate-summary.mjs # n8nを介さない代替の生成スクリプト（fetch/renderの2段階）
+  generate-summary.mjs # n8nを介さない代替の生成スクリプト（fetch/render/publishの3段階）
 summaries/
   YYYYMMDD_HHMM.html  # 月次まとめページ（n8n または generate-summary.mjs が生成）
-  response.json        # Discord チャンネルデータ（n8n または generate-summary.mjs が書き込む）
+  response.json        # Discord 生データ（n8n が書き込む場合あり）。.gitignore 済み・コミットしない
 ```
 
 ## HTML 構造
@@ -86,7 +90,8 @@ summaries/
 ## DO NOT
 
 - `CNAME` を変更しない
-- `response.json` を編集しない（n8n / generate-summary.mjs の入力データ）
+- `response.json` を編集しない（n8n の入力データ）
+- `response.json` などの Discord 生データ（ユーザーID・ログイン名等を含む）をコミット・公開しない
 - n8n 生成のブランチを削除・force push しない
 - `main` ブランチに直接コミットしない（PR 経由のみ）
 - CSS フレームワーク・JS ライブラリを導入しない（静的サイト）

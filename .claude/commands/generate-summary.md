@@ -55,10 +55,16 @@ node scripts/generate-summary.mjs publish <filename> <channel_name>
 ## 処理フロー
 
 1. **Discord 取得**（`fetch`） — Bot API でメッセージを全件取得（100件ずつページング）
-2. **前処理**（`fetch`） — URL を含むメッセージのみ抽出、URL/日付(JST)/投稿者コメント/埋め込み(Xポストの投稿者名・本文)を分離し、一時ファイルに書き出す
+2. **前処理**（`fetch`） — URL を含むメッセージのみ抽出、URL/日付(JST)/投稿者コメント/埋め込み(Xポストの投稿者名・本文)を分離し、一時ファイルに書き出す。URL からは共有トラッキング用パラメータ（`utm_*`、X の `s` / `t`）を除去する
 3. **分類** — デフォルトはこのセッション（Claude）自身が、バッチ全体を見て6〜7個程度の自然なグループに分類。`ANTHROPIC_API_KEY` が設定されている場合は `fetch` が自動でAnthropic APIを呼び出し、そのまま4・5まで一気に進む（レビューなし・ヘッドレス/CI向け）
 4. **HTML 生成**（`render`） — グループ別／時系列タブ切り替え、タグフィルタリング、投稿者コメント、Xポストの投稿者・本文プレビュー（折りたたみ表示）付きの完全テンプレートで生成し、`summaries/` に書き出して停止（レビューのためのチェックポイント）
-5. **PR 作成**（`publish`） — `auto-summary-YYYY-MM-DD-HHmmss` ブランチを切って commit → push → PR
+5. **PR 作成**（`publish`） — `auto-summary-YYYY-MM-DD-HHmmss` ブランチを切って commit → push → PR。最新の `origin/main` を起点に、生成 HTML と `index.html` のカードのみをコミットする
+
+### 公開データの扱い（プライバシー）
+
+- Discord の生メッセージ（ユーザーID・ログイン名・アバター等を含む）はリポジトリに置かず、コミットもしない。`fetch` は一時ディレクトリに保存するだけで、`summaries/response.json` は `.gitignore` 済み
+- 公開ページに載るのは投稿者の表示名・投稿コメント・リンク・Xポストの埋め込み情報のみ
+- X の共有リンクに付く `t=`（共有者のアカウントに紐づく）などのトラッキングパラメータは自動で除去される。レビュー時に他にも個人を特定しうる情報が紛れていないか確認すること
 
 ### Xポストの扱い
 
@@ -69,8 +75,8 @@ node scripts/generate-summary.mjs publish <filename> <channel_name>
 | ファイル | 内容 |
 |----------|------|
 | `summaries/YYYYMMDD_HHMM.html` | 生成されたまとめページ（`render` が書き出す。レビュー対象） |
-| `summaries/response.json` | Discord 生メッセージ（デバッグ用） |
 | `<tmpdir>/ai-base-summary-<channel_id>.json` | `fetch` が書き出す処理済みエントリ（分類対象・一時ファイル） |
+| `<tmpdir>/ai-base-summary-<channel_id>.raw.json` | Discord 生メッセージ（デバッグ用・一時ファイル。コミットしない） |
 
 ## 手動実行（このセッション内）
 
@@ -80,3 +86,10 @@ node scripts/generate-summary.mjs publish <filename> <channel_name>
 2. 上記「使い方」の手順1〜3を順番に実行する（手順2の分類は、固定カテゴリに拘らずバッチ内容に応じて自分でグループを決める。`ANTHROPIC_API_KEY` が設定済みなら手順3以降はスキップされ自動で進む）
 3. 生成された HTML の内容を確認し、問題があれば分類をやり直すかHTMLを直接修正する
 4. レビューが済んだらユーザーに確認のうえ、手順5（`publish`）を実行してPRを作成する
+
+### 実行時の検証と公開条件
+
+- `render` は全エントリに重複なく分類があることを検証し、既存HTMLの上書きを拒否する。同じ分に再生成する場合は、レビュー用の未追跡ファイルを別名へ退避してから実行する。
+- `publish` の前に追跡ファイルの変更をコミットまたは退避する。既存の追跡済みまとめページはこのコマンドで再公開しない。
+- `publish` は最新の `origin/main` から新規ブランチを作り、生成HTMLとトップページへのカード追加だけをコミットする。
+- 検証: `node --test tests/generate-summary.test.mjs`

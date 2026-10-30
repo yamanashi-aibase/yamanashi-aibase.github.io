@@ -31,8 +31,8 @@
  *   DISCORD_BOT_TOKEN=xxx node scripts/generate-summary.mjs 1489234567890 朝活_202604
  */
 
-import { execSync } from 'node:child_process';
-import { writeFileSync, readFileSync, mkdirSync, existsSync, unlinkSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
+import { writeFileSync, readFileSync, mkdirSync, existsSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { tmpdir } from 'node:os';
 import { fileURLToPath } from 'node:url';
@@ -60,7 +60,22 @@ function toJST(isoString) {
 
 function extractUrl(content) {
   const m = content.match(/https?:\/\/\S+/);
-  return m ? m[0].replace(/[.,)>]+$/, '') : null;
+  return m ? stripTrackingParams(m[0].replace(/[.,)>]+$/, '')) : null;
+}
+
+// Drop share-tracking query params before the URL is published. X's `t` is
+// tied to the sharer's account, and utm_* are pure tracking noise.
+function stripTrackingParams(url) {
+  let u;
+  try { u = new URL(url); } catch { return url; }
+  for (const key of [...u.searchParams.keys()]) {
+    if (key.startsWith('utm_')) u.searchParams.delete(key);
+  }
+  if (/^(www\.)?(x|twitter)\.com$/i.test(u.hostname)) {
+    u.searchParams.delete('s');
+    u.searchParams.delete('t');
+  }
+  return u.toString();
 }
 
 function extractComment(content) {
@@ -98,8 +113,8 @@ function formatXAuthor(name, url) {
   return `@${escapeHtml(handle)}（${escapeHtml(displayName)}）`;
 }
 
-function exec(cmd, opts = {}) {
-  return execSync(cmd, { cwd: ROOT, encoding: 'utf-8', ...opts }).trim();
+function exec(command, args = []) {
+  return execFileSync(command, args, { cwd: ROOT, encoding: 'utf-8' }).trim();
 }
 
 // ── Discord ───────────────────────────────────────────────────────────────────
@@ -290,12 +305,12 @@ function generateHTML(entries, channelName, yearMonth) {
   // emitted in the order each category first appears among the entries,
   // except the "その他" catch-all (unclassified / broken links), which always
   // sinks to the bottom regardless of where it first appears.
-  const grouped = {};
+  const grouped = Object.create(null);
   const categoryOrder = [];
   for (const entry of entries) {
     const cat = entry.category || 'その他';
     if (!grouped[cat]) {
-      grouped[cat] = {};
+      grouped[cat] = Object.create(null);
       categoryOrder.push(cat);
     }
     if (!grouped[cat][entry.author]) grouped[cat][entry.author] = [];
@@ -600,42 +615,39 @@ function generateFilename() {
 // Assumes `filename` was already written under summaries/ by a prior `render`
 // call (and, ideally, reviewed) — this step only handles git/GitHub.
 function publishPR(filename, channelName, yearMonth) {
-  const htmlPath = resolve(ROOT, 'summaries', filename);
-  if (!existsSync(htmlPath)) {
-    throw new Error(`summaries/${filename} not found — run 'render' first`);
+  if (!/^\d{8}_\d{4}\.html$/.test(filename)) {
+    throw new Error('Expected a summary filename: YYYYMMDD_HHMM.html');
   }
-
-  // main already has a tracked summaries/response.json from a previous run —
-  // `git checkout` refuses to switch branches over an untracked file it would
-  // have to overwrite, even if we've merely read it (the file still has to be
-  // gone from disk, not just backed up in memory). Delete this run's copy,
-  // checkout, then write it back on the new branch so it still ships with the
-  // HTML (matching prior summary PRs, which commit both together).
-  const responsePath = resolve(ROOT, 'summaries', 'response.json');
-  const responseBackup = existsSync(responsePath) ? readFileSync(responsePath, 'utf-8') : null;
-  if (responseBackup !== null) unlinkSync(responsePath);
-
-  const branch = `auto-summary-${new Date().toISOString().slice(0, 19).replace(/[T:]/g, '-').replace(/--/g, '-')}`;
+  const htmlPath = resolve(ROOT, 'summaries', filename);
+  if (!existsSync(htmlPath)) throw new Error(`summaries/${filename} not found — run 'render' first`);
+  if (exec('git', ['status', '--porcelain', '--untracked-files=no'])) {
+    throw new Error('Commit or stash tracked changes before publishing.');
+  }
+  if (exec('git', ['ls-files', '--', `summaries/${filename}`])) {
+    throw new Error('Publishing an existing tracked summary is not supported.');
+  }
+  const html = readFileSync(htmlPath, 'utf-8');
+  const branch = `auto-summary-${new Date().toISOString().slice(0, 19).replace(/[T:]/g, '-')}`;
+  exec('git', ['fetch', 'origin', 'main']);
+  const index = exec('git', ['show', 'origin/main:index.html']);
+  const marker = '<div class="summary-list">';
+  if (!index.includes(marker)) throw new Error('Summary list not found in index.html');
+  const card = `
+          <div class="summary-card">
+            <h3>${escapeHtml(yearMonth)}</h3>
+            <a href="summaries/${filename}" class="btn">View Summary →</a>
+          </div>`;
 
   console.log(`\nCreating branch ${branch}...`);
-  exec('git checkout main');
-  exec(`git checkout -b ${branch}`);
-
-  if (responseBackup !== null) {
-    writeFileSync(responsePath, responseBackup, 'utf-8');
-  }
-
-  // Commit HTML (+ response.json, if this run produced one)
-  exec(`git add summaries/${filename}${responseBackup !== null ? ' summaries/response.json' : ''}`);
-  exec(`git commit -m "Add ${yearMonth} Discord summary for #${channelName}"`);
-
-  // Push and create PR
-  exec(`git push -u origin ${branch}`);
-
+  exec('git', ['checkout', '-b', branch, 'origin/main']);
+  writeFileSync(htmlPath, html, 'utf-8');
+  writeFileSync(resolve(ROOT, 'index.html'), index.replace(marker, marker + card) + '\n', 'utf-8');
+  // Explicit paths keep raw data and unrelated staged files out of the commit.
+  exec('git', ['add', '--', `summaries/${filename}`, 'index.html']);
+  exec('git', ['commit', '-m', `Add ${yearMonth} Discord summary for #${channelName}`]);
+  exec('git', ['push', '-u', 'origin', branch]);
   const prBody = `Auto generated PR from an AI coding-agent session (generate-summary)\n\nChannel: #${channelName}\nSummary: ${yearMonth}まとめ`;
-  const prUrl = exec(
-    `gh pr create --title "Added summary ${new Date().toISOString().slice(0, 10)}" --body "${prBody}" --base main`
-  );
+  const prUrl = exec('gh', ['pr', 'create', '--title', `Added summary ${new Date().toISOString().slice(0, 10)}`, '--body', prBody, '--base', 'main']);
   console.log(`\nPR created: ${prUrl}`);
   return prUrl;
 }
@@ -659,6 +671,7 @@ function deriveYearMonth(channelName) {
 // headless/CI runs with no live agent session (and so no one) around to
 // review the HTML before it ships.
 async function runFetch(channelId, channelName) {
+  if (!/^\d+$/.test(channelId)) throw new Error('channel_id must contain only digits');
   const yearMonth = deriveYearMonth(channelName);
 
   console.log(`\n=== AI BASE Summary Generator ===`);
@@ -667,10 +680,11 @@ async function runFetch(channelId, channelName) {
 
   const rawMessages = await fetchMessages(channelId);
 
-  // Save raw messages as response.json (for debugging / manual review)
-  const jsonPath = resolve(ROOT, 'summaries', 'response.json');
-  writeFileSync(jsonPath, JSON.stringify(rawMessages, null, 2), 'utf-8');
-  console.log('  Saved summaries/response.json');
+  // Save raw messages outside the repo (debugging / manual review only) —
+  // they carry Discord user IDs and usernames that must not be published.
+  const rawPath = resolve(tmpdir(), `ai-base-summary-${channelId}.raw.json`);
+  writeFileSync(rawPath, JSON.stringify(rawMessages, null, 2), 'utf-8');
+  console.log(`  Saved raw messages to ${rawPath}`);
 
   const processed = processMessages(rawMessages);
   if (processed.length === 0) {
@@ -714,18 +728,36 @@ async function runRender(processedPath, classifiedPath, channelName) {
   const classified = JSON.parse(readFileSync(classifiedPath, 'utf-8'));
   const yearMonth = deriveYearMonth(channelName);
 
-  const classMap = Object.fromEntries(classified.map(c => [c.id, c]));
-  const entries = processed.map(m => ({
-    ...m,
-    ...(classMap[m.id] ?? { category: 'その他', headline: m.embedTitle || m.url, tags: [] }),
-  }));
+  if (!Array.isArray(processed) || !processed.length || !Array.isArray(classified)) {
+    throw new Error('Expected a nonempty processed array and a classification array');
+  }
+  const ids = new Set(processed.map(m => m.id));
+  const classMap = new Map();
+  for (const c of classified) {
+    if (!ids.has(c.id) || classMap.has(c.id) ||
+        typeof c.category !== 'string' || !c.category.trim() ||
+        typeof c.headline !== 'string' || !c.headline.trim() ||
+        !Array.isArray(c.tags) || !c.tags.every(t => typeof t === 'string')) {
+      throw new Error(`Invalid or duplicate classification: ${c.id}`);
+    }
+    classMap.set(c.id, c);
+  }
+  if (classMap.size !== processed.length || ids.size !== processed.length) {
+    throw new Error('Every processed entry must have exactly one classification');
+  }
+  const entries = processed.map(m => {
+    const c = classMap.get(m.id);
+    const url = new URL(m.url);
+    if (!['http:', 'https:'].includes(url.protocol)) throw new Error('Expected an HTTP(S) link');
+    return { ...m, url: stripTrackingParams(m.url), category: c.category, headline: c.headline, tags: c.tags };
+  });
 
   console.log('\nGenerating HTML...');
   const filename = generateFilename();
   const html = generateHTML(entries, channelName, yearMonth);
   const htmlPath = resolve(ROOT, 'summaries', filename);
   mkdirSync(resolve(ROOT, 'summaries'), { recursive: true });
-  writeFileSync(htmlPath, html, 'utf-8');
+  writeFileSync(htmlPath, html, { encoding: 'utf-8', flag: 'wx' });
   console.log(`  Wrote summaries/${filename}`);
 
   return filename;
