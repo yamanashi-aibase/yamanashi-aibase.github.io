@@ -4,7 +4,7 @@
  *
  * Fetches Discord channel messages, categorizes them (normally by whichever
  * coding-agent session — Claude Code, Codex, etc. — is driving this script;
- * optionally via the Anthropic API), generates a full HTML summary page, and
+ * optionally via the OpenAI or Anthropic API), generates a full HTML summary page, and
  * opens a GitHub PR. Three phases, each a separate invocation so there's a
  * checkpoint to review the generated HTML before it's pushed:
  *
@@ -19,13 +19,15 @@
  *   node scripts/generate-summary.mjs publish <filename> <channel_name>
  *
  * Environment variables:
- *   DISCORD_BOT_TOKEN  - Discord Bot token (required)
- *   ANTHROPIC_API_KEY  - Anthropic API key (optional — only needed for a
- *                        fully automated run with no live agent session to
- *                        classify or review; runs fetch → render → publish
- *                        straight through with no pause. The default path
- *                        classifies via the driving session itself, at no
- *                        extra API cost, and stops after render for review)
+ *   DISCORD_BOT_TOKEN    - Discord Bot token (required for fetch)
+ *   OPENAI_API_KEY       - Optional OpenAI classification API key
+ *   ANTHROPIC_API_KEY    - Optional Anthropic classification API key
+ *   SUMMARY_API_PROVIDER - openai or anthropic (required when both keys exist)
+ *   SUMMARY_API_MODEL    - Optional model override for the selected provider
+ *
+ * Without API keys, classification uses the driving agent session and its
+ * subscription. With an API key, fetch classifies using that provider and
+ * continues through render + publish (API billing, no review checkpoint).
  *
  * Example:
  *   DISCORD_BOT_TOKEN=xxx node scripts/generate-summary.mjs 1489234567890 朝活_202604
@@ -43,10 +45,7 @@ const ROOT = resolve(__dirname, '..');
 // ── Config ──────────────────────────────────────────────────────────────────
 
 const DISCORD_TOKEN = process.env.DISCORD_BOT_TOKEN;
-const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY;
 const DISCORD_API   = 'https://discord.com/api/v10';
-const ANTHROPIC_API = 'https://api.anthropic.com/v1/messages';
-const MODEL         = 'claude-sonnet-4-6';
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -179,18 +178,28 @@ function processMessages(messages) {
 
 // ── Categorization ───────────────────────────────────────────────────────────
 //
-// Classification (category / headline / tags per message) is normally done by
-// whichever coding-agent session is driving this script (Claude Code, Codex,
-// etc.) — no API call, no extra cost, uses that session's own model/subscription
-// directly. categorizeMessages() below (Anthropic API, needs ANTHROPIC_API_KEY)
-// is kept only as an optional path for headless/CI runs with no live agent
-// session attached. CLASSIFICATION_RULES is the single source of truth for the
-// grouping approach and tag vocabulary, shared by both paths.
-//
-// Categories are freeform, not a fixed enum: look at the whole batch of links
-// and organize it into roughly 6-7 groups that actually fit *this* batch's
-// content (e.g. "OpenAI GPT-6 Astra関連", "Claude/Anthropicの動向"), rather
-// than forcing every month's mixed bag of topics into the same rigid taxonomy.
+// Default: the driving agent session classifies using its subscription.
+// Optional: an API key selects OpenAI or Anthropic for automated classification.
+// Group names are chosen for each batch rather than from a fixed taxonomy.
+
+function classificationConfig(env = process.env) {
+  const keys = { openai: env.OPENAI_API_KEY?.trim(), anthropic: env.ANTHROPIC_API_KEY?.trim() };
+  let provider = env.SUMMARY_API_PROVIDER;
+  if (provider && !['openai', 'anthropic'].includes(provider)) {
+    throw new Error('SUMMARY_API_PROVIDER must be openai or anthropic');
+  }
+  if (!provider) {
+    const available = Object.keys(keys).filter(p => keys[p]);
+    if (available.length > 1) throw new Error('Both API keys are set; select SUMMARY_API_PROVIDER=openai|anthropic');
+    provider = available[0];
+  }
+  if (!provider) return null;
+  if (!keys[provider]) throw new Error(`API key is not set for ${provider}`);
+  return {
+    provider, key: keys[provider],
+    model: env.SUMMARY_API_MODEL || (provider === 'openai' ? 'gpt-4.1' : 'claude-sonnet-4-6'),
+  };
+}
 
 const CLASSIFICATION_RULES = `グループ分け:
 - このバッチのリンク群全体を見渡し、内容に応じて6〜7個程度の自然なグループに分けること（固定のカテゴリキーではなく、このバッチの内容に合わせた日本語のグループ名を自分で決める）
@@ -222,11 +231,10 @@ ${JSON.stringify(CLASSIFICATION_ITEM_SHAPE, null, 2)}
 ${CLASSIFICATION_RULES}
 - JSONのみ返すこと（説明文不要）`;
 
-// Optional: fully-automated classification via the Anthropic API. Only used
-// when ANTHROPIC_API_KEY is set (e.g. headless/CI runs with no live
-// coding-agent session driving the process).
-async function categorizeMessages(messages) {
-  if (!ANTHROPIC_KEY) throw new Error('ANTHROPIC_API_KEY is not set');
+// Optional automated classification, shared rules and validation for both vendors.
+async function categorizeMessages(messages, config = classificationConfig()) {
+  if (!config) throw new Error('Set OPENAI_API_KEY or ANTHROPIC_API_KEY for API classification');
+  const { provider, key, model } = config;
 
   // Batch in chunks of 60: large enough that a typical month's worth of links
   // fits in a single call, so group names stay consistent across the batch.
@@ -251,32 +259,34 @@ async function categorizeMessages(messages) {
       null, 2
     );
 
-    const res = await fetch(ANTHROPIC_API, {
+    const openai = provider === 'openai';
+    const res = await fetch(openai ? 'https://api.openai.com/v1/responses' : 'https://api.anthropic.com/v1/messages', {
       method: 'POST',
-      headers: {
-        'x-api-key': ANTHROPIC_KEY,
-        'anthropic-version': '2023-06-01',
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: MODEL,
-        max_tokens: 4096,
-        system: SYSTEM_PROMPT,
+      headers: openai
+        ? { Authorization: `Bearer ${key}`, 'content-type': 'application/json' }
+        : { 'x-api-key': key, 'anthropic-version': '2023-06-01', 'content-type': 'application/json' },
+      body: JSON.stringify(openai ? {
+        model, instructions: SYSTEM_PROMPT, input: userContent, max_output_tokens: 8192, store: false,
+      } : {
+        model, max_tokens: 8192, system: SYSTEM_PROMPT,
         messages: [{ role: 'user', content: userContent }],
       }),
     });
 
-    if (!res.ok) {
-      const err = await res.text();
-      throw new Error(`Anthropic API error ${res.status}: ${err}`);
-    }
-
+    if (!res.ok) throw new Error(`${provider} API error ${res.status}`);
     const data = await res.json();
-    const text = data.content[0].text.trim();
+    if ((openai && data.status !== 'completed') || (!openai && data.stop_reason !== 'end_turn')) {
+      throw new Error(`${provider} API did not complete classification`);
+    }
+    const blocks = openai
+      ? (data.output ?? []).filter(item => item.type === 'message').flatMap(item => item.content ?? [])
+      : (data.content ?? []);
+    const text = blocks.filter(block => block.type === (openai ? 'output_text' : 'text'))
+      .map(block => block.text).join('\n').trim();
 
     // Extract JSON array from response (may be wrapped in code block)
     const jsonMatch = text.match(/\[[\s\S]*\]/);
-    if (!jsonMatch) throw new Error(`Unexpected Anthropic API response: ${text.slice(0, 200)}`);
+    if (!jsonMatch) throw new Error(`Unexpected ${provider} API response (expected a JSON array)`);
 
     const classified = JSON.parse(jsonMatch[0]);
     results.push(...classified);
@@ -662,16 +672,11 @@ function deriveYearMonth(channelName) {
     : `${new Date().getFullYear()}年${new Date().getMonth() + 1}月`;
 }
 
-// Phase 1: fetch Discord messages and extract the entries that need
-// classification. By default this hands classification off to whichever
-// coding-agent session is driving the command — Claude Code, Codex, or
-// anything else (no API call, no extra cost — runs on that session's own
-// model/subscription). If ANTHROPIC_API_KEY is set, it classifies via the
-// Anthropic API and runs straight through render + publish — useful for
-// headless/CI runs with no live agent session (and so no one) around to
-// review the HTML before it ships.
+// Phase 1: default to session/subscription classification; configured API keys
+// switch to automated classification, rendering and PR creation for either vendor.
 async function runFetch(channelId, channelName) {
   if (!/^\d+$/.test(channelId)) throw new Error('channel_id must contain only digits');
+  const apiConfig = classificationConfig();
   const yearMonth = deriveYearMonth(channelName);
 
   console.log(`\n=== AI BASE Summary Generator ===`);
@@ -696,9 +701,9 @@ async function runFetch(channelId, channelName) {
   writeFileSync(processedPath, JSON.stringify(processed, null, 2), 'utf-8');
   console.log(`  Wrote ${processed.length} processed entries to ${processedPath}`);
 
-  if (ANTHROPIC_KEY) {
-    console.log('\nANTHROPIC_API_KEY is set — classifying via the Anthropic API...');
-    const classified = await categorizeMessages(processed);
+  if (apiConfig) {
+    console.log(`\nClassifying via ${apiConfig.provider} API (${apiConfig.model})...`);
+    const classified = await categorizeMessages(processed, apiConfig);
     const classifiedPath = resolve(tmpdir(), `ai-base-summary-${channelId}.classified.json`);
     writeFileSync(classifiedPath, JSON.stringify(classified, null, 2), 'utf-8');
     console.log(`  Wrote classifications to ${classifiedPath}`);
@@ -707,9 +712,8 @@ async function runFetch(channelId, channelName) {
   }
 
   console.log(`
-ANTHROPIC_API_KEY is not set — classify these entries yourself (this is the
-default path when running inside a coding-agent session such as Claude Code
-or Codex), then continue with:
+No classification API key is set — classify these entries using the driving
+agent session and its subscription (the default), then continue with:
 
   node scripts/generate-summary.mjs render ${processedPath} <classified.json> ${JSON.stringify(channelName)}
 
