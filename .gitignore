@@ -9,3 +9,6 @@
 
 # Logs
 *.log
+
+# Discord raw data (contains user IDs / usernames — never publish)
+summaries/response.json
