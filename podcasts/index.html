@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="AI BASEの月次Podcast"><title>Podcast | AI BASE</title><link rel="stylesheet" href="../style.css"><link rel="alternate" type="application/rss+xml" title="AI BASE Podcast（標準語）" href="feed.xml"><link rel="alternate" type="application/rss+xml" title="AI BASE Podcast（甲州弁）" href="feed-koshu.xml"><style>.podcast-page main{max-width:1000px}.podcast-page a{color:var(--accent-color);text-underline-offset:3px}.podcast-page button,.podcast-page select{font:inherit}.podcast-page button,.podcast-page select,.podcast-page summary{cursor:pointer}.podcast-page :focus-visible{outline:3px solid var(--accent-color);outline-offset:4px}.podcast-page [hidden]{display:none!important}.catalog-heading{display:flex;align-items:center;justify-content:space-between;gap:1rem}.catalog-heading h1{font-size:2rem}.catalog-tools{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin:1rem 0 2rem;color:#666;font-size:.9rem}.catalog-tools label{display:flex;align-items:center;gap:.6rem}.catalog-tools select{max-width:100%;border:1px solid #ddd;border-radius:4px;padding:.5rem;background:#fff;color:#555}.synthetic{font-size:.75rem;color:#777;margin-left:1rem}.year-heading{font-size:1.15rem;color:#666;margin:2rem 0 1rem}.episode{background:white;padding:1.5rem 2rem;margin-bottom:1.5rem;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.08);scroll-margin-top:1rem}.episode-heading{display:flex;gap:.75rem;align-items:center}.episode h3{font-size:1.5rem}.latest,.preview{font-size:.75rem;color:#b63c57;background:#fde8ed;padding:.15rem .6rem;border-radius:4px}.episode-title{font-size:.95rem;color:#555;margin:.4rem 0 1rem;overflow-wrap:anywhere}.edition-switch{display:inline-flex;gap:.25rem;background:#f5f5f5;padding:.25rem;border-radius:6px;margin-bottom:.8rem}.edition-switch button{border:0;border-radius:4px;padding:.4rem .85rem;background:transparent;color:#666;font-size:.85rem}.edition-switch button[aria-pressed=true]{background:var(--accent-color);color:white}.edition-switch button:disabled{cursor:default;color:#999}.unavailable{font-size:.65rem;margin-left:.4rem}.edition-panel{scroll-margin-top:1rem}.episode-meta{display:flex;align-items:center;gap:.4rem;font-size:.8rem;color:#777;margin:0 0 .6rem}.permalink{margin-left:auto;text-decoration:none}.player{background:#f9f9f9;padding:1rem;border-radius:4px}.player audio{display:block;width:100%;height:44px}.player-tools{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;margin-top:.6rem;font-size:.8rem}.player-tools button,.player-tools select{background:#fff;border:1px solid #ddd;color:#555;border-radius:4px;padding:.3rem .55rem;min-height:34px}.player-tools label{display:flex;align-items:center;gap:.3rem;margin-left:.3rem}.player-tools .download{margin-left:auto;text-decoration:none}.audio-error{font-size:.8rem;margin-top:.75rem;color:#b63c57}.episode-details{border-top:1px solid #eee;margin-top:.8rem;font-size:.85rem}.episode-details summary{padding:.8rem 0;color:#666}.chapters{display:grid;gap:.4rem;margin:.5rem 0 1rem}.chapter{text-align:left;border:1px solid #eee;background:#fafafa;padding:.6rem;color:#444;border-radius:4px;font-size:.85rem}.chapter span{color:var(--accent-color);margin-right:.75rem;font-variant-numeric:tabular-nums}.source{padding:1rem 0;border-top:1px solid #eee}.source h4{margin-bottom:.5rem}.source p{margin:.5rem 0}.source ul{padding-left:1.25rem;overflow-wrap:anywhere}.transcript{margin:1rem 0}.transcript h3{font-size:1rem;margin:1rem 0}.transcript p{display:grid;grid-template-columns:4rem 1fr;gap:.5rem;margin:.7rem 0;white-space:pre-line}.transcript strong{font-size:.8rem;color:var(--accent-color)}.rss-menu{position:relative;font-size:.85rem;z-index:1}.rss-menu summary{color:var(--accent-color);list-style:none;padding:.5rem .75rem;border:1px solid var(--accent-color);border-radius:4px;background:white}.rss-menu[open]{background:white;border-radius:4px;box-shadow:0 2px 8px #0001}.rss-menu a{display:block;padding:.6rem .75rem;text-decoration:none}.empty{background:white;border-radius:8px;padding:2rem;color:#777}.podcast-page footer{margin-top:3rem}@media(max-width:600px){.episode{padding:1.25rem 1rem}.episode h3{font-size:1.25rem}.catalog-tools{align-items:flex-start;flex-direction:column}.catalog-heading h1{font-size:1.6rem}.player{padding:.6rem}.player-tools label{margin-left:0}.transcript p{grid-template-columns:3rem 1fr}.podcast-page header{padding:1.5rem 1rem}.podcast-page header .logo{max-width:150px}.episode-meta{font-size:.75rem}.synthetic{margin-left:.5rem}}@media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style><noscript><style>.edition-panel[hidden]{display:block!important}.edition-switch{display:none}</style></noscript></head>
+<body class="podcast-page"><header><div class="logo-container"><a href="../index.html"><img class="logo" src="../img/yamanashi-aibase.png" alt="AI BASE Logo"></a></div><h1>AI BASE</h1><p class="tagline"><a href="../index.html">← 月次まとめ</a></p></header>
+<main><div class="catalog-heading"><h1>Podcast</h1><details class="rss-menu"><summary>RSSで購読</summary><a href="feed.xml">標準語 RSS</a><a href="feed-koshu.xml">甲州弁 RSS</a></details></div><div class="catalog-tools"><p>AIニュースを、月に一度。<span class="synthetic">AI合成音声</span></p></div><div class="empty">エピソードを準備しています。</div></main><footer><p>© AI BASE</p></footer><script>(() => {
+  const players = [...document.querySelectorAll('audio')];
+  players.forEach(audio => {
+    audio.addEventListener('play', () => players.forEach(other => { if (other !== audio) other.pause(); }));
+    audio.addEventListener('error', () => { audio.closest('.player').querySelector('.audio-error').hidden = false; });
+  });
+  function selectEdition(card, variant) {
+    card.querySelectorAll('.edition-panel').forEach(panel => {
+      panel.hidden = panel.dataset.variant !== variant;
+      if (panel.hidden) panel.querySelector('audio').pause();
+    });
+    card.querySelectorAll('[data-edition]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.edition === variant)));
+  }
+  document.querySelectorAll('[data-edition]:not(:disabled)').forEach(button => button.addEventListener('click', () => selectEdition(button.closest('.episode'), button.dataset.edition)));
+  function revealHash() {
+    const panel = document.getElementById(location.hash.slice(1));
+    if (!panel?.classList.contains('edition-panel')) return;
+    selectEdition(panel.closest('.episode'), panel.dataset.variant);
+    panel.closest('.episode').scrollIntoView();
+  }
+  window.addEventListener('hashchange', revealHash);
+  revealHash();
+  document.getElementById('month-jump')?.addEventListener('change', event => {
+    const card = document.getElementById(event.target.value);
+    if (card) { location.hash = card.id; card.querySelector('h3').setAttribute('tabindex', '-1'); card.querySelector('h3').focus({ preventScroll: true }); }
+  });
+  // One pending seek per player; repeated clicks before metadata do not stack listeners.
+  const pending = new WeakMap();
+  function seek(audio, time) {
+    const apply = () => { audio.currentTime = Math.max(0, Math.min(time, Number.isFinite(audio.duration) ? audio.duration : time)); };
+    const prior = pending.get(audio);
+    if (prior) audio.removeEventListener('loadedmetadata', prior);
+    if (audio.readyState >= 1) { pending.delete(audio); apply(); }
+    else { pending.set(audio, apply); audio.addEventListener('loadedmetadata', apply, { once: true }); audio.load(); }
+  }
+  document.querySelectorAll('button[data-player]').forEach(button => button.addEventListener('click', () => {
+    const audio = document.getElementById(button.dataset.player);
+    seek(audio, button.dataset.seek !== undefined ? Number(button.dataset.seek) : audio.currentTime + Number(button.dataset.skip));
+  }));
+  document.querySelectorAll('select[data-player]').forEach(select => select.addEventListener('change', () => {
+    document.getElementById(select.dataset.player).playbackRate = Number(select.value);
+  }));
+})();
+</script></body></html>

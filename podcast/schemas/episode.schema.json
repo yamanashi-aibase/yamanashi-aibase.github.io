@@ -1,0 +1,348 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "episode",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "integer",
+      "enum": [
+        1
+      ]
+    },
+    "month": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\d{4}-(0[1-9]|1[0-2])$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "inventoryDigest": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "speakers": {
+      "type": "object",
+      "properties": {
+        "A": {
+          "type": "string",
+          "minLength": 1
+        },
+        "B": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "A",
+        "B"
+      ],
+      "additionalProperties": false
+    },
+    "topics": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/topic"
+      },
+      "minItems": 1
+    },
+    "stories": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/story"
+      },
+      "minItems": 1
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/section"
+      },
+      "minItems": 1
+    },
+    "variant": {
+      "type": "string",
+      "enum": [
+        "standard",
+        "koshu"
+      ]
+    },
+    "adaptedFrom": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "required": [
+    "version",
+    "month",
+    "title",
+    "description",
+    "inventoryDigest",
+    "speakers",
+    "topics",
+    "stories",
+    "sections"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "evidence": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^https://[^\\s]+$"
+        },
+        "excerpt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "accessedAt": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "kind": {
+          "type": "string",
+          "minLength": 1,
+          "enum": [
+            "primary",
+            "secondary"
+          ]
+        }
+      },
+      "required": [
+        "url",
+        "excerpt",
+        "accessedAt",
+        "kind"
+      ],
+      "additionalProperties": false
+    },
+    "claim": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-z][a-z0-9-]{0,63}$"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "certainty": {
+          "type": "string",
+          "minLength": 1,
+          "enum": [
+            "verified",
+            "reported"
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "id",
+        "text",
+        "certainty",
+        "evidence"
+      ],
+      "additionalProperties": false
+    },
+    "story": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-z][a-z0-9-]{0,63}$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-z][a-z0-9-]{0,63}$"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "topicId": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-z][a-z0-9-]{0,63}$"
+        },
+        "disposition": {
+          "type": "string",
+          "minLength": 1,
+          "enum": [
+            "spoken",
+            "notes_only"
+          ]
+        },
+        "reason": {
+          "type": "string"
+        },
+        "claims": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/claim"
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "sourceIds",
+        "topicId",
+        "disposition",
+        "reason",
+        "claims"
+      ],
+      "additionalProperties": false
+    },
+    "topic": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-z][a-z0-9-]{0,63}$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "storyIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-z][a-z0-9-]{0,63}$"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "storyIds"
+      ],
+      "additionalProperties": false
+    },
+    "turn": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-z][a-z0-9-]{0,63}$"
+        },
+        "speaker": {
+          "type": "string",
+          "minLength": 1,
+          "enum": [
+            "A",
+            "B"
+          ]
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 3000
+        },
+        "claimIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-z][a-z0-9-]{0,63}$"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "storyIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-z][a-z0-9-]{0,63}$"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "id",
+        "speaker",
+        "text",
+        "claimIds",
+        "storyIds"
+      ],
+      "additionalProperties": false
+    },
+    "section": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-z][a-z0-9-]{0,63}$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "topicIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-z][a-z0-9-]{0,63}$"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "seconds": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1740
+        },
+        "turns": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/turn"
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "topicIds",
+        "seconds",
+        "turns"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "approval",
+  "type": "object",
+  "properties": {
+    "episodeDigest": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "audioDigest": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "releaseDigest": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "reviewer": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reviewedAt": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T"
+    },
+    "listened": {
+      "type": "boolean",
+      "enum": [
+        true
+      ]
+    },
+    "factsChecked": {
+      "type": "boolean",
+      "enum": [
+        true
+      ]
+    },
+    "approved": {
+      "type": "boolean",
+      "enum": [
+        true
+      ]
+    }
+  },
+  "required": [
+    "episodeDigest",
+    "audioDigest",
+    "releaseDigest",
+    "reviewer",
+    "reviewedAt",
+    "listened",
+    "factsChecked",
+    "approved"
+  ],
+  "additionalProperties": false
+}

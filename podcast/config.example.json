@@ -1,0 +1,22 @@
+{
+  "tts": {
+    "provider": "openai-compatible",
+    "endpoint": "https://tts.example.invalid/v1/audio/speech",
+    "apiKeyEnv": "PODCAST_TTS_API_KEY",
+    "model": "replace-with-provider-model",
+    "voices": {"A": "replace-with-voice-a", "B": "replace-with-voice-b"}
+  },
+  "storage": {
+    "endpoint": "https://replace-account-id.r2.cloudflarestorage.com",
+    "bucket": "ai-base-podcast",
+    "publicBaseUrl": "https://media.example.invalid/podcast"
+  },
+  "site": {
+    "baseUrl": "https://aibase.yamanashi.dev",
+    "title": "AI BASE Podcast",
+    "description": "月に一度、AIニュースを30分以内の2人対話で振り返ります。",
+    "author": "AI BASE",
+    "email": "replace-me@example.invalid",
+    "imageUrl": "https://aibase.yamanashi.dev/img/yamanashi-aibase.png"
+  }
+}

@@ -12,3 +12,9 @@
 
 # Discord raw data (contains user IDs / usernames — never publish)
 summaries/response.json
+
+# Podcast private working data, credentials and rendered audio
+work/
+podcast/config.local.json
+*.mp3
+*.wav

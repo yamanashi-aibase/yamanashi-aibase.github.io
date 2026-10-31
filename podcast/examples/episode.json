@@ -1,0 +1,138 @@
+{
+  "version": 1,
+  "month": "2026-10",
+  "title": "AI BASE 2026-10 月次Podcast",
+  "description": "今月のAIニュースを2人で振り返ります。",
+  "inventoryDigest": "86d12a68c0da3173955b258d605a562e4e61851e4d1b19cbb460dd2db1a4cd80",
+  "speakers": {
+    "A": "ホスト",
+    "B": "解説"
+  },
+  "topics": [
+    {
+      "id": "topic-1",
+      "title": "今月のAIニュース",
+      "storyIds": [
+        "story-1",
+        "story-3"
+      ]
+    }
+  ],
+  "stories": [
+    {
+      "id": "story-1",
+      "title": "架空のツール発表",
+      "sourceIds": [
+        "source-1",
+        "source-2"
+      ],
+      "topicId": "topic-1",
+      "disposition": "spoken",
+      "reason": "",
+      "claims": [
+        {
+          "id": "claim-1",
+          "text": "これは架空のテスト用発表です。",
+          "certainty": "verified",
+          "evidence": [
+            {
+              "url": "https://example.com/launch",
+              "excerpt": "架空のテスト用根拠。実ニュースではない。",
+              "accessedAt": "2026-10-25",
+              "kind": "primary"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "story-3",
+      "title": "確認できなかった架空の話題",
+      "sourceIds": [
+        "source-3"
+      ],
+      "topicId": "topic-1",
+      "disposition": "notes_only",
+      "reason": "一次情報を確認できないため公開ノートに残す。",
+      "claims": []
+    }
+  ],
+  "sections": [
+    {
+      "id": "opening",
+      "title": "オープニング",
+      "topicIds": [],
+      "seconds": 45,
+      "turns": [
+        {
+          "id": "turn-0-a",
+          "speaker": "A",
+          "text": "これは架空のテスト用の会話です。",
+          "claimIds": [],
+          "storyIds": []
+        },
+        {
+          "id": "turn-0-b",
+          "speaker": "B",
+          "text": "これは架空のテスト用の会話です。",
+          "claimIds": [],
+          "storyIds": []
+        }
+      ]
+    },
+    {
+      "id": "news",
+      "title": "今月のAIニュース",
+      "topicIds": [
+        "topic-1"
+      ],
+      "seconds": 1500,
+      "turns": [
+        {
+          "id": "turn-1-a",
+          "speaker": "A",
+          "text": "これは架空のテスト用の会話です。",
+          "claimIds": [
+            "claim-1"
+          ],
+          "storyIds": [
+            "story-1"
+          ]
+        },
+        {
+          "id": "turn-1-b",
+          "speaker": "B",
+          "text": "これは架空のテスト用の会話です。",
+          "claimIds": [
+            "claim-1"
+          ],
+          "storyIds": [
+            "story-1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "closing",
+      "title": "まとめ",
+      "topicIds": [],
+      "seconds": 45,
+      "turns": [
+        {
+          "id": "turn-2-a",
+          "speaker": "A",
+          "text": "これは架空のテスト用の会話です。",
+          "claimIds": [],
+          "storyIds": []
+        },
+        {
+          "id": "turn-2-b",
+          "speaker": "B",
+          "text": "これは架空のテスト用の会話です。",
+          "claimIds": [],
+          "storyIds": []
+        }
+      ]
+    }
+  ]
+}

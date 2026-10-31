@@ -1,0 +1,368 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "published",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "integer",
+      "enum": [
+        1
+      ]
+    },
+    "month": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\d{4}-(0[1-9]|1[0-2])$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "episodeDigest": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "audioDigest": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "audioUrl": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^https://[^\\s]+$"
+    },
+    "bytes": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "duration": {
+      "type": "number",
+      "minimum": 0.01,
+      "maximum": 1800
+    },
+    "site": {
+      "type": "object",
+      "properties": {
+        "baseUrl": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^https://[^\\s]+$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "author": {
+          "type": "string",
+          "minLength": 1
+        },
+        "email": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"
+        },
+        "imageUrl": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^https://[^\\s]+$"
+        }
+      },
+      "required": [
+        "baseUrl",
+        "title",
+        "description",
+        "author",
+        "email",
+        "imageUrl"
+      ],
+      "additionalProperties": false
+    },
+    "speakers": {
+      "type": "object",
+      "properties": {
+        "A": {
+          "type": "string",
+          "minLength": 1
+        },
+        "B": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "A",
+        "B"
+      ],
+      "additionalProperties": false
+    },
+    "transcript": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "turns": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "speaker": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "text": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "speaker",
+                "text"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 2
+          }
+        },
+        "required": [
+          "title",
+          "turns"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "disposition": {
+            "type": "string",
+            "minLength": 1,
+            "enum": [
+              "spoken",
+              "notes_only"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          },
+          "sources": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "url": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^https://[^\\s]+$"
+                }
+              },
+              "required": [
+                "title",
+                "url"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1
+          },
+          "claims": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "certainty": {
+                  "type": "string",
+                  "minLength": 1,
+                  "enum": [
+                    "verified",
+                    "reported"
+                  ]
+                },
+                "evidence": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "url": {
+                        "type": "string",
+                        "minLength": 1,
+                        "pattern": "^https://[^\\s]+$"
+                      },
+                      "accessedAt": {
+                        "type": "string",
+                        "minLength": 1,
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                      },
+                      "kind": {
+                        "type": "string",
+                        "minLength": 1,
+                        "enum": [
+                          "primary",
+                          "secondary"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "url",
+                      "accessedAt",
+                      "kind"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "minItems": 1
+                }
+              },
+              "required": [
+                "text",
+                "certainty",
+                "evidence"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 0
+          }
+        },
+        "required": [
+          "title",
+          "disposition",
+          "reason",
+          "sources",
+          "claims"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "approval": {
+      "type": "object",
+      "properties": {
+        "episodeDigest": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "audioDigest": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "releaseDigest": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "reviewer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reviewedAt": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T"
+        },
+        "listened": {
+          "type": "boolean",
+          "enum": [
+            true
+          ]
+        },
+        "factsChecked": {
+          "type": "boolean",
+          "enum": [
+            true
+          ]
+        },
+        "approved": {
+          "type": "boolean",
+          "enum": [
+            true
+          ]
+        }
+      },
+      "required": [
+        "episodeDigest",
+        "audioDigest",
+        "releaseDigest",
+        "reviewer",
+        "reviewedAt",
+        "listened",
+        "factsChecked",
+        "approved"
+      ],
+      "additionalProperties": false
+    },
+    "chapters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "startSeconds": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1800
+          }
+        },
+        "required": [
+          "title",
+          "startSeconds"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "variant": {
+      "type": "string",
+      "enum": [
+        "standard",
+        "koshu"
+      ]
+    }
+  },
+  "required": [
+    "version",
+    "month",
+    "title",
+    "description",
+    "episodeDigest",
+    "audioDigest",
+    "audioUrl",
+    "bytes",
+    "duration",
+    "site",
+    "speakers",
+    "transcript",
+    "notes",
+    "approval"
+  ],
+  "additionalProperties": false
+}
