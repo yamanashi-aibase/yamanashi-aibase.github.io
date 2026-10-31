@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "month": "2026-10",
+  "sources": [
+    {
+      "id": "source-1",
+      "url": "https://example.com/launch",
+      "title": "架空のツール発表",
+      "date": "2026/10/01",
+      "categoryHint": ""
+    },
+    {
+      "id": "source-2",
+      "url": "https://example.com/launch-review",
+      "title": "同じ発表についての架空の解説",
+      "date": "2026/10/02",
+      "categoryHint": ""
+    },
+    {
+      "id": "source-3",
+      "url": "https://example.com/unconfirmed",
+      "title": "確認できなかった架空の話題",
+      "date": "2026/10/03",
+      "categoryHint": ""
+    }
+  ],
+  "digest": "86d12a68c0da3173955b258d605a562e4e61851e4d1b19cbb460dd2db1a4cd80"
+}

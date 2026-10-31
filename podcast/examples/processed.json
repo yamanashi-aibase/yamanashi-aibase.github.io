@@ -1,0 +1,5 @@
+[
+  {"id":"fixture-1","url":"https://example.com/launch?utm_source=discord","comment":"架空のテスト投稿です。","author":"fixture-user","date":"2026/10/01","embedTitle":"架空のツール発表","embedDesc":"実ニュースではありません。","embedAuthorName":null,"embedAuthorUrl":null},
+  {"id":"fixture-2","url":"https://example.com/launch-review","comment":null,"author":"fixture-user","date":"2026/10/02","embedTitle":"同じ発表についての架空の解説","embedDesc":null,"embedAuthorName":null,"embedAuthorUrl":null},
+  {"id":"fixture-3","url":"https://example.com/unconfirmed","comment":null,"author":"fixture-user","date":"2026/10/03","embedTitle":"確認できなかった架空の話題","embedDesc":null,"embedAuthorName":null,"embedAuthorUrl":null}
+]

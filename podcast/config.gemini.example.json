@@ -1,0 +1,23 @@
+{
+  "tts": {
+    "provider": "gemini",
+    "endpoint": "https://generativelanguage.googleapis.com/v1beta",
+    "apiKeyEnv": "GEMINI_API_KEY",
+    "model": "gemini-3.8-flash-tts",
+    "voices": {"A": "Kore", "B": "Puck"},
+    "style": "日本語の落ち着いたPodcast。親しみやすく、聞き取りやすい自然な速さで話す。ニュースの事実と解説を明瞭に区切る。"
+  },
+  "storage": {
+    "endpoint": "https://replace-account-id.r2.cloudflarestorage.com",
+    "bucket": "ai-base-podcast",
+    "publicBaseUrl": "https://media.example.invalid/podcast"
+  },
+  "site": {
+    "baseUrl": "https://aibase.yamanashi.dev",
+    "title": "AI BASE Podcast",
+    "description": "月に一度、AIニュースを30分以内の2人対話で振り返ります。",
+    "author": "AI BASE",
+    "email": "replace-me@example.invalid",
+    "imageUrl": "https://aibase.yamanashi.dev/img/yamanashi-aibase.png"
+  }
+}

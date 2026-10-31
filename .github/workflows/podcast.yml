@@ -1,0 +1,22 @@
+name: Podcast checks
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  podcast:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install audio tools
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - name: Unit and offline audio integration tests
+        run: node --test tests/podcast/*.test.mjs tests/generate-summary.test.mjs
+      - name: Check committed Pages and RSS
+        run: node scripts/podcast.mjs site --check
+      # No LLM credentials, TTS calls, upload, merge, or deploy in this workflow.

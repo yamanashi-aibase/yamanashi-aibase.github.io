@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "config",
+  "type": "object",
+  "properties": {
+    "tts": {
+      "type": "object",
+      "properties": {
+        "provider": {
+          "type": "string",
+          "minLength": 1,
+          "enum": [
+            "openai-compatible",
+            "gemini",
+            "mock-tone"
+          ]
+        },
+        "endpoint": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^https://[^\\s]+$"
+        },
+        "apiKeyEnv": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Z][A-Z0-9_]*$"
+        },
+        "model": {
+          "type": "string",
+          "minLength": 1
+        },
+        "style": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "voices": {
+          "type": "object",
+          "properties": {
+            "A": {
+              "type": "string",
+              "minLength": 1
+            },
+            "B": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "A",
+            "B"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "provider",
+        "endpoint",
+        "apiKeyEnv",
+        "model",
+        "voices"
+      ],
+      "additionalProperties": false
+    },
+    "storage": {
+      "type": "object",
+      "properties": {
+        "endpoint": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^https://[^\\s]+$"
+        },
+        "bucket": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-z0-9][a-z0-9.-]+$"
+        },
+        "publicBaseUrl": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^https://[^\\s]+$"
+        }
+      },
+      "required": [
+        "endpoint",
+        "bucket",
+        "publicBaseUrl"
+      ],
+      "additionalProperties": false
+    },
+    "site": {
+      "type": "object",
+      "properties": {
+        "baseUrl": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^https://[^\\s]+$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "author": {
+          "type": "string",
+          "minLength": 1
+        },
+        "email": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"
+        },
+        "imageUrl": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^https://[^\\s]+$"
+        }
+      },
+      "required": [
+        "baseUrl",
+        "title",
+        "description",
+        "author",
+        "email",
+        "imageUrl"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "tts",
+    "storage",
+    "site"
+  ],
+  "additionalProperties": false
+}

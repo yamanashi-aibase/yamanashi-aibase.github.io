@@ -18,6 +18,10 @@ GitHub Pages 静的サイト。AI関連ミートアップ（AI BASE）の月次�
   2. 表示された処理済みエントリを自分（エージェント）でグループ分けし、`node scripts/generate-summary.mjs render <processed.json> <classified.json> <channel_name>` でHTMLを `summaries/` に生成（PRはまだ作らず、ここで一旦停止）
   3. 生成されたHTMLを**必ずレビュー**し、問題なければ `node scripts/generate-summary.mjs publish <filename> <channel_name>` でブランチ作成・commit・push・PR作成まで進める
 
+## Podcast
+
+月次Podcastの生成・甲州弁への翻案は `.agents/skills/monthly-podcast/SKILL.md` と `podcast/README.md` を参照。共通CLIは `scripts/podcast.mjs`。再生一覧と標準語／甲州弁のRSSは `podcasts/` に生成する。各版の音声・QA・承認は独立して管理する。
+
 ## ディレクトリ構成
 
 ```

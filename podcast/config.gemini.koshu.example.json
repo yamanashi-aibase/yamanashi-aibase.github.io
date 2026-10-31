@@ -1,0 +1,26 @@
+{
+  "tts": {
+    "provider": "gemini",
+    "endpoint": "https://generativelanguage.googleapis.com/v1beta",
+    "apiKeyEnv": "GEMINI_API_KEY",
+    "model": "gemini-3.8-flash-tts",
+    "voices": {
+      "A": "Kore",
+      "B": "Puck"
+    },
+    "style": "日本語の親しみやすい2人対話Podcast。入力済みの甲州弁の台本をそのまま自然に読み、語尾や単語を追加・変更しない。専門語・数値・固有名詞は明瞭に、落ち着いた速さで話す。方言や人物像を誇張しない。"
+  },
+  "storage": {
+    "endpoint": "https://replace-account-id.r2.cloudflarestorage.com",
+    "bucket": "ai-base-podcast",
+    "publicBaseUrl": "https://media.example.invalid/podcast"
+  },
+  "site": {
+    "baseUrl": "https://aibase.yamanashi.dev",
+    "title": "AI BASE Podcast",
+    "description": "月に一度、AIニュースを30分以内の2人対話で振り返ります。",
+    "author": "AI BASE",
+    "email": "replace-me@example.invalid",
+    "imageUrl": "https://aibase.yamanashi.dev/img/yamanashi-aibase.png"
+  }
+}
